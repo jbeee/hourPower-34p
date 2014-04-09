@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+ <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
+
+<style>
+body {
+  background: #ddd;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   60%, hsla(0,0%,100%, .1) 50%),
+
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 50%, hsla(0,0%,100%,.15) 50%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,83%) 70%,
+    hsl(0,0%,80%) 90%);
+}
+  font-size: 14px;
+  color:#444;
+}
+
+
+
+.slider-v1 {
+  position: relative;
+  display: block;
+  width: 5em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  transition: 350ms;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #dddddd;
+  box-shadow: 0 0.07em 0.1em -0.1em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
+}
+
+.slider-v1::after {
+  position: absolute;
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  top: 0.19em;
+  left: 0.40em;
+  border-radius: 50%;
+  transition: 250ms ease-in-out;
+  box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.9) inset, 0 0.2em 0.2em -0.12em rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(100% 100% 90deg, #515151, #7a7a7a);
+  background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999999 100%);
+}
+
+.slider-v1::before {
+  position: absolute;
+  content: '';
+  width: 4.0em;
+  height: 1.3em;
+  top: 0.35em;
+  left: 0.5em;
+  border-radius: 0.75em;
+  transition: 250ms ease-in-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #a3aeff;
+  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(68, 204, 102, 0.7) inset;
+}
+
+input:checked + .slider-v1::before {
+  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 3em 0 0 0 rgba(255, 163, 244, 0.9) inset;
+}
+
+input:checked + .slider-v1::after {
+  left: 3.0em;
+}
+
+.slider-v2 {
+  position: relative;
+  display: block;
+  width: 5em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  transition: 350ms;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #cccccc;
+  box-shadow: 0 0.07em 0.2em -0.4em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,83%) 53%,
+    hsl(0,0%,80%)100%);
+}
+
+.slider-v2::after {
+  position: absolute;
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  top: 0.18em;
+  left: 0.40em;
+  border-radius: 50%;
+  transition: 250ms ease-in-out;
+  box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.7) inset, 0 0.2em 0.2em -0.12em rgba(0, 0, 0, 0.5);
+  background-image: -webkit-linear-gradient(100% 100% 90deg, #515151, #7a7a7a);
+  background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999999 100%);
+}
+
+.slider-v2::before {
+  position: absolute;
+  content: '';
+  width: 4.0em;
+  height: 1.3em;
+  top: 0.35em;
+  left: 0.5em;
+  border-radius: 0.75em;
+  transition: 250ms ease-in-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #c0c0c0;
+  box-shadow: 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
+}
+
+input:checked + .slider-v2::before {
+  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 3em 0 0 0 rgba(133, 130, 178, 0.9) inset;
+}
+
+input:checked + .slider-v2::after {
+  left: 3.0em;
+}
+
+
+.ui.labeled.input
+{
+  width:200px;
+   height:15px;
+}
+.ui.labeled.input input
+{
+   width:150px;
+   height:20px;
+}
+
+.ui.labeled.input.hasError
+{
+  width:200px;
+
+}
+
+.productSelectionTable .ui.input input
+{
+  width:8em;
+  height:1.8em;
+}
+
+.psInputTop
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  opacity: 0;
+}
+
+.slider{
+  visibility: hidden;
+  position:absolute;
+  right:-500px;
+}
+.ui.labeled.input.hasError input
+{
+  color:#a34d55;
+  border: 1px solid #B35962;
+  opacity: 0.9;
+ background: rgb(255,251,249); /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%, rgba(255,226,226,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(60%,rgba(255,251,249,1)), color-stop(100%,rgba(255,226,226,1))); /* Chrome,Safari4+ */
+background: -webkit-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* Opera 12+ */
+background: -ms-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* IE10+ */
+background: radial-gradient(ellipse at center, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffbf9', endColorstr='#ffe2e2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.hasError
+{
+  color:#ccc;
+}
+
+.disabledUI.slider-v2 {
+opacity:0.3;
+ background: linear-gradient(rgba(#000,0.2),rgba(#fff,0)),#bbb;
+}
+
+.disabledUI.slider-v2::before {
+  box-shadow:
+    0 0.08em 0.15em -0.1em rgba(#000,.5) inset,
+    0 0.05em 0.08em -0.01em rgba(#fff,.7),
+    4em 0 0 0 rgba(#444,.2) inset;
+}
+
+.disabledUI.slider-v2::after {
+
+  background: linear-gradient(#eee 10%,#bbb);
+}
+
+fieldset
+{
+  border:none;
+}
+</style>
+</head>
+<body>
+
+
+
+<div id="edit2">
+    <fieldset>
+        <table>
+            <tr>
+                <td>
+                    <em>Member</em>
+                    <div class="ui labeled input">
+                        <input type="text" placeholder="Member First Name" data-bind="value: pmM.p.fname" >
+                    </div>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Birthday_Age'].hasError()}">
+                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.p.birthday">
+                    </div>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
+                        <input type="text" placeholder="Hourly Wage" data-bind="value: pmM.p.wage" >
+                    </div>
+                     <table>
+                        <tr>
+                            <td>Gender:</td>
+                            <td><input class="slider" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
+                                <label class="slider-v1" for="pGenderBtn"></label>
+                            </td>
+                            <td>Tobacco user:</td>
+                            <td>      
+                                <input class="slider" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TU" />
+                                <label class="slider-v2" for="pTBtn"></label>
+                            </td>
+                            <td>Child(ren) under 19:</td>
+                            <td> 
+                                <input class="slider" type="checkbox" id="pCBtn" data-bind="checked: hasChild" />
+                                <label class="slider-v2" for="pCBtn"></label>
+                            </td>
+                            <td> Married: </td>
+                            <td> 
+                                <input class="slider" type="checkbox" id="pSBtn" data-bind="checked: hasSpouse" /> 
+                                <label class="slider-v2" for="pSBtn"></label>
+                            </td>
+                        </tr>
+                    </table>
+                    <em> Spouse Tests</em>
+                    <div class="ui labeled input">
+                        <input type="text" placeholder="Spouse's First Name" data-bind="value: pmM.sp.fname" >
+                    </div>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Birthday_Age'].hasError()&&hasSpouse()}">
+                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.sp.birthday">
+                    </div>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
+                        <input type="text" placeholder="Hourly Wage" data-bind="value: pmM.sp.wage" >
+                    </div>
+                    <table>
+                        <tr>
+                            <td>Gender:</td>
+                            <td><input class="slider" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
+                                <label class="slider-v1" for="spGenderBtn"></label>
+                            </td>
+                            <td>Tobacco user:</td>
+                            <td>      
+                                <input class="slider" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TU" />
+                                <label class="slider-v2" for="spTBtn"></label>
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td><em> Power Hour Tests</em></td>
+                            <td>
+                                <div class="ui labeled input">
+                                    <span data-bind="text: pmM.p.wage" ></span>
+                                </div>
+                            </td>
+                            <td>
+                              <div>
+                                <input class="slider" type="checkbox" id="phBtn" data-bind="checked: phType" data-bind="checked: phType, enable: pmM.p.allowPH"/>
+                                <label class="slider-v2" data-bind="css: { disabledUI: pmM.p.allowPH()==false}" for="phBtn"></label>
+                              </div>
+                            </td>
+                            <td>
+                                <div class="ui labeled input">
+                                    <input type="text" placeholder="Custom Policy Hower" data-bind="value: cVal">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td valign="bottom">
+                    <table>
+                        <tr>
+                            <td>member first name:</td>
+                            <td><span data-bind="text: pmM.p.fname"></span></td>
+                            <td><span data-bind="pmM.p.fname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>member birthday:</td>
+                            <td><span data-bind="text: pmM.p.birthday"></span></td>
+                            <td><span data-bind="pmM.p.birthday"></span></td>
+                        </tr>
+                        <tr>
+                            <td>member age:</td>
+                            <td><span data-bind="text: pmM.p.age_uf"></span></td>
+                            <td><span data-bind="pmM.p.age"></span></td>
+                        </tr>
+                        <tr>
+                            <td>member gender:</td>
+                            <td><span data-bind="text: pmM.p.gender"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>member wage:</td>
+                            <td><span data-bind="text: pmM.p.wage"></span></td>
+                            <td><span data-bind="pmM.p.wage"></span></td>
+                        </tr>
+                        <tr>
+                            <td>member Tabacco:</td>
+                            <td><span data-bind="text: pmM.p.TU"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>member Married:</td>
+                            <td><span data-bind="text: hasSpouse"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>member Children:</td>
+                            <td><span data-bind="text: hasChild"></span></td>
+                            <td></td>
+                        </tr>
+                      </table>
+                    </td><td>
+                      <table>
+                        <tr>
+                            <td>spouse first name:</td>
+                            <td><span data-bind="text: pmM.sp.fname"></span></td>
+                            <td><span data-bind="pmM.sp.fname"></span></td>
+                        </tr>
+                        <tr>
+                            <td>spouse birthday:</td>
+                            <td><span data-bind="text: pmM.sp.birthday"></span></td>
+                            <td><span data-bind="pmM.sp.birthday"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>spouse age:</td>
+                            <td><span data-bind="text: pmM.sp.age_uf"></span></td>
+                            <td><span data-bind="pmM.sp.age"></span></td>
+                        </tr>
+                        <tr>
+                            <td>spouse gender:</td>
+                            <td><span data-bind="text: pmM.sp.gender"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>spouse wage:</td>
+                            <td><span data-bind="text: pmM.sp.wage"></span></td>
+                            <td><span data-bind="pmM.sp.wage"></span></td>
+                        </tr>
+                        <tr>
+                            <td>spouse Tabacco:</td>
+                            <td><span data-bind="text: pmM.sp.TU"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ph typed:</td>
+                            <td><span data-bind="text: phType"></span></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>ph val:</td>
+                            <td><span data-bind="text: phVal"></span></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </fieldset>      
+
+  <fieldset>
+      <table summary="Altig Hour Power Benefit Selection" class="productSelectionTable">
+<tbody>
+              <tr>
+                  <th>Benefit</th>
+                  <th>Coverage</th>
+                  <th>Duration</th>
+                  <th>Annual</th>
+                  <th>Monthly</th>
+                  <th>Weekly</th>
+                  <th>Added</th>
+
+              </tr>
+
+          
+              <tr class="pSTr TYR pHolder">
+                  <td class="psBR">
+                      10YRC (Paycheck) <br> <span data-bind="text: pmM.p.fname"></span>
+                  </td>
+                  <td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$250,000.00" class="TYR">       
+                          <input type="text" placeHolder="$999,999.99" class="psInputTop TYR" data-bind="value: pmP['TYR']['COV']">
+                      </div>
+                  </td>
+                  <td>
+                      <div id="TYR_YRS" class="ui dropdown pgSELECT">
+                          <div class="text" data-value="1">1 year</div>
+                          <i class="dropdown icon"></i>
+                          <div class="menu">
+                              <div class="item" data-value="0.5">6 months</div>
+                              <div class="item" data-value="0.1">1 year</div>
+                              <div class="item" data-value="1.5">1.5 years</div>
+                              <div class="item" data-value="2.0">2 years</div>
+                              <div class="item" data-value="2.5">2.5 years</div>
+                              <div class="item" data-value="3">3 years</div>
+                              <div class="item" data-value="3.5">3.5 years</div>
+                              <div class="item" data-value="4">4 years</div>
+                              <div class="item" data-value="5">5 years</div>
+                              <div class="item" data-value="6">6 years</div>
+                          </div>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['ANN']">
+                      </div>
+                 </td><td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['MBD']">
+                      </div>
+                  </td><td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['WKL']">
+                      </div>
+                  <td>
+                    <input class="slider pgShow" type="checkbox" id="TYRBtn" data-bind="checked: pmP['TYR']['added']" />
+                                <label class="slider-v2" for="TYRBtn"></label>                 
+              </tr>
+
+
+
+            <tr class="pSTr WHL pHolder">
+                  <td class="psBR">
+                      Whole Life <br> <span data-bind="text: pmM.p.fname"></span>
+                  </td>
+                  <td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['WHL']['COV']">       
+                          <input type="text" placeHolder="$999,999.99" class="psInputTop WHL" data-bind="value: pmP['WHL']['COV']">
+                      </div>
+                  </td>
+                  <td>
+                  </td>
+                  <td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['ANN']">       
+                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['ANN']">
+                      </div>
+                 </td><td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['MBD']">       
+                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['MBD']">
+                      </div>
+                  </td><td>
+                      <div class="ui input">
+                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['WKL']">       
+                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['WKL']">
+                      </div>
+                  <td>
+                    <input class="slider pgShow" type="checkbox" id="WHLBtn" data-bind="checked: pmP['WHL']['added']" />
+                                <label class="slider-v2" for="WHLBtn"></label>                 
+              </tr>
+          </tbody>
+      </table>
+  </fieldset>
+
+
+
+</div>
+  <script src="js/libs/deps_ko.js"> </script> 
+  <script src="css/sui/javascript/semantic.js"> </script>
+  <script src="js/data/dataJS.js"> </script>
+  <script src="js/globals.js"> </script>
+  <script src="js/libs/knockout-3.1.0.js" defer="defer"> </script> 
+  <script src="js/koMVVM.js" defer="defer"> </script> 
+  <script src="js/libs/countUp.js"> </script> 
+  <script>
+  $('.ui.dropdown')
+  .dropdown()
+;
+  </script>
+
+
+
+
+  
+
+</body>
+</html>

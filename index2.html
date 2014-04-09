@@ -1,0 +1,364 @@
+  
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+ <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
+
+<style>
+
+.psInputTop
+{
+  position:absolute;
+  top:0px;
+  left:0px;
+  background-color: #ddd;
+    color:#000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+
+input {     
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -moz-opacity: 0;
+    -khtml-opacity: 0;
+    opacity: 0;
+}
+
+.slider-v1 {
+  position: relative;
+  display: block;
+  width: 5.5em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  transition: 350ms;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #dddddd;
+  box-shadow: 0 0.07em 0.1em -0.1em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
+}
+
+.slider-v1::after {
+  position: absolute;
+  content: '';
+  width: 1.5em;
+  height: 1.5em;
+  top: 0.2em;
+  left: 0.45em;
+  border-radius: 50%;
+  transition: 250ms ease-in-out;
+  background: linear-gradient(whitesmoke 10%, #eeeeee);
+  box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.9) inset, 0 0.2em 0.2em -0.12em rgba(0, 0, 0, 0.5);
+}
+
+.slider-v1::before {
+  position: absolute;
+  content: '';
+  width: 4.5em;
+  height: 1.3em;
+  top: 0.35em;
+  left: 0.5em;
+  border-radius: 0.75em;
+  transition: 250ms ease-in-out;
+  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #a3aeff;
+  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(68, 204, 102, 0.7) inset;
+}
+
+input:checked + .slider-v1::before {
+  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 3em 0 0 0 rgba(255, 163, 244, 0.9) inset;
+}
+
+input:checked + .slider-v1::after {
+  left: 3.5em;
+}
+
+</style>
+</head>
+<body>
+
+<fieldset>
+<table summary="Altig Hour Power Benefit Selection" class="productSelectionTable">
+  <caption>Interest Rates</caption>
+  <thead>
+    <tr>
+       <th>Benefit</th>
+       <th>Coverage</th>
+       <th>Duration</th>
+       <th>Annual</th>
+       <th colspan=2>Weekly</th>
+   </tr>
+ </thead>
+<tbody>
+<tr class="pSTr TYR pHolder">
+      <td class="psBR">
+        10YRC (Paycheck) <br> <span data-bind="text: p.fname"></span></td><td><span data-bind="p.fname"></span>
+      </td>
+
+
+      <td>
+        <div class="ui input">
+            <input type="text" placeHolder="$44,444,44.44" class="TYR">       
+        <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: products['TYR']['COV']">
+    </div>
+
+      </td>
+      <td>        
+         <div id="TYR_YRS" class="ui dropdown pgSELECT">
+        <div class="text" data-value="1">1 year</div>
+        <i class="dropdown icon"></i>
+          <div class="menu">
+          <div class="item" data-value="0.5">6 months</div>
+          <div class="item" data-value="0.1">1 year</div>
+          <div class="item" data-value="1.5">1.5 years</div>
+          <div class="item" data-value="2.0">2 years</div>
+          <div class="item" data-value="2.5">2.5 years</div>
+          <div class="item" data-value="3">3 years</div>
+          <div class="item" data-value="3.5">3.5 years</div>
+          <div class="item" data-value="4">4 years</div>
+          <div class="item" data-value="5">5 years</div>
+          <div class="item" data-value="6">6 years</div>
+       </div>
+    </div>
+      </td>
+
+      <td><input type="text" val="" id="TYR_ANN" class="pgInputs TYR ANN"></td>
+
+      <td><input type="text" val="" id="TYR_MBD" class="pgInputs TYR MBD"></td>
+
+      <td><input type="text" val="" id="TYR_WKL" class="pgInputs TYR WKL"></td>
+
+    <td><input type="checkbox" id="TYR_SHW" class="pgShow TYR" checked></td>
+</tr>
+
+
+
+
+
+</tbody>
+</table>
+
+
+
+</fieldset>
+<fieldset>
+  <table id="productGrid">
+    <tr class="pgTitle">
+      <th>Benefit</th>
+      <th>Coverage</th>
+      <th>Annual</th>
+      <th>MBD</th>
+      <th>Weekly</th>
+      <th>Type</th>
+    </tr>
+    <tr class="pgHead"><td colspan="7"></td></tr>
+    
+  <tr class="pgTR A71">
+      <td class="pgProduct">A71000 - <span class="A7_Name namelabel"></span></td>
+      <td><input type="text" id="A71_COV" class="ROinputs"></td>
+        <td><input type="text" id="A71_ANN" class="ROinputs" data-bind="value: pmE.errArray['sp_Birthday_Age'].hasError" readonly></td>
+      <td><input type="text" id="A71_MBD" class="ROinputs" data-bind="value: pmP['A71']['MBD']" readonly></td>
+      <td><input type="text" id="A71_WKL" class="Roinputs" data-bind="value: pmP['A71']['WKL']" readonly></td>
+      <td>
+    </td>
+    <td><input type="checkbox" id="A71_SHW" class="pgShow" data-bind="checked: pmP['A71']['added']"></td>
+    </tr>
+     <tr class="pgTR A71">
+      <td></td>
+    <td class="pgProducts" colspan="2">Coverage Type</td>
+    <td colspan="5" align="left">
+         
+         <div id="A71_ftype" class="ui dropdown A71select">
+        <div class="text" data-bind="text: pmP['A71']['ftype']">Family</div>
+        <i class="dropdown icon"></i>
+          <div class="menu">
+           <div class="item">Family</div>
+          <div class="item">Individual</div>
+       </div>
+    </div>
+
+     <div id="A71_ctype" class="ui dropdown A71select">
+        <div class="text" data-bind="text: pmP['A71']['ctype']">Double</div>
+        <i class="dropdown icon"></i>
+          <div class="menu">
+           <div class="item">Single</div>
+           <div class="item">Double</div>
+         <div class="item">Triple</div>
+       </div>
+    </div>     
+    
+
+    </td>   
+  </tr>
+
+
+    <tr class="pgHead"><td colspan="7"></td></tr>
+
+  <tr class="pgTR WHL">
+      <td class="pgProduct">Whole Life (FOC) - <span class="name_pHolder namelabel"></span></td>
+      <td><input type="text" val="" id="WHL_COV" class="pgInputs WHL COV"></td>
+      <td><input type="text" val="" id="WHL_ANN" class="pgInputs WHL ANN"></td>
+      <td><input type="text" val="" id="WHL_MBD" class="pgInputs WHL MBD"></td>
+      <td><input type="text" val="" id="WHL_WKL"  class="pgInputs WHL WKL"></td>
+      <td id="WHL_LBL"></td></td>
+    </tr>
+
+  <tr class="pgTR TYR">
+      <td class="pgProduct">10YRC (Paycheck) - <span class="name_pHolder namelabel"></span></td>
+      <td><input type="text" val="" id="TYR_COV" class="pgInputs TYR COV"></td>
+      <td><input type="text" val="" id="TYR_ANN" class="pgInputs TYR ANN"></td>
+      <td><input type="text" val="" id="TYR_MBD" class="pgInputs TYR MBD"></td>
+      <td><input type="text" val="" id="TYR_WKL" class="pgInputs TYR WKL"></td>     
+      <td>        
+         <div id="TYR_YRS" class="ui dropdown pgSELECT">
+        <div class="text" data-value="1">1 year</div>
+        <i class="dropdown icon"></i>
+          <div class="menu">
+           <div class="item" data-value="0.5">6 months</div>
+          <div class="item" data-value="0.1">1 year</div>
+          <div class="item" data-value="1.5">1.5 years</div>
+          <div class="item" data-value="2.0">2 years</div>
+          <div class="item" data-value="2.5">2.5 years</div>
+          <div class="item" data-value="3">3 years</div>
+          <div class="item" data-value="3.5">3.5 years</div>
+          <div class="item" data-value="4">4 years</div>
+          <div class="item" data-value="5">5 years</div>
+          <div class="item" data-value="6">6 years</div>
+       </div>
+    </div>
+    </td>
+    <td><input type="checkbox" id="TYR_SHW" class="pgShow TYR" checked></td>
+    </tr>
+
+  <tr class="pgTR ADB">
+      <td class="pgProduct">ADB - <span class="name_pHolder namelabel"></span></td>
+      <td><input type="text" val="" id="ADB_COV" class="pgInputs ADB COV"></td>
+      <td><input type="text" val="" id="ADB_ANN" class="pgInputs ADB ANN"></td>
+      <td><input type="text" val="" id="ADB_MBD" class="pgInputs ADB MBD"></td>
+      <td><input type="text" val="" id="ADB_WKL" class="pgInputs ADB WKL"></td>
+      <td></td>
+      <td><input type="checkbox" id="ADB_SHW" class="pgShow" checked></td>
+    </tr>
+
+  <tr class="pgHD"><td colspan="7"></td></tr>
+
+  <tr class="pgTR CHR hasChild">
+      <td class="pgProduct">Child Rider</td>
+      <td><input type="text" val="" id="CHR_COV" class="pgInputs CHR COV"></td>
+      <td><input type="text" val="" id="CHR_ANN" class="pgInputs CHR ANN"></td>
+      <td><input type="text" val="" id="CHR_MBD" class="pgInputs CHR MBD"></td>
+      <td><input type="text" val="" id="CHR_WKL" class="pgInputs CHR WKL"></td>
+      <td></td>
+      <td><input type="checkbox" id="CHR_SHW" class="pgShow" checked></td>
+    </tr>
+
+  <tr class="pgTR SPRSPS SPS">
+      <td class="pgProduct">Spouse Rider</span></td>
+      <td><input type="text" val="" id="SPRSPS_COV" class="pgInputs SPRSPS COV"></td>
+      <td><input type="text" val="" id="SPRSPS_ANN" class="pgInputs SPRSPS ANN"></td>
+      <td><input type="text" val="" id="SPRSPS_MBD" class="pgInputs SPRSPS MBD"></td>
+      <td><input type="text" val="" id="SPRSPS_WKL" class="pgInputs SPRSPS WKL"></td>
+      <td></td>
+      <td><input type="checkbox" id="SPRSPS_SHW" class="pgShow"> </td>
+    </tr>
+    <tr class="pgHD"><td colspan="7"></td></tr>
+
+    <tr class="pgTR WHLSPS SPS">
+      <td class="pgProduct">Whole Life (FOC) - <span class="name_pSpouse namelabel"></span></td>
+      <td><input type="text" val="" id="WHLSPS_COV" class="pgInputs WHLSPS COV"></td>
+      <td><input type="text" val="" id="WHLSPS_ANN" class="pgInputs WHLSPS ANN"></td>
+      <td><input type="text" val="" id="WHLSPS_MBD" class="pgInputs WHLSPS MBD"></td>
+      <td><input type="text" val="" id="WHLSPS_WKL"  class="pgInputs WHLSPS WKL"></td>
+      <td id="WHLSPS_LBL"></td>
+      <td><input type="checkbox" id="WHLSPS_SHW" class="pgShow" checked> </td>
+    </tr>
+
+  <tr class="pgTR TYRSPS SPS">
+      <td class="pgProduct">10YRC (Paycheck) - <span class="name_pSpouse namelabel"></span></td>
+      <td><input type="text" val="" id="TYRSPS_COV" class="pgInputs TYRSPS COV"></td>
+      <td><input type="text" val="" id="TYRSPS_ANN" class="pgInputs TYRSPS ANN"></td>
+      <td><input type="text" val="" id="TYRSPS_MBD" class="pgInputs TYRSPS MBD"></td>
+      <td><input type="text" val="" id="TYRSPS_WKL" class="pgInputs TYRSPS WKL"></td>     
+      <td>        
+
+    <div id="TYRSPS_YRS" class="ui dropdown pgSELECT">
+      <div class="text" data-value="1">1 year</div>
+      <i class="dropdown icon"></i>
+        <div class="menu">
+         <div class="item" data-value="0.5">6 months</div>
+        <div class="item" data-value="0.1">1 year</div>
+        <div class="item" data-value="1.5">1.5 years</div>
+        <div class="item" data-value="2.0">2 years</div>
+        <div class="item" data-value="2.5">2.5 years</div>
+        <div class="item" data-value="3">3 years</div>
+        <div class="item" data-value="3.5">3.5 years</div>
+        <div class="item" data-value="4">4 years</div>
+        <div class="item" data-value="5">5 years</div>
+        <div class="item" data-value="6">6 years</div>
+     </div>
+  </div>
+    </td>
+    <td><input type="checkbox" id="TYRSPS_SHW" class="pgShow TYRSPS" checked></td>
+    </tr>
+
+  <tr class="pgTR ADBSPS SPS">
+      <td class="pgProduct">ADB - <span class="name_pSpouse namelabel"></span></td>
+      <td><input type="text" val="" id="ADBSPS_COV" class="pgInputs ADBSPS COV"></td>
+      <td><input type="text" val="" id="ADBSPS_ANN" class="pgInputs ADBSPS ANN"></td>
+      <td><input type="text" val="" id="ADBSPS_MBD" class="pgInputs ADBSPS MBD"></td>
+      <td><input type="text" val="" id="ADBSPS_WKL" class="pgInputs ADBSPS WKL"></td>
+      <td></td>
+      <td><input type="checkbox" id="ADBSPS_SHW" class="pgShow" checked></td>
+    </tr>
+
+
+    <tr class="pgHead"><td colspan="7"></td></tr>
+    <tr class="pgTR pgCalcs">
+      <td></td>
+      <td>ALP:</td>
+      <td><input type="text" val="" id="ALP_ANN" class="ROinputs" readonly></td>
+      <td><input type="text" val="" id="ALP_MBD" class="ROinputs" readonly></td>  
+      <td><input type="text" val="" id="ALP_WKL" class="ROinputs" readonly></td>   
+      <td colspan=2></td>
+    </tr>
+    <tr class="pgTR pgCalcs">
+      <td></td>
+      <td>ALH:</td>
+      <td><input type="text" val="" id="AHP_ANN" class="ROinputs" readonly></td>
+      <td><input type="text" val="" id="AHP_MBD" class="ROinputs" readonly></td>  
+      <td><input type="text" val="" id="AHP_WKL" class="ROinputs" readonly></td>   
+      <td colspan=2></td>
+    </tr>
+    <tr class="pgTR pgCalcs">
+      <td></td>
+      <td>TOTAL:</td>
+      <td><input type="text" val="" id="TTL_ANN" class="ROinputs" readonly></td>
+      <td><input type="text" val="" id="TTL_MBD" class="ROinputs" readonly></td>  
+      <td><input type="text" val="" id="TTL_WKL" class="ROinputs" readonly></td>   
+      <td colspan=2></td>
+    </tr>
+</table>
+</fieldset>
+
+</div>
+  <script src="js/libs/deps_ko.js"> </script> 
+  <script src="css/sui/javascript/semantic.js"> </script>
+  <script src="js/data/dataJS.js"> </script>
+  <script src="js/globals.js"> </script>
+  <script src="js/libs/knockout-3.1.0.js" defer="defer"> </script> 
+  <script src="js/koMVVM.js" defer="defer"> </script> 
+  <script src="js/libs/countUp.js"> </script> 
+  <script>
+  $('.ui.dropdown')
+  .dropdown()
+;
+  </script>
+
+
+
+
+  
+
+</body>
+</html>
+
+	
