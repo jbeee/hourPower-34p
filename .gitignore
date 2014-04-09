@@ -6,19 +6,26 @@
 *.svg
 *.txt
 *.xml
+*.xlsx
+*.ico
 
 #resource directories#
 ######################
 PageTransitions/*
 test/* 
+test/**/*
+
 resources/*
 img/*
 node_modules/**/*
 css/sui/*
+css/sui/**/*
 css/.sass-cache/*
 uikit/*
+uikit/**/*
 js/libs/*
 js/semantic/*
+js/semantic/**/*
 js/data/*
 
 #experiment files#
