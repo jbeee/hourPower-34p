@@ -9,14 +9,14 @@
 
 #resource directories#
 ######################
-PageTransitions/**/*
-test/**/*  
-resources/**/*
-img/**/*
+PageTransitions/*
+test/* 
+resources/*
+img/*
 node_modules/**/*
 css/sui/*
 css/.sass-cache/*
-uikit/**/*
+uikit/*
 js/libs/*
 js/semantic/*
 js/data/*
