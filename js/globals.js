@@ -114,7 +114,10 @@ function showError(where,msg)
 	$('#err'+where).html(msg);
 }
 
-
+function minmaxCheck(product,val)
+{
+    return true;
+}
 function checkInputVal(ent,req,where)
 {
 	var ans = $(ent).val(); 

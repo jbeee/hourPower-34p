@@ -1,6 +1,6 @@
 
 ko.extenders.logChange = function(target, option) {
-    target.subscribe(function(newValue) {
+    target.subscribe(function(newValue) {       
        console.log('updated: ' + option + ": " + newValue);
        getPowerHour.globals.synched = false;
 
@@ -58,13 +58,6 @@ ko.unapplyBindings = function ($node, remove) {
 */
 
 var getPowerHour = new Object();
-getPowerHour.policyjQ = function()
-  {
-    $('.psInputTop').mousedown(function(){
-      if($(this).hasClass('RO')){return};
-       $(this).css({ 'opacity': '1' });
-     });
-  }
 
 getPowerHour.globals =
     {
@@ -72,8 +65,26 @@ getPowerHour.globals =
       current_subgroup:0,
       current_policy:-1,   
       current_state :0,
-      synched:true  
+      synched:true,
+      lastInput:'COV'  
     }
+
+
+
+getPowerHour.policyjQ = function()
+  {
+    $('.psInputTop').mousedown(function(){
+      if($(this).hasClass('RO')){return};
+     var whichone = $(this).attr('class');
+     whichone = whichone.replace('psInputTop','');
+     getPowerHour.globals.lastInput = whichone;
+
+       $(this).css({ 'opacity': '1' });
+
+     });
+  }
+
+
 
 /*
     Default for policy products
@@ -177,48 +188,6 @@ getPowerHour.policyHolderModelKO = function(mId)
     ph.allowPH = ko.observable();  
     ph.wage_uf = ko.observable(0);
     ph.age_uf = ko.observable(0);
-        ph.getMBD = function(product)
-           {
-              if(!ph.ps[product].allowed){ return; }
-              switch(product)
-              {
-                  case 'WHL': 
-                      if(ph.ps.WHL.cFace < defArr.WHL.catMax[0])
-                      {
-                          ph.ps.WHL.cat = 0;
-                          $('#WHL'+ph.pId+'_LBL').html(defArr.WHL.catName[0]);
-                                      ph.ps.WHL.MBD=dataArr[ph.sex][ph.smokes]['WHL'][ph.age][0];
-                          }           
-                      else if(ph.ps.WHL.cFace < defArr.WHL.catMax[1])
-                          {
-                              ph.ps.WHL.cat = 1;
-                              $('#WHL'+ph.pId+'_LBL').html(defArr.WHL.catName[1]);
-                              ph.ps.WHL.MBD= dataArr[ph.sex][ph.smokes]['WHL'][ph.age][1];
-                          }
-                      else{
-                              ph.ps.WHL.cat = 2;
-                              $('#WHL'+pg.pId+'_LBL').html(defArr.WHL.catName[2]);
-                              ph.ps.WHL.MBD= dataArr[ph.sex][ph.smokes]['WHL'][ph.age][2];
-                          }
-                              console.log("WHL "+defArr.WHL.catName[ph.ps.WHL.cat]+ ' '+ph.pId +' '+ ph.ps.WHL.MBD);
-                  break;
-                  case 'SPR':
-                  ph.ps.SPR.MBD= dataArr['SPR'][ph.smokes][ph.age];
-                              console.log(ph.pId+"  "  +product+ " "+ ph.ps[product].MBD);
-                  break;
-                  case 'TYR': 
-                      ph.ps.TYR.MBD=dataArr[ph.sex][ph.smokes]['TYR'][ph.age];
-                      console.log(ph.pId+"  "  +product+ " "+ ph.ps[product].MBD);
-                  break;
-                }
-            }
-
-        ph.setRate = function(product)
-          {
-              if(!ph.ps[product].allowed){ return; }
-              ph.ps[product].rate = (ph.ps[product].MBD*12)/ph.ps[product].cFace;
-              console.log(ph.pId+" "+product+" rate: "+ ph.ps[product].MBD + " "+ ph.ps[product].cFace + " "+ph.ps[product].rate);    
-          }
 
     ph.addComputed = function()
       {
@@ -230,7 +199,7 @@ getPowerHour.policyHolderModelKO = function(mId)
               if(newAge[0]){
                 ph.birthday(newAge[2]); 
                 pmE.removeError('Birthday_Age',ph.mId,newAge[1]);
-                  ph.age_uf = newAge[1];  
+                  ph.age_uf (newAge[1]);  
                   return newAge[1];
               }
                else{
@@ -266,16 +235,17 @@ getPowerHour.policyHolderModelKO = function(mId)
         //// format WAGE         
           ph.formatWage = ko.computed({ 
               read:function(){               
-                var newWage = validFloat(ph.wage(),false);            
+                var newWage = validFloat(ph.wage(),false);      
                 if(newWage[0])
                  {
-                    ph.wage_uf = newWage[1];
+                    ph.wage_uf(newWage[1]);
                     if(newWage[1] < 5){
                       ph.allowPH(false)
                     }
-                      else{ ph.allowPH(true)
+                    else{ 
+                      ph.allowPH(true);                  
                     }
-                    ph.wage(formatMoney(newWage[1]));
+                    ph.wage(formatMoney(newWage[1]));                    
                     pmE.removeError('Hourly_Wage',ph.mId,newWage[1]);
                  }
                  else
@@ -294,16 +264,18 @@ getPowerHour.policyHolderModelKO = function(mId)
 //////////////////// ***** THE KNOCKOUT MODEL FOR POLICY PRODUCT
 getPowerHour.policyProductModelKO = function(pId)
   {
-          var ppKO = this;
+         var ppKO = this;
          ppKO.pId = pId;
-         ppKO.MBD = ko.observable().extend({logChange: pId + ' MBD '}); 
-         ppKO.YRL = ko.observable().extend({logChange: pId + ' YRL '}); 
-         ppKO.WKL = ko.observable().extend({logChange: pId + ' WKL '}); 
+         ppKO.MBD = ko.observable(0).extend({logChange: pId + ' MBD '}); 
+         ppKO.YRL = ko.observable(0).extend({logChange: pId + ' YRL '}); 
+         ppKO.WKL = ko.observable(0).extend({logChange: pId + ' WKL '}); 
+         ppKO.COV = ko.observable(0).extend({logChange: pId + ' COV '}); 
 
          pmE.initError('MBD',pId);
          pmE.initError('YRL',pId);
          pmE.initError('WKL',pId);
          pmE.initError('COV',pId);
+
 
          ppKO.allowed = ko.observable(true);
          ppKO.lastChanged = "COV";
@@ -313,25 +285,132 @@ getPowerHour.policyProductModelKO = function(pId)
          ppKO.uYRL = 0;
          ppKO.uWKL = 0;
          ppKO.uCOV = 0;
-         ppKO.ratio = 1;
+         ppKO.ratio = ko.observable(0).extend({logChange: pId + ' RATIO '}); 
+         ppKO.ogWage = 0;
 
          ppKO.resetProductValues = function()
               {
-                  ppKO.MBD(0);
-                  ppKO.ratio(0);
-                  ppKO.WKL(0);
-                  ppKO.YRL(0);
+                  ppKO.uMBD = 0;
+                  ppKO.ratio = 0;
+                  ppKO.uWKL = 0;
+                  ppKO.uYRL = 0;
+                  ppKO.uCOV = 0;
                   ppKO.lastChanged = "COV";
               }
 
         ppKO.addComputed = function()
+        { 
+           
+
+          ppKO.frmtCOV = ko.computed({ 
+              read:function(){           
+
+                var newCOV = validFloat(ppKO.COV(),false); 
+                if(!newCOV[0]){ return;}
+                if(!minmaxCheck('TYR',newCOV[1])){return};
+        
+                  ppKO.uCOV = newCOV[1];
+                  formatMoney(newCOV[1])
+                  ppKO.COV(ppKO.uCOV );                  
+             
+                koCalls.count('frmtCOV - read',ppKO.lbl); 
+               },
+               write:function(val)
+               {   
+                  koCalls.count(val +'  frmtCOV - write ',ppKO.lbl); 
+                  ppKO.lastChanged = "COV"; 
+                  return val;
+               }
+              }, ppKO);
+
+        
+        ppKO.frmtYRL = ko.computed({ 
+              read:function(){
+                koCalls.count('  frmtYRL - read ',ppKO.lbl); 
+               },
+               write:function(val)
+               {             
+                  koCalls.count(val +'  frmtYRL - write ',ppKO.lbl); 
+               }
+              }, ppKO);
+
+
+        ppKO.frmtMBD = ko.computed({ 
+              read:function(){
+                koCalls.count('  frmtMBD - read ',ppKO.lbl); 
+               },
+               write:function(val)
+               {             
+                  koCalls.count(val +'  frmtMBD - write ',ppKO.lbl); 
+               }
+              }, ppKO);
+
+        
+        ppKO.frmtWKL = ko.computed({ 
+              read:function(){
+                   koCalls.count('  frmtWKL- read ',ppKO.lbl); 
+               },
+               write:function(val)
+               {             
+                  koCalls.count(val +'  frmtWKL - write ',ppKO.lbl); 
+               }
+              }, ppKO);
+
+       }
+      ppKO.TYRFXNS = function()
+      {
+        var TYRavailableDUR=["6 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years","4.5 Years","5 Years","6 Years"]
+        ppKO.ogDur = 1;
+        getTYRCov(0);
+
+        ppKO.watchWages = ko.computed(function(){         
+
+            getTYRCov(pmM[ppKO.owner].wage_uf());
+
+            }, ppKO); 
+
+        ppKO.changeDur = ko.computed(function(){ 
+            var newDur = ppKO.DUR()/ppKO.ogDur;   
+              ppKO.uCOV *= newDur;
+              ppKO.uYRL *= newDur;
+              ppKO.uMBD *= newDur;
+              ppKO.uWKL *= newDur;
+              ppKO.COV(ppKO.uCOV);
+              ppKO.YRL(ppKO.uYRL);
+              ppKO.MBD(ppKO.uMBD);
+              ppKO.WKL(ppKO.uWKL);
+              ppKO.ogDur = ppKO.DUR();
+              }, ppKO); 
+
+        function getTYRCov()
         {
+             ppKO.uCOV = pmM[ppKO.owner].wage_uf()*1920;
+             ppKO.COV(ppKO.uCOV);
+        }
 
-          
+    }
+      ppKO.A71FXNS = function()
+      {
 
+        getTYRCov(0);
+        ppKO.watchWages = ko.computed(function(){         
 
+            getTYRCov(pmM[ppKO.owner].wage_uf());
 
-        }   
+            }, ppKO); 
+
+        function getTYRCov()
+        {
+             ppKO.uCOV = pmM[ppKO.owner].wage_uf()*1920;
+             ppKO.COV(ppKO.uCOV);
+        }
+        ppKO.changeTYRDuration = ko.computed(function(){         
+
+            getTYRCov(pmM[ppKO.owner].wage_uf());
+
+            }, ppKO); 
+
+    }
 
   }
 
@@ -348,13 +427,14 @@ getPowerHour.policyModelKO = function(pVals)
        Adds in data from the model sent to the new KO policy model
        All the important stuff
     */
-     pmKO.init = function(){  
+      pmKO.init = function(){  
        
           ///////////////////////////////////// declare all necessary arrays, data, and functions.   
           pmM = {};
           pmP={}; 
           pmKO.hasSpouse = ko.observable().extend({logChange: 'Spouse allowed on policy (has Name or Birthday)'});
           pmKO.cVal_uf = 0; 
+          pmP.availableDUR = ko.observableArray([{val:0.5, showVal:'6 Months'},{val:1, showVal:'1 Year'},{val:1.5, showVal:'1.5 years'},{val:2, showVal:'2 years'},{val:2.5, showVal:'2.5 years'},{val:3, showVal:'3 years'},{val:3.5, showVal:'3.5 years'},{val:4, showVal:'4 years'},{val:4.5, showVal:'4.5 years'},{val:5, showVal:'5 years'},{val:6, showVal:'6 years'}]);
           //////////////// Add all properties from the hour power policy data model 
           for(var attr in pVals){               
               switch(attr)
@@ -397,7 +477,11 @@ getPowerHour.policyModelKO = function(pVals)
                        pmP[p] = new getPowerHour.policyProductModelKO(p);
                       for(var attr in pVals.products[p])
                         {
-                          if(pmP[p].hasOwnProperty(attr))
+                          if((attr == 'lbl' ) || (attr == 'owner' )||(attr == 'ALHP' ))
+                          {
+                              pmP[p][attr] = pVals.products[p][attr];
+                          }
+                          else if(pmP[p].hasOwnProperty(attr))
                           {
                             pmP[p][attr](pVals.products[p][attr])
                           }
@@ -405,10 +489,12 @@ getPowerHour.policyModelKO = function(pVals)
                           {
                             pmP[p][attr]=ko.observable(pVals.products[p][attr]).extend({logChange: p+' - ' + attr}); 
                           }
-                          
-                          console.log(p+"  - "+attr+": "+pmP[p][attr]()) 
-                        }              
-                    }
+                                                    
+                        } 
+                        console.log(pmP[p].lbl)
+                         if(pmP[p].lbl == 'TYR'){ 
+                         pmP[p].TYRFXNS();}
+                         pmP[p].addComputed(); }
                 break;
                 default: /////////////// All other Policy Model Declaration                    
                     if(jQuery.type(pVals[attr]) == 'array'){
@@ -476,7 +562,7 @@ getPowerHour.policyModelKO = function(pVals)
                if(!pmKO.phType()) /// use policy holder wage as HOUR
                 {
                   if(pmM.p.allowPH()){
-                     pmKO.phVal(pmM.p.wage_uf);                     
+                     pmKO.phVal(pmM.p.wage_uf());                     
                   }
                   else
                   {
@@ -503,6 +589,43 @@ getPowerHour.policyModelKO = function(pVals)
           }
 
             }, pmKO);
+
+
+
+         pmKO.allowRiders = ko.computed(function(){ 
+             if(!pmKO.hasSpouse())
+              {
+                  for(var product in pmP)
+                  {
+                    if(pmP[product].owner == 'sp')
+                    {
+                      pmP[product].allowed(false);
+                    }
+                  }
+
+              }
+              else
+              {
+                 for(var product in pmP)
+                  {
+                    if(pmP[product].owner == 'sp')
+                    {
+                      pmP[product].allowed(true);
+                    }
+                  }
+
+              }
+
+              if(!pmKO.hasChild())
+              {
+                   pmP['pCHR'].allowed(false);
+              }
+              else
+              {
+                pmP['pCHR'].allowed(true);
+              }
+
+          }, pmKO); 
 
      }
 

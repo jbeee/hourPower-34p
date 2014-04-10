@@ -5,18 +5,15 @@
 
 <style>
 body {
-  background: #ddd;
-  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   60%, hsla(0,0%,100%, .1) 50%),
 
-    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 50%, hsla(0,0%,100%,.15) 50%),
-    
-    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,83%) 70%,
-    hsl(0,0%,80%) 90%);
-}
+  background:
+    radial-gradient( rgba(255, 255, 255, 0.7),rgba(0, 0, 0, 0.12)),
+    url("css/imgs/bg.png");
+    box-shadow:0 0.05em 4em -0.2em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.5em -0.2em rgba(0, 0, 0, 0.3) inset;
+
+
   font-size: 14px;
-  color:#444;
+  color:#666;
 }
 
 
@@ -56,12 +53,36 @@ body {
   left: 0.5em;
   border-radius: 0.75em;
   transition: 250ms ease-in-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #a3aeff;
-  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(68, 204, 102, 0.7) inset;
+  background: #fff;
+  box-shadow:  inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
+        inset 0 0em 0 0.8em rgba(81,114,153,1);
+ -webkit-box-shadow:
+   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
+        inset 0 0em 0 0.8em rgba(81,114,153,1);
+ 
 }
 
+
 input:checked + .slider-v1::before {
-  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 3em 0 0 0 rgba(255, 163, 244, 0.9) inset;
+  background-color:#fff;
+  box-shadow:
+   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset -0.5em -0.6em 0.02em 0 rgba(255,124,216,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
+        inset 0 0em 0 0.8em rgba(255,124,216,1);
+ 
+  -webkit-box-shadow:
+   inset 0em -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset -0.1em -0.6em 0.02em 0 rgba(255,124,216,0.8), 
+        inset 0em 0.6em 1em 0 rgba(255,255,255,0.8),
+        inset 0 0em 0 0.8em rgba(255,124,216,1);
+
+  border-top: 0.08em solid #F2B3CB;
+  border-bottom: 0.08em solid #F29DBD;
 }
 
 input:checked + .slider-v1::after {
@@ -116,7 +137,17 @@ input:checked + .slider-v1::after {
 }
 
 input:checked + .slider-v2::before {
-  box-shadow: 0 0.08em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 3em 0 0 0 rgba(133, 130, 178, 0.9) inset;
+  box-shadow: 0 0.2em 0.2em -0.1em rgba(0, 0, 0, 1) inset, inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
+        inset 0 0 0 0.8em rgba(81,114,153,1);
+ -webkit-box-shadow:
+   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
+        inset 0 0 0 0.8em rgba(81,114,153,1);
+  border-top: 0.08em solid #97AFC9;
+  border-bottom: 0.08em solid #6B8BAD;
 }
 
 input:checked + .slider-v2::after {
@@ -127,12 +158,13 @@ input:checked + .slider-v2::after {
 .ui.labeled.input
 {
   width:200px;
-   height:15px;
+  height:1.8em;
 }
 .ui.labeled.input input
 {
-   width:150px;
-   height:20px;
+   width:12em;
+    height:2em;
+   padding:0.3em;
 }
 
 .ui.labeled.input.hasError
@@ -145,6 +177,7 @@ input:checked + .slider-v2::after {
 {
   width:8em;
   height:1.8em;
+  padding:0.3em;
 }
 
 .psInputTop
@@ -217,10 +250,10 @@ fieldset
                         <input type="text" placeholder="Member First Name" data-bind="value: pmM.p.fname" >
                     </div>
                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Birthday_Age'].hasError()}">
-                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.p.birthday">
+                        <input type="number" placeholder="Date of Birth or Age" data-bind="value: pmM.p.birthday">
                     </div>
                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
-                        <input type="text" placeholder="Hourly Wage" data-bind="value: pmM.p.wage" >
+                        <input type="number" placeholder="Hourly Wage" data-bind="value: pmM.p.wage" >
                     </div>
                      <table>
                         <tr>
@@ -250,10 +283,10 @@ fieldset
                         <input type="text" placeholder="Spouse's First Name" data-bind="value: pmM.sp.fname" >
                     </div>
                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Birthday_Age'].hasError()&&hasSpouse()}">
-                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.sp.birthday">
+                        <input type="number" placeholder="Date of Birth or Age" data-bind="value: pmM.sp.birthday">
                     </div>
                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
-                        <input type="text" placeholder="Hourly Wage" data-bind="value: pmM.sp.wage" >
+                        <input type="number" placeholder="Hourly Wage" data-bind="value: pmM.sp.wage" >
                     </div>
                     <table>
                         <tr>
@@ -284,7 +317,7 @@ fieldset
                             </td>
                             <td>
                                 <div class="ui labeled input">
-                                    <input type="text" placeholder="Custom Policy Hower" data-bind="value: cVal">
+                                    <input type="number" placeholder="Custom Policy Hower" data-bind="value: cVal">
                                 </div>
                             </td>
                         </tr>
@@ -382,6 +415,8 @@ fieldset
         </table>
     </fieldset>      
 
+<table><tr><td valign="top">
+
   <fieldset>
       <table summary="Altig Hour Power Benefit Selection" class="productSelectionTable">
 <tbody>
@@ -397,52 +432,38 @@ fieldset
               </tr>
 
           
-              <tr class="pSTr TYR pHolder">
+              <tr class="pSTr TYR p">
                   <td class="psBR">
                       10YRC (Paycheck) <br> <span data-bind="text: pmM.p.fname"></span>
                   </td>
                   <td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$250,000.00" class="TYR">       
-                          <input type="text" placeHolder="$999,999.99" class="psInputTop TYR" data-bind="value: pmP['TYR']['COV']">
+                          <input type="number" placeHolder="$250,000.00" class="TYR">       
+                          <input type="number" placeHolder="$999,999.99" class="psInputTop COV" data-bind="value: pmP['pTYR']['COV']">
                       </div>
                   </td>
                   <td>
-                      <div id="TYR_YRS" class="ui dropdown pgSELECT">
-                          <div class="text" data-value="1">1 year</div>
-                          <i class="dropdown icon"></i>
-                          <div class="menu">
-                              <div class="item" data-value="0.5">6 months</div>
-                              <div class="item" data-value="0.1">1 year</div>
-                              <div class="item" data-value="1.5">1.5 years</div>
-                              <div class="item" data-value="2.0">2 years</div>
-                              <div class="item" data-value="2.5">2.5 years</div>
-                              <div class="item" data-value="3">3 years</div>
-                              <div class="item" data-value="3.5">3.5 years</div>
-                              <div class="item" data-value="4">4 years</div>
-                              <div class="item" data-value="5">5 years</div>
-                              <div class="item" data-value="6">6 years</div>
-                          </div>
-                      </div>
+                    <select data-bind="options: pmP.availableDUR,
+                        optionsText: 'showVal', optionsValue:'val', value: pmP['pTYR']['DUR']" class="TYR"></select>
                   </td>
                   <td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
-                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['ANN']">
+                          <input type="number" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="number" placeHolder="444444444" class="psInputTop YRL" data-bind="value: pmP['pTYR']['YRL']">
                       </div>
                  </td><td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
-                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['MBD']">
+                          <input type="number" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="number" placeHolder="444444444" class="psInputTop MBD" data-bind="value: pmP['pTYR']['MBD']">
                       </div>
                   </td><td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="TYR">       
-                          <input type="text" placeHolder="444444444" class="psInputTop TYR" data-bind="value: pmP['TYR']['WKL']">
+                          <input type="number" placeHolder="$44,444,44.44" class="TYR">       
+                          <input type="number" placeHolder="444444444" class="psInputTop WKL" data-bind="value: pmP['pTYR']['WKL']">
                       </div>
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="TYRBtn" data-bind="checked: pmP['TYR']['added']" />
-                                <label class="slider-v2" for="TYRBtn"></label>                 
+                    <input class="slider pgShow" type="checkbox" id="pTYRBtn" data-bind="checked: pmP['pTYR']['added']" />
+                                <label class="slider-v2" for="pTYRBtn"></label>                 
               </tr>
 
 
@@ -453,35 +474,121 @@ fieldset
                   </td>
                   <td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['WHL']['COV']">       
-                          <input type="text" placeHolder="$999,999.99" class="psInputTop WHL" data-bind="value: pmP['WHL']['COV']">
+                          <input type="number" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['pWHL']['COV']">       
+                          <input type="number" placeHolder="$999,999.99" class="psInputTop WHL" data-bind="value: pmP['pWHL']['COV']">
                       </div>
                   </td>
                   <td>
                   </td>
                   <td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['ANN']">       
-                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['ANN']">
+                          <input type="number" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['pWHL']['ANN']">       
+                          <input type="number" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['pWHL']['ANN']">
                       </div>
                  </td><td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['MBD']">       
-                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['MBD']">
+                          <input type="number" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['pWHL']['MBD']">       
+                          <input type="number" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['pWHL']['MBD']">
                       </div>
                   </td><td>
                       <div class="ui input">
-                          <input type="text" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['WHL']['WKL']">       
-                          <input type="text" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['WHL']['WKL']">
+                          <input type="number" placeHolder="$44,444,44.44" class="WHL" data-bind="value: pmP['pWHL']['WKL']">       
+                          <input type="number" placeHolder="444444444" class="psInputTop WHL" data-bind="value: pmP['pWHL']['WKL']">
                       </div>
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="WHLBtn" data-bind="checked: pmP['WHL']['added']" />
-                                <label class="slider-v2" for="WHLBtn"></label>                 
+                    <input class="slider pgShow" type="checkbox" id="pWHLBtn" data-bind="checked: pmP['pWHL']['added']" />
+                                <label class="slider-v2" for="pWHLBtn"></label>                 
               </tr>
           </tbody>
       </table>
   </fieldset>
 
+
+
+
+</td>
+<td>
+
+<table cellpadding="10px">
+                <tr>
+                  <th>Ratio</th>
+                  <th>Coverage</th>
+                  <th>Duration</th>
+                  <th>Annual</th>
+                  <th>Monthly</th>
+                  <th>Weekly</th>
+                  <th>Allowed</th>
+                  <th>Added</th>
+
+              </tr>
+  <tr><td><span data-bind="text: pmP['pTYR']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['COV']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['DUR']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['pTYR']['added']"></span></td></tr>
+  <tr><td><span data-bind="text: pmP['pWHL']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['pWHL']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['pWHL']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['pWHL']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['pWHL']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['pWHL']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['pWHL']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['pADB']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['pADB']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['pADB']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['pADB']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['pADB']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['pADB']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['pADB']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['pCHR']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['pCHR']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['pCHR']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['pCHR']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['pCHR']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['pCHR']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['pCHR']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['spSPR']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['spSPR']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['spSPR']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['spSPR']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['spSPR']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['spSPR']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['spSPR']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['spTYR']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['COV']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['DUR']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['spTYR']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['spWHL']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['spWHL']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['spWHL']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['spWHL']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['spWHL']['WKL']"></span></td>
+   <td><span data-bind="text: pmP['spWHL']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['spWHL']['added']"></span></td></tr>
+ <tr><td><span data-bind="text: pmP['spADB']['ratio']"></span></td>
+    <td><span data-bind="text: pmP['spADB']['COV']"></span></td>
+    <td></td>
+    <td><span data-bind="text: pmP['spADB']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['spADB']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['spADB']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['spADB']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['spADB']['added']"></span></td></tr>
+
+</table>
+
+</td></tr></table>
 
 
 </div>
