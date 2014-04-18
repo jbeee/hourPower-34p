@@ -12,15 +12,14 @@
 #resource directories#
 ######################
 PageTransitions/*
-test/* 
+test 
 test/**/*
 
 resources/*
-img/*
+img/
 node_modules/**/*
-css/sui/*
-css/sui/**/*
 css/.sass-cache/*
+uikit
 uikit/*
 uikit/**/*
 js/libs/*
