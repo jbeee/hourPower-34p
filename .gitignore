@@ -22,7 +22,6 @@ css/.sass-cache/*
 uikit
 uikit/*
 uikit/**/*
-js/libs/*
 js/semantic/*
 js/semantic/**/*
 js/data/*
