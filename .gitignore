@@ -24,7 +24,6 @@ uikit/*
 uikit/**/*
 js/semantic/*
 js/semantic/**/*
-js/data/*
 
 #experiment files#
 ##################
