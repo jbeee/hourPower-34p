@@ -232,6 +232,31 @@ getPowerHour.policyHolderModelKO = function(mId)
                  };
                }
               }, ph); 
+      //// format Tobacco Use 
+          ph.TUCHK = ko.computed({ 
+              read:function(){               
+                           
+                if(ph.TU() == 'TU')
+                 {
+                    return true;
+                 }
+                 else
+                 {               
+                   return false;
+                 };
+               },
+               write:function(val)
+               {
+                 if(val)
+                 {
+                    ph.TU('TU');
+                 }
+                 else
+                 {               
+                   ph.TU('NTU');
+                 };
+               }
+              }, ph); 
         //// format WAGE         
           ph.formatWage = ko.computed({ 
               read:function(){               
@@ -266,10 +291,16 @@ getPowerHour.policyProductModelKO = function(pId)
   {
          var ppKO = this;
          ppKO.pId = pId;
-         ppKO.MBD = ko.observable(0).extend({logChange: pId + ' MBD '}); 
-         ppKO.YRL = ko.observable(0).extend({logChange: pId + ' YRL '}); 
-         ppKO.WKL = ko.observable(0).extend({logChange: pId + ' WKL '}); 
-         ppKO.COV = ko.observable(0).extend({logChange: pId + ' COV '}); 
+          ////////// the unformated values
+
+         ppKO.uCOV=0;
+         ppKO.uDUR=ko.observable(1);
+
+         ppKO.MBD = ko.observable(0);
+         ppKO.YRL = ko.observable(0);
+         ppKO.WKL = ko.observable(0);
+         ppKO.COV = ko.observable(0);
+
 
          pmE.initError('MBD',pId);
          pmE.initError('YRL',pId);
@@ -277,16 +308,10 @@ getPowerHour.policyProductModelKO = function(pId)
          pmE.initError('COV',pId);
 
 
-         ppKO.allowed = ko.observable(true);
-         ppKO.lastChanged = "COV";
+         ppKO.allowed = ko.observable(true).extend({logChange: pId + ' allowed '}); 
+         ppKO.lastChanged = ko.observable('').extend({logChange: pId + ' last changed '}); 
+         ppKO.ratio = ko.observable(1).extend({logChange: pId + ' RATIO '}); 
 
-         ////////// the unformated values
-         ppKO.uMBD = 0; 
-         ppKO.uYRL = 0;
-         ppKO.uWKL = 0;
-         ppKO.uCOV = 0;
-         ppKO.ratio = ko.observable(0).extend({logChange: pId + ' RATIO '}); 
-         ppKO.ogWage = 0;
 
          ppKO.resetProductValues = function()
               {
@@ -295,122 +320,197 @@ getPowerHour.policyProductModelKO = function(pId)
                   ppKO.uWKL = 0;
                   ppKO.uYRL = 0;
                   ppKO.uCOV = 0;
-                  ppKO.lastChanged = "COV";
+                  ppKO.lastChanged('');
+                  ppKO.allowed(true);
               }
 
-        ppKO.addComputed = function()
+        ppKO.initComputed = function()
         { 
-           
-
-          ppKO.frmtCOV = ko.computed({ 
-              read:function(){           
-
-                var newCOV = validFloat(ppKO.COV(),false); 
-                if(!newCOV[0]){ return;}
-                if(!minmaxCheck('TYR',newCOV[1])){return};
-        
-                  ppKO.uCOV = newCOV[1];
-                  formatMoney(newCOV[1])
-                  ppKO.COV(ppKO.uCOV );                  
-             
-                koCalls.count('frmtCOV - read',ppKO.lbl); 
+          ppKO.setCOV = ko.computed({ 
+              read:function(){ 
+                var newCOV = ppKO.COV();
+                console.log('read COV' + newCOV);   
+                countMe(newCOV, ppKO.lbl, ppKO.owner,'COV');
+                return formatMoney(newCOV);
                },
                write:function(val)
-               {   
-                  koCalls.count(val +'  frmtCOV - write ',ppKO.lbl); 
-                  ppKO.lastChanged = "COV"; 
-                  return val;
+               { 
+                 var newCOV = validFloat(val,true);
+                 if(newCOV[0])
+                 {
+                 console.log('write COV' + newCOV[1]);
+                 calculateVals('COV',newCOV[1],'writeCOV');
+                 }
                }
-              }, ppKO);
+              }, ppKO).extend({logChange: pId + ' COV'});
 
-        
-        ppKO.frmtYRL = ko.computed({ 
-              read:function(){
-                koCalls.count('  frmtYRL - read ',ppKO.lbl); 
+
+          ppKO.setMBD = ko.computed({ 
+              read:function(){ 
+                  var newMBD = ppKO.MBD();
+                  console.log('read MBD' + newMBD); 
+                  countMe(newMBD, ppKO.lbl, ppKO.owner, 'MBD')
+                  return formatMoney(newMBD);
                },
                write:function(val)
-               {             
-                  koCalls.count(val +'  frmtYRL - write ',ppKO.lbl); 
+               { 
+                 var newMBD = validFloat(val,true);
+                 console.log('write MBD' + newMBD[1]);
+                 if(newMBD[0])
+                 {                 
+                 calculateVals('MBD',newMBD[1],'writeMBD');
+                 }
                }
-              }, ppKO);
+              }, ppKO).extend({logChange: pId + ' MBD'});
 
-
-        ppKO.frmtMBD = ko.computed({ 
-              read:function(){
-                koCalls.count('  frmtMBD - read ',ppKO.lbl); 
+          ppKO.setYRL = ko.computed({ 
+              read:function(){ 
+                  var newYRL = ppKO.YRL();
+                  console.log('read YRL' + newYRL); 
+                  countMe(newYRL, ppKO.lbl, ppKO.owner, 'YRL')
+                  return formatMoney(newYRL);
                },
                write:function(val)
-               {             
-                  koCalls.count(val +'  frmtMBD - write ',ppKO.lbl); 
+               { 
+                 var newYRL = validFloat(val,true);
+                 console.log('write YRL' + newYRL[1]);
+                 if(newYRL[0])
+                 {                 
+                 calculateVals('YRL',newYRL[1],'writeYRL');
+                 }
                }
-              }, ppKO);
+              }, ppKO).extend({logChange: pId + ' YRL'});   
 
-        
-        ppKO.frmtWKL = ko.computed({ 
-              read:function(){
-                   koCalls.count('  frmtWKL- read ',ppKO.lbl); 
+          ppKO.setWKL = ko.computed({ 
+              read:function(){ 
+                  var newWKL = ppKO.WKL();
+                  console.log('read WKL' + newWKL); 
+                  countMe(newWKL, ppKO.lbl, ppKO.owner, 'WKL')
+                  return formatMoney(newWKL);
                },
                write:function(val)
-               {             
-                  koCalls.count(val +'  frmtWKL - write ',ppKO.lbl); 
+               { 
+                 var newWKL = validFloat(val,true);
+                 console.log('write WKL' + newWKL[1]);
+                 if(newWKL[0])
+                 {                 
+                 calculateVals('WKL',newWKL[1],'writeWKL');
+                 }
                }
-              }, ppKO);
+              }, ppKO).extend({logChange: pId + ' WKL'}); 
 
+
+          calculateVals('COV',ppKO.COV(),' init');
        }
       ppKO.TYRFXNS = function()
       {
-        var TYRavailableDUR=["6 Months","1 Year","1.5 Years","2 Years","2.5 Years","3 Years","3.5 Years","4 Years","4.5 Years","5 Years","6 Years"]
-        ppKO.ogDur = 1;
-        getTYRCov(0);
+        ppKO.ogDUR = 1;
+        
+        pmE.initError('DUR',pId);
 
-        ppKO.watchWages = ko.computed(function(){         
+        ppKO.setRatio = ko.computed(function(){
+          if((pmM[ppKO.owner].gender() == '')||(pmM[ppKO.owner].TU() == '')||(pmM[ppKO.owner].age_uf()== '')){return;} 
+          ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age_uf()]);
+        }, ppKO);
 
-            getTYRCov(pmM[ppKO.owner].wage_uf());
+        ppKO.watchWages = ko.computed(function(){
+              ppKO.uCOV = pmM[ppKO.owner].wage_uf()*1920*ppKO.uDUR;              
+            }, ppKO);         
 
-            }, ppKO); 
-
-        ppKO.changeDur = ko.computed(function(){ 
-            var newDur = ppKO.DUR()/ppKO.ogDur;   
-              ppKO.uCOV *= newDur;
-              ppKO.uYRL *= newDur;
-              ppKO.uMBD *= newDur;
-              ppKO.uWKL *= newDur;
-              ppKO.COV(ppKO.uCOV);
-              ppKO.YRL(ppKO.uYRL);
-              ppKO.MBD(ppKO.uMBD);
-              ppKO.WKL(ppKO.uWKL);
-              ppKO.ogDur = ppKO.DUR();
-              }, ppKO); 
-
-        function getTYRCov()
-        {
-             ppKO.uCOV = pmM[ppKO.owner].wage_uf()*1920;
-             ppKO.COV(ppKO.uCOV);
-        }
-
+        ppKO.setDur = ko.computed(function(){ 
+            ppKO.uDUR(ppKO.DUR()/ppKO.ogDUR);           
+            ppKO.ogDUR = ppKO.DUR();
+          }, ppKO);
+        
     }
       ppKO.A71FXNS = function()
       {
 
-        getTYRCov(0);
-        ppKO.watchWages = ko.computed(function(){         
 
-            getTYRCov(pmM[ppKO.owner].wage_uf());
+      }
 
-            }, ppKO); 
-
-        function getTYRCov()
-        {
-             ppKO.uCOV = pmM[ppKO.owner].wage_uf()*1920;
-             ppKO.COV(ppKO.uCOV);
-        }
-        ppKO.changeTYRDuration = ko.computed(function(){         
-
-            getTYRCov(pmM[ppKO.owner].wage_uf());
-
-            }, ppKO); 
-
+    ppKO.WHLFXNS = function()
+    {      
+      ppKO.category = ko.observable().extend({logChange: pId + ' category changed '});
+      ppKO.setCat = ko.computed(function(){
+        if((pmM[ppKO.owner].gender() == '')||(pmM[ppKO.owner].TU() == '')||(pmM[ppKO.owner].age_uf()== '')){return;}
+        for(var i=0;i<defArr['WHL']['categories'].length;i++)
+          {
+            if(ppKO.COV() <= defArr['WHL']['categories'][i]['max'])            {  
+                ppKO.category(defArr['WHL']['categories'][i]['lbl']);         
+                ppKO.ratio(dataArr['WHL'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age_uf()][i]);               
+                return;
+            }
+          }
+       }, ppKO);          
     }
+
+    ppKO.ADBFXNS = function()
+    {      
+       ppKO.setRatio = ko.computed(function(){ 
+        if((pmM[ppKO.owner].gender() == '')||(pmM[ppKO.owner].TU() == '')||(pmM[ppKO.owner].age_uf()== '')){return;}
+        for(var i=0;i<dataArr['ADB']['age'].length;i++)
+          {
+            if(pmM[ppKO.owner].age_uf()<= dataArr['ADB']['age'][i])
+            {         
+                ppKO.ratio(dataArr['ADB']['ratio'][i]);               
+                return;
+            }
+          }        
+        }, ppKO);        
+    }
+    
+    ppKO.SPRFXNS = function()
+    {      
+
+     ppKO.setCat = ko.computed(function(){
+        if((pmM[ppKO.owner].TU() == '')||(pmM[ppKO.owner].age_uf()== '')){return;}       
+          ppKO.ratio(dataArr['SPR'][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age_uf()]);             
+       }, ppKO);          
+    }
+
+    ppKO.CHRFXNS = function()
+    {      
+      ppKO.ratio(dataArr['CHR']);       
+    }
+
+
+       function calculateVals(which,val,where)
+          {
+            console.log('UPDATE FROM '+ where);
+            var tempCOV = 0;
+            switch(which)
+             {
+                case 'COV':
+                  tempCOV = val*ppKO.uDUR();                    
+                break;
+                case 'YRL':
+                  tempCOV = (val*1000)/ppKO.ratio()*ppKO.uDUR();        
+                break;
+                case 'MBD':
+                  tempCOV = ((val*1000)/ppKO.ratio())*12*ppKO.uDUR();
+                break; 
+                case 'WKL':
+                  tempCOV = ((val*1000)/ppKO.ratio())*52*ppKO.uDUR();
+                break;
+              }
+              var chk = minMaxCheck(ppKO.lbl,tempCOV);
+              if(chk[0])
+                {
+                    pmE.removeError(which,ppKO.pId,tempCOV);
+                    ppKO.COV(tempCOV);
+                    ppKO.uCOV = tempCOV;
+                    ppKO.YRL(ppKO.ratio()*tempCOV*(0.001));
+                    ppKO.MBD(ppKO.YRL()/12);
+                    ppKO.WKL(ppKO.YRL()/52);
+                    ppKO.lastChanged(which);
+                }
+              else
+                {
+                    pmE.addError(which,ppKO.pId,chk[1],true);
+                }
+                
+              }
 
   }
 
@@ -491,11 +591,43 @@ getPowerHour.policyModelKO = function(pVals)
                           }
                                                     
                         } 
-                        console.log(pmP[p].lbl)
-                         if(pmP[p].lbl == 'TYR'){ 
-                         pmP[p].TYRFXNS();}
-                         pmP[p].addComputed(); }
-                break;
+                        
+                      switch(pmP[p].lbl)
+                        {
+                            case 'A71':
+      
+                            break;
+                            case 'TYR':
+                              pmP[p].TYRFXNS();
+                              pmP[p].initComputed();
+                            break;
+                            case 'WHL':
+                              pmP[p].WHLFXNS();
+                              pmP[p].initComputed();                           
+                            break; 
+                            case 'ADB':
+                              pmP[p].ADBFXNS();
+                              pmP[p].initComputed();                           
+                            break; 
+                            case 'CHR':
+                              pmP[p].CHRFXNS();
+                              pmP[p].initComputed();                           
+                            break;
+                            case 'SPR':
+                              pmP[p].SPRFXNS();
+                              pmP[p].initComputed();                           
+                            break;  
+                            default:
+                              pmP[p].initComputed();
+                            break;                        
+                        }
+
+                         
+                         
+                     }    
+
+
+                   break;
                 default: /////////////// All other Policy Model Declaration                    
                     if(jQuery.type(pVals[attr]) == 'array'){
                         newAttrVal = pVals[attr][0];
@@ -591,7 +723,6 @@ getPowerHour.policyModelKO = function(pVals)
             }, pmKO);
 
 
-
          pmKO.allowRiders = ko.computed(function(){ 
              if(!pmKO.hasSpouse())
               {
@@ -599,7 +730,9 @@ getPowerHour.policyModelKO = function(pVals)
                   {
                     if(pmP[product].owner == 'sp')
                     {
+                      console.log(product)
                       pmP[product].allowed(false);
+                      console.log(product + pmP[product].allowed());
                     }
                   }
 
@@ -609,21 +742,22 @@ getPowerHour.policyModelKO = function(pVals)
                  for(var product in pmP)
                   {
                     if(pmP[product].owner == 'sp')
-                    {
+                    {                       
                       pmP[product].allowed(true);
+                      console.log(product + pmP[product].allowed());
                     }
                   }
 
               }
 
               if(!pmKO.hasChild())
-              {
-                   pmP['pCHR'].allowed(false);
-              }
-              else
-              {
-                pmP['pCHR'].allowed(true);
-              }
+                {
+                  pmP['pCHR'].allowed(false);
+                }
+                else
+                {
+                  pmP['pCHR'].allowed(true);
+                }
 
           }, pmKO); 
 
@@ -645,12 +779,11 @@ getPowerHour.policyModelKO = function(pVals)
     if(getPowerHour.globals.current_policy == -1){getPowerHour.globals.loadingNew = true};
     pmKO.init();
     pmKO.initComputed();
+
     if(getPowerHour.globals.loadingNew){pmKO.isNew()};
-  
-  
 
+    getPowerHour.policyjQ();
 
- getPowerHour.policyjQ()
    }
 
 

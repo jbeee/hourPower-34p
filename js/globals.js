@@ -45,6 +45,14 @@ function formatMoney(number)
   return '$'+ fnums.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + tsep) + decimals;
 }
 
+function countMe(val,lbl,owner,which)
+{
+    $('#'+owner+lbl+'_'+which).val(formatMoney(val));
+    console.log('#'+owner+lbl+'_'+which +'   '+formatMoney(val));
+}
+
+
+
 
 function parseBday(newVal,me)
     {
@@ -97,7 +105,7 @@ function parseBday(newVal,me)
 function isDefined(what,where)
 {
 	try{
-    		if((response[0] !== 'undefined')||(response[0].title !== 'undefined')){return true;}    		
+    		if(what !== undefined){return true;}    		
   		}
   	catch(e)
   		{
@@ -146,20 +154,17 @@ function policyGlobagffgg()
 	}
 }
 
-function minMaxCheck(product,newFace)
+function minMaxCheck(product,newCOV)
 	{
-		if(newFace < defArr[product].min)
+		if(newCOV < defArr[product].minFace)
 		{
-
-			showError(4,'This change cannot be made. The minimum face value for ' + product + ' is $' + defArr[product].min);
-			return false;
+			return [false,'This change cannot be made. The minimum Coverage for ' + product + ' is $' + defArr[product].minFace];
 		}
-		else if(newFace > defArr[product].max)
-		{
-			showError(4,'This change cannot be made. The maximum face value for ' + product + ' is $' + defArr[product].min);
-			return false;	
+		else if(newCOV > defArr[product].maxFace)
+		{			
+			return [false,'This change cannot be made. The maximum Coverage for ' + product + ' is $' + defArr[product].maxFace];	
 		}
-		return true;
+		return [true];
 	}
 
 
