@@ -230,9 +230,10 @@ opacity:0.3;
   background: linear-gradient(#eee 10%,#bbb);
 }
 
-.tspan
+#test_outputs tbody td span
 {
-  width:50px;
+  display:block;
+  width:40px;
   overflow: hidden;
 }
 
@@ -406,12 +407,12 @@ fieldset
                             <td></td>
                         </tr>
                         <tr>
-                            <td>ph typed:</td>
+                            <td>custom hour:</td>
                             <td><span data-bind="text: phType"></span></td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td>ph val:</td>
+                            <td>power hour total:</td>
                             <td><span data-bind="text: phVal"></span></td>
                             <td></td>
                         </tr>
@@ -544,9 +545,8 @@ fieldset
 
               <tr class="pSTr CHR pHolder">
                   <td class="psBR">
-                      CHR
-                      <br> <span data-bind="text: pmM.p.fname"></span><br>
-                      <span data-bind="text:pmP['pCHR']['category']"></span>
+                      Child Rider
+                     <span data-bind="text:pmP['pCHR']['category']"></span>
                   </td>
                   <td>
                       <div class="ui input">
@@ -577,8 +577,7 @@ fieldset
               </tr>
               <tr class="pSTr SPR">
                   <td class="psBR">
-                      SPR
-                      <br> <span data-bind="text: pmM.p.fname"></span><br>
+                      Spouse Rider
                       <span data-bind="text:pmP['spSPR']['category']"></span>
                   </td>
                   <td>
@@ -610,7 +609,7 @@ fieldset
               </tr>
                             <tr class="pSTr spTYR pSpouse">
                   <td class="psBR">
-                      10YRC (Paycheck) <br> <span data-bind="text: pmM.p.fname"></span>
+                      10YRC (Paycheck) <br> <span data-bind="text: pmM.sp.fname"></span>
                   </td>
                   <td>
                       <div class="ui input">
@@ -647,7 +646,7 @@ fieldset
             <tr class="pSTr spWHL pSpouse">
                   <td class="psBR">
                       Whole Life
-                      <br> <span data-bind="text: pmM.p.fname"></span><br>
+                      <br> <span data-bind="text: pmM.sp.fname"></span><br>
                       <span data-bind="text:pmP['spWHL']['category']"></span>
                   </td>
                   <td>
@@ -681,7 +680,7 @@ fieldset
             <tr class="pSTr spADB pSpouse">
                   <td class="psBR">
                       ADB
-                      <br> <span data-bind="text: pmM.p.fname"></span><br>
+                      <br> <span data-bind="text: pmM.sp.fname"></span><br>
                       <span data-bind="text:pmP['spADB']['category']"></span>
                   </td>
                   <td>

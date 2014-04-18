@@ -346,7 +346,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
 
           ppKO.setMBD = ko.computed({ 
-              read:function(){ 
+              read:function(){                   
                   var newMBD = ppKO.MBD();
                   console.log('read MBD' + newMBD); 
                   countMe(newMBD, ppKO.lbl, ppKO.owner, 'MBD')
@@ -399,7 +399,6 @@ getPowerHour.policyProductModelKO = function(pId)
                }
               }, ppKO).extend({logChange: pId + ' WKL'}); 
 
-
           calculateVals('COV',ppKO.COV(),' init');
        }
       ppKO.TYRFXNS = function()
@@ -411,6 +410,7 @@ getPowerHour.policyProductModelKO = function(pId)
         ppKO.setRatio = ko.computed(function(){
           if((pmM[ppKO.owner].gender() == '')||(pmM[ppKO.owner].TU() == '')||(pmM[ppKO.owner].age_uf()== '')){return;} 
           ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age_uf()]);
+
         }, ppKO);
 
         ppKO.watchWages = ko.computed(function(){
@@ -421,7 +421,7 @@ getPowerHour.policyProductModelKO = function(pId)
             ppKO.uDUR(ppKO.DUR()/ppKO.ogDUR);           
             ppKO.ogDUR = ppKO.DUR();
           }, ppKO);
-        
+
     }
       ppKO.A71FXNS = function()
       {
@@ -476,7 +476,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
 
        function calculateVals(which,val,where)
-          {
+          {            
             console.log('UPDATE FROM '+ where);
             var tempCOV = 0;
             switch(which)

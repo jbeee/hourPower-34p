@@ -266,22 +266,22 @@ defArr['A71'].ctype = 'Double';
     "hasChild":false, 
     "members": {  
 			'p':{
-		        "fname": "pholder",
+		        "fname": "",
 		        "lname": "",
-		        "gender": "M",
-		        "birthday": "30",
-		        "wage": "30",
-		        "TU": "NTU",
+		        "gender": "",
+		        "birthday": "",
+		        "wage": "",
+		        "TU": "",
 		        "liW": "",
 		        "liOW": ""
 		    },
 		   'sp':{
-		        "fname": "spouse",
+		        "fname": "",
 		        "lname": "",
-		        "gender": "F",
-		        "birthday": "30",
-		        "wage": "30",
-		        "TU": "NTU",
+		        "gender": "",
+		        "birthday": "",
+		        "wage": "",
+		        "TU": "",
 		        "liW": "",
 		        "liOW": "",
 		        "rider": ""
@@ -321,7 +321,7 @@ defArr['A71'].ctype = 'Double';
             },
             "pCHR": {
                 "lbl": "CHR",
-                "owner": "pHolder",
+                "owner": "p",
                 "added": true,
                 "ALHP":  defArr['ADB'].ALHP,
                 "COV": defArr['ADB'].defaultCov
