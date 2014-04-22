@@ -288,7 +288,7 @@ getPowerHour.policyHolderModelKO = function(mId)
         ph.checkMinimumReqs = ko.computed(function(){ 
           ////// returns bitwise check where 1111 =  has all reqs and 0000 has none
          var minbits = 0|(((ph.age()!='')&&(ph.age()!= undefined))?8:0);  /// check if valid age
-         minbits=minbits|(((ph.TU()== 'TU')||(ph.gender()== 'NTU'))?4:0); /// check if valid TU 
+         minbits=minbits|(((ph.TU()== 'TU')||(ph.TU()== 'NTU'))?4:0); /// check if valid TU 
          minbits=minbits|(((ph.gender()== 'M')||(ph.gender()== 'F'))?2:0);/// check if valid gender
          minbits=minbits|(((ph.wage()!='')&&(ph.wage()!= undefined))?1:0);/// check if valid wage
          return minbits;
@@ -406,6 +406,12 @@ getPowerHour.policyProductModelKO = function(pId)
         pmE.initError('DUR',pId);
 
         ppKO.calcRatio = ko.computed(function(){
+          console.log('TYR!---------------------------------------------------------------RATIO');
+        pmM[ppKO.owner].TUCHK();
+        pmM[ppKO.owner].genderCHK();
+        var G = pmM[ppKO.owner].gender();
+        var T = pmM[ppKO.owner].TU();
+        var A = pmM[ppKO.owner].age();
           if((pmM[ppKO.owner].checkMinimumReqs()&14)==14) ///1110, has age,gender,tu 
             {            
                ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]);
@@ -426,6 +432,7 @@ getPowerHour.policyProductModelKO = function(pId)
             ppKO.ogDUR = ppKO.DUR();
           }, ppKO);
 
+
       }
 
 
@@ -442,7 +449,7 @@ getPowerHour.policyProductModelKO = function(pId)
         ppKO.getMBD = ko.computed(function(){
           if((pmM[ppKO.owner].checkMinimumReqs()&8)!=8){return;} ///1000, has age  
           for(i=0;i<dataArr['A71']['categories'].length;i++){ 
-              if(pmM[ppKO.owner].age()< dataArr['A71']['categories'][i])
+              if(pmM.p.age()< dataArr['A71']['categories'][i])
               {
                 ppKO.ageBracket(i);
                 return;
@@ -462,7 +469,11 @@ getPowerHour.policyProductModelKO = function(pId)
            ppKO.setYRL(formatMoney(ppKO.YRL()));
            ppKO.setWKL(formatMoney(ppKO.WKL()));
 
-          }, ppKO).extend({logChange: pId + ' A71'});       
+          }, ppKO).extend({logChange: pId + ' A71'}); 
+
+
+        ppKO.checkReqs = ko.computed(function(){ 
+        });       
 
       }
 
@@ -482,10 +493,13 @@ getPowerHour.policyProductModelKO = function(pId)
 
 
       ///// generate Whole life values for each category based on age/tabacco-use/gender
-      ppKO.calcRateVals = ko.computed(function(){      
+      ppKO.calcRateVals = ko.computed(function(){    
+        console.log('WHL!---------------------------------------------------------------RATIO'+pmM[ppKO.owner].checkMinimumReqs().toString(2));
         if((pmM[ppKO.owner].checkMinimumReqs()&14)!=14){return;} ///1110,has age,gender,tabacco-use
+         
         pmM[ppKO.owner].TUCHK();
         pmM[ppKO.owner].genderCHK();
+        pmM[ppKO.owner].birthday();
         var G = pmM[ppKO.owner].gender();
         var T = pmM[ppKO.owner].TU();
         var A = pmM[ppKO.owner].age();
