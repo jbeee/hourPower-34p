@@ -135,7 +135,7 @@ getPowerHour.inputErrors = function(){
           owner:owner,
           id: owner +'_'+ type,
           msg: ko.observable(),
-          lastValid: ko.observable(false),
+          lastValid: ko.observable(0),
           terminal: ko.observable(false),
           hasError: ko.observable(false).extend({logChange: owner +'_'+ type + ' errors? '})
           }
@@ -325,10 +325,21 @@ getPowerHour.policyProductModelKO = function(pId)
         { 
           ppKO.setCOV = ko.computed({ 
               read:function(){ 
-                var newCOV = ppKO.COV();
-                console.log('read COV' + newCOV);   
-                countMe(newCOV, ppKO.lbl, ppKO.owner,'COV');
-                return formatMoney(newCOV);
+              var newCOV = minMaxCheck(ppKO.lbl,ppKO.COV());
+                if(newCOV[0])
+                  {
+                    countMe('COV',ppKO.pId,newCOV[1]);
+                    pmE.removeError('COV',ppKO.pId,newCOV[1]);
+                    if(ppKO.ratio())
+                    {
+                      ppKO.YRL(ppKO.ratio()*ppKO.COV()*(0.001));
+                    }                    
+                    return formatMoney(newCOV[1]);                    
+                  }
+                else
+                  {
+                      pmE.addError('COV',ppKO.pId,newCOV[1],true);
+                  }                 
                },
                write:function(val)
                { 
@@ -336,18 +347,23 @@ getPowerHour.policyProductModelKO = function(pId)
                  var newCOV = validFloat(val,true);
                  if(newCOV[0])
                  {
-                 console.log('write COV' + newCOV[1]);
+                  console.log('write COV' + newCOV[1]);
                   if(ppKO.lbl=='WHL'){ppKO.bestCategory('COV',newCOV[1])};
-                 calculateVals('COV',newCOV[1],'writeCOV');
+                  calculateVals('COV',newCOV[1],'writeCOV');
+                 }
+                 else
+                 {
+                    pmE.addError('COV',ppKO.pId,newCOV[1],false);
                  }
                }, owner:ppKO}).extend({logChange: pId + ' COV'});
 
          ppKO.setYRL = ko.computed({ 
               read:function(){ 
-                  ppKO.YRL(ppKO.ratio()*ppKO.COV()*(0.001));
-                  console.log('read YRL' + ppKO.YRL()); 
-                  countMe(ppKO.YRL(), ppKO.lbl, ppKO.owner, 'YRL')
-                  return formatMoney(ppKO.YRL());
+                  var newYRL = ppKO.YRL();                  
+                  console.log('read YRL' + newYRL); 
+                  countMe('YRL',ppKO.pId,newYRL);
+                  pmE.removeError('YRL',ppKO.pId,newYRL);
+                  return formatMoney(newYRL);
                },
                write:function(val)
                { 
@@ -355,17 +371,23 @@ getPowerHour.policyProductModelKO = function(pId)
                  console.log('write YRL' + newYRL[1]);
                  if(newYRL[0])
                  { 
-                 if(ppKO.lbl=='WHL'){ppKO.bestCategory('YRL',newYRL[1])};                
-                 calculateVals('YRL',newYRL[1],'writeYRL');
+                   if(ppKO.lbl=='WHL'){ppKO.bestCategory('YRL',newYRL[1])};                
+                   calculateVals('YRL',newYRL[1],'writeYRL');
+                 }
+                 else
+                 {
+                    pmE.addError('YRL',ppKO.pId,newYRL[1],false);
                  }
                }, owner:ppKO}).extend({logChange: pId + ' YRL'});
 
            ppKO.setMBD = ko.computed({ 
-              read:function(){                   
-                  ppKO.MBD(ppKO.YRL()/12)
-                  console.log('read MBD' + ppKO.MBD()); 
-                  countMe(ppKO.MBD(), ppKO.lbl, ppKO.owner, 'MBD')
-                  return formatMoney(ppKO.MBD());
+              read:function(){ 
+                  var newMBD = ppKO.YRL()/12;                  
+                  console.log('read MBD' + newMBD ); 
+                  countMe('MBD',ppKO.pId,newMBD);
+                  pmE.removeError('MBD',ppKO.pId,newMBD);
+                  ppKO.MBD(newMBD);
+                  return formatMoney(newMBD);
                },
                write:function(val)
                { 
@@ -373,26 +395,36 @@ getPowerHour.policyProductModelKO = function(pId)
                  console.log('write MBD' + newMBD[1]);
                  if(newMBD[0])
                  {  
-                 if(ppKO.lbl=='WHL'){ppKO.bestCategory('MBD',newMBD[1])};               
-                 calculateVals('MBD',newMBD[1],'writeMBD');
+                   if(ppKO.lbl=='WHL'){ppKO.bestCategory('MBD',newMBD[1])};               
+                   calculateVals('MBD',newMBD[1],'writeMBD');
+                 }
+                 else
+                 {
+                    pmE.addError('MBD',ppKO.pId,newMBD[1],false);
                  }
                }, owner:ppKO}).extend({logChange: pId + ' MBD'});  
 
           ppKO.setWKL = ko.computed({ 
               read:function(){ 
-                  ppKO.WKL(ppKO.YRL()/52);
-                  console.log('read WKL' + ppKO.WKL());                  
-                  countMe(ppKO.WKL(), ppKO.lbl, ppKO.owner, 'WKL')
-                  return formatMoney(ppKO.WKL());
+                  var newWKL = ppKO.YRL()/52;                  
+                  console.log('read WKL' + newWKL ); 
+                  countMe('WKL',ppKO.pId,newWKL);
+                  pmE.removeError('WKL',ppKO.pId,newWKL);
+                  ppKO.WKL(newWKL);
+                  return formatMoney(newWKL);
                },
-               write:function(val)
+              write:function(val)
                { 
                  var newWKL = validFloat(val,true);
                  console.log('write WKL' + newWKL[1]);
                  if(newWKL[0])
                  {
-                if(ppKO.lbl=='WHL'){bestCategory('WKL',newWKL[1])};                 
-                 calculateVals('WKL',newWKL[1],'writeWKL');
+                  if(ppKO.lbl=='WHL'){bestCategory('WKL',newWKL[1])};                 
+                   calculateVals('WKL',newWKL[1],'writeWKL');
+                 }
+                 else
+                 {
+                    pmE.addError('WKL',ppKO.pId,newWKL[1],false);
                  }
                }, owner:ppKO}).extend({logChange: pId + ' WKL'}); 
 
@@ -406,12 +438,6 @@ getPowerHour.policyProductModelKO = function(pId)
         pmE.initError('DUR',pId);
 
         ppKO.calcRatio = ko.computed(function(){
-          console.log('TYR!---------------------------------------------------------------RATIO');
-        pmM[ppKO.owner].TUCHK();
-        pmM[ppKO.owner].genderCHK();
-        var G = pmM[ppKO.owner].gender();
-        var T = pmM[ppKO.owner].TU();
-        var A = pmM[ppKO.owner].age();
           if((pmM[ppKO.owner].checkMinimumReqs()&14)==14) ///1110, has age,gender,tu 
             {            
                ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]);
@@ -463,12 +489,16 @@ getPowerHour.policyProductModelKO = function(pId)
            ppKO.MBD(dataArr['A71'][ppKO.ftype()][ppKO.ctype()][ppKO.ageBracket()][0]);
            ppKO.YRL(dataArr['A71'][ppKO.ftype()][ppKO.ctype()][ppKO.ageBracket()][1]);
            ppKO.WKL(ppKO.YRL()/52);
-
-           ppKO.setCOV(formatMoney(ppKO.COV()));
-           ppKO.setMBD(formatMoney(ppKO.MBD()));  
-           ppKO.setYRL(formatMoney(ppKO.YRL()));
-           ppKO.setWKL(formatMoney(ppKO.WKL()));
-
+            
+           countMe('COV',ppKO.pId,ppKO.COV());
+           countMe('YRL',ppKO.pId,ppKO.YRL());
+           countMe('MBD',ppKO.pId,ppKO.MBD());
+           countMe('WKL',ppKO.pId,ppKO.WKL());
+           
+           pmE.errArray['pA71_COV'].lastValid(ppKO.COV());
+           pmE.errArray['pA71_YRL'].lastValid(ppKO.YRL());
+           pmE.errArray['pA71_MBD'].lastValid(ppKO.MBD());
+           pmE.errArray['pA71_WKL'].lastValid(ppKO.WKL());
           }, ppKO).extend({logChange: pId + ' A71'}); 
 
 
@@ -479,8 +509,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
     ppKO.WHLFXNS = function()
     {      
-      ppKO.categoryName = ko.observable().extend({logChange: pId + ' category changed '});
-      
+      ppKO.categoryName = ko.observable().extend({logChange: pId + ' category changed '});      
       ppKO.WHLvalsCalc =function(cat,ratio,min,max){
         ppKO.WHLvals[cat] ={};
         ppKO.WHLvals[cat].ratio = ratio;
@@ -494,7 +523,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
       ///// generate Whole life values for each category based on age/tabacco-use/gender
       ppKO.calcRateVals = ko.computed(function(){    
-        console.log('WHL!---------------------------------------------------------------RATIO'+pmM[ppKO.owner].checkMinimumReqs().toString(2));
+       
         if((pmM[ppKO.owner].checkMinimumReqs()&14)!=14){return;} ///1110,has age,gender,tabacco-use
          
         pmM[ppKO.owner].TUCHK();
@@ -516,7 +545,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
       
 
-      ///// Calculate optimal category based on MBD Values - show message when customer could be saving money  
+      ///// Calculate optimal category based on MBD Values - show message when customer could be saving money?  
       ppKO.bestCategory = function(which,val)
       {
         var catsTotal = ppKO.WHLvals.length -1;
@@ -545,7 +574,7 @@ getPowerHour.policyProductModelKO = function(pId)
 
     ppKO.ADBFXNS = function()
     { 
-    
+        
        ppKO.calcRatio = ko.computed(function(){ 
         if((pmM[ppKO.owner].checkMinimumReqs()&8)!=8){return;} ///has age 1000
         for(var i=0;i<dataArr['ADB']['age'].length;i++)
@@ -579,8 +608,6 @@ ppKO.ratio(9.87);
     }
 
 
-
-
     function calculateVals(which,val,where)
           {            
             console.log('UPDATE FROM '+ where);
@@ -603,18 +630,9 @@ ppKO.ratio(9.87);
                   tempCOV = ppKO.COV()*val;
                 break;
               }
-              var chk = minMaxCheck(ppKO.lbl,tempCOV);
-              if(chk[0])
-                {
-                    pmE.removeError(which,ppKO.pId,tempCOV);
-                    ppKO.COV(tempCOV);
-                }
-              else
-                {
-                    pmE.addError(which,ppKO.pId,chk[1],true);
-                }
-                
-              } 
+
+              ppKO.COV(tempCOV);                
+            } 
 
   }
 
@@ -643,13 +661,15 @@ getPowerHour.policyModelKO = function()
         {
             newSum += pmM[m].wage();
         } 
+        if(newSum < 25){return;}
           pmKO.cVal(newSum);
+        
       },pmKO);
 
       pmKO.setCVal = ko.computed({
           read:function(){
             koCalls.count('CVAL','read');   ////trackinging ko calls  
-            if(pmKO.cVal()==0){pmKO.cVal(30)}               
+            if(pmKO.cVal()==0){pmKO.cVal(25)}               
             return formatMoney(pmKO.cVal());
               },
           write: function(val)
@@ -657,7 +677,7 @@ getPowerHour.policyModelKO = function()
             var newCVal = validFloat(val,true);      
                 if(newCVal[0])
                     {
-                      pmKO.cVal(newWage[1]);                                       
+                      pmKO.cVal(newCVal[1]);                                       
                       pmE.removeError('Power_Hour','Custom',newCVal[1]); 
                     }
                     else
@@ -669,7 +689,7 @@ getPowerHour.policyModelKO = function()
 
         pmKO.phTypeCheck = ko.computed(function(){
 
-               if(!pmKO.phType()) /// use policy holder wage as HOUR
+               if(pmKO.phType()=="MH") /// use policy holder wage as HOUR
                 {
                   if(pmM.p.allowPH()){
                      pmKO.phVal(pmM.p.wage());                     
@@ -677,7 +697,7 @@ getPowerHour.policyModelKO = function()
                   else
                   {
                     pmKO.phVal(pmKO.cVal());
-                    pmKO.phType(true); /// use custom value as HOUR
+                    pmKO.phType("CH"); /// use custom value as HOUR
                   }
                    
                 }

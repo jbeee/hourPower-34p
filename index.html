@@ -182,11 +182,15 @@ input:checked + .slider-v2::after {
   padding:0.3em;
 }
 
+.ui.input .psInputBottom
+{
+  background-color:#f5f5f5; 
+}
+
 .ui.input .psInputTop
 {
   top:0px;
   left:0px;
-  background-color:#f5f5f5; 
 }
 
 
@@ -320,6 +324,69 @@ user-select: none;
   border:0.05em solid #bbb; 
 }
 
+
+
+.input-v5 { 
+    position: relative; 
+    display: inline-block;
+    overflow: hidden;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    border-radius:0.3em;
+    font-weight:bold;
+    color:#888;
+    text-shadow: 0 -0.05em 0 rgba(100,100,100,.1);
+    
+    background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #cccccc;
+  box-shadow: 0 0.07em 0.2em -0.4em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 40%),    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,83%) 53%,
+    hsl(0,0%,80%)100%);  
+}
+
+.input-v5 input{display:none;}
+
+.input-v5 input:checked + label { 
+    color: #fff; 
+     box-shadow: 0 0.2em 0.2em -0.1em rgba(0, 0, 0, 1) inset, inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
+          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
+        inset 0 0 0 0.8em rgba(81,114,153,1);
+ -webkit-box-shadow:
+   inset 0 -0.05em 1.5em 0 rgba(255,255,255,0.8),
+          inset 0 -0.8em 0.04em 0 rgba(81,114,153,0.8), 
+        inset 0 0.6em 2em 0.5em rgba(255,255,255,0.4),
+        inset 0 0 0 2em rgba(81,114,153,1);
+   
+    text-shadow: 0 -0.05em 0 rgba(0,0,0,.4);    
+}
+
+.input-v5 label { 
+    font-family: helvetica;
+    cursor: pointer; 
+    display: inline-block; 
+    border-top: solid 0.1em transparent;
+    width: 9em; 
+    height: 2.6em; 
+    text-align: center; 
+    line-height: 2.5em;
+    transition: 250ms ease-in-out;
+}
+.input-v5 label:hover {   
+  color:#555;
+      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
+  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
+  border:0.05em solid #bbb;
+}
+
+.input-v5 input:disabled + label { 
+    color: #aaa; 
+      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
+  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
+  border:0.05em solid #bbb; 
+}
 </style>
 </head>
 <body>
@@ -387,27 +454,33 @@ user-select: none;
                             </td>
                         </tr>
                     </table>
-                    <table>
-                        <tr>
-                            <td><em> Power Hour Tests</em></td>
-                            <td>
-                                <div class="ui labeled input">
-                                    <span data-bind="text: pmM.p.wage" ></span>
-                                </div>
-                            </td>
-                            <td>
-                              <div>
-                                <input class="slider" type="checkbox" id="phBtn" data-bind="checked: pm.phType" data-bind="checked: pm.phType, enable: pmM.p.allowPH"/>
-                                <label class="slider-v2" data-bind="css: { disabledUI: pmM.p.allowPH()==false}" for="phBtn"></label>
-                              </div>
-                            </td>
-                            <td>
-                                <div class="ui labeled input">
-                                  <input type="text" placeholder="Custom Policy Hour" data-bind="value: pm.setCVal" >
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+
+                             
+<table><tr><td>
+    <div class="input-v5">
+    <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pmM.p.allowPH"/> 
+    <label for="phTypeBTN1" data-bind="css: { disabledUI: pmM.p.allowPH()==false}">Member Hour</label>
+    </div>
+    </td><td>
+    <div class="ui labeled input">
+     <input type="text" placeholder="Member Hour" data-bind="value: pmM.p.setWage"> 
+     </div>                                
+                                </td></tr><tr><td>
+<div class="input-v5">
+    <input type="radio" name="phtype" id="phTypeBTN2" value="CH" data-bind="checked: pm.phType"/>     
+    <label for="phTypeBTN2">Custom Hour</label>
+</div>
+</td>
+<td>
+  <div class="ui labeled input">
+    <input type="text" placeholder="Custom Policy Hour" data-bind="value: pm.setCVal" >
+   </div>
+  
+                                </td>
+                                </tr>
+                                </table>
+
+     
                 </td>
                 <td valign="bottom">
                     <table>
@@ -504,10 +577,10 @@ user-select: none;
 <table><tr><td valign="top">
 
 
-      <table summary="Altig Hour Power Benefit Selection" class="productSelectionTable">
+      <table summary="Altig Hour Power Benefit Selection" class="productSelectionTable" border="1">
         <tbody>
               <tr>
-                  <th>Benefit</th>
+                  <th width="100px">Benefit</th>
                   <th>Coverage</th>
                   <th>Duration</th>
                   <th>Annual</th>
@@ -522,33 +595,29 @@ user-select: none;
                     A71000
                 </td>
                 <td>
-                    <div class="ui input">
-                      <input type="text" placeHolder="$250,000.00" class="pA71" data-bind="value: pmP['pA71']['setCOV']">       
-                      <input type="text" placeHolder="$999,999.99" readonly class="psInputTop pA71" data-bind="value: pmP['pA71']['setCOV']">
+                    <div class="ui input">    
+                      <input type="text" placeHolder="$250,000.00" class="psInputBottom pA71" id="pA71_COV">
                     </div>
                 </td>
                 <td></td>
                 <td>
-                    <div class="ui input">
-                      <input type="text" placeHolder="$250,000.00" class="pA71" data-bind="value: pmP['pA71']['setYRL']">       
-                      <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pA71" data-bind="value: pmP['pA71']['setYRL']">
+                    <div class="ui input">    
+                      <input type="text" placeHolder="$250,000.00" class="psInputBottom pA71" id="pA71_YRL">
                     </div>
                 </td><td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pA71" data-bind="value: pmP['pA71']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pA71" data-bind="value: pmP['pA71']['setMBD']">
-                      </div>
+                    <div class="ui input">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pA71" id="pA71_MBD">
+                    </div>
                 </td><td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pA71" data-bind="value: pmP['pA71']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pA71" data-bind="value: pmP['pA71']['setWKL']">
+                      <div class="ui input">   
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pA71" id="pA71_WKL">
                       </div>
                 <td rowspan="2">
                     <input class="slider pgShow" type="checkbox" id="pA71Btn" data-bind="checked: pmP['pA71']['added']" />
                     <label class="slider-v2" for="pA71Btn"></label>                 
             </tr>
             <tr class="pSTr pA71 pHolder">              
-                <td colspan="3">
+                <td colspan="3" align="center">
                    <div class="input-v4">
     <input type="radio" name="ctype" id="A71ctype1" value='1' data-bind="checked: pmP['pA71']['ctype']"/> 
     <label for="A71ctype1">single</label>
@@ -576,7 +645,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop pWHL" data-bind="value: pmP['pWHL']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pWHL" id="pWHL_COV">
                       </div>
                   </td>
                   <td>
@@ -584,17 +653,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pWHL" data-bind="value: pmP['pWHL']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pWHL" data-bind="value: pmP['pWHL']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pWHL" data-bind="value: pmP['pWHL']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="pWHLBtn" data-bind="checked: pmP['pWHL']['added']" />
@@ -610,7 +679,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop pTYR" data-bind="value: pmP['pTYR']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pTYR" id="pTYR_COV">
                       </div>
                   </td>
                   <td>
@@ -620,17 +689,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pTYR" data-bind="value: pmP['pTYR']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pTYR" data-bind="value: pmP['pTYR']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pTYR" data-bind="value: pmP['pTYR']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="pTYRBtn" data-bind="checked: pmP['pTYR']['added']" />
@@ -647,7 +716,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop pADB" data-bind="value: pmP['pADB']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pADB" id="pADB_COV">
                       </div>
                   </td>
                   <td>
@@ -655,17 +724,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pADB" data-bind="value: pmP['pADB']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pADB" data-bind="value: pmP['pADB']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pADB" data-bind="value: pmP['pADB']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="pADBBtn" data-bind="checked: pmP['pADB']['added']" />
@@ -680,7 +749,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop pCHR" data-bind="value: pmP['pCHR']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pCHR" id="pCHR_COV">
                       </div>
                   </td>
                   <td>
@@ -688,17 +757,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pCHR" data-bind="value: pmP['pCHR']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pCHR" data-bind="value: pmP['pCHR']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop pCHR" data-bind="value: pmP['pCHR']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="pCHRBtn" data-bind="checked: pmP['pCHR']['added']" />
@@ -712,7 +781,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop spSPR" data-bind="value: pmP['spSPR']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom spSPR" id="spSPR_COV">
                       </div>
                   </td>
                   <td>
@@ -720,17 +789,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spSPR" data-bind="value: pmP['spSPR']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spSPR" data-bind="value: pmP['spSPR']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spSPR" data-bind="value: pmP['spSPR']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="spSPRBtn" data-bind="checked: pmP['spSPR']['added']" />
@@ -747,7 +816,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop WHL" data-bind="value: pmP['spWHL']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom WHL" id="spWHL_COV">
                       </div>
                   </td>
                   <td>
@@ -755,17 +824,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop WHL" data-bind="value: pmP['spWHL']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop WHL" data-bind="value: pmP['spWHL']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop WHL" data-bind="value: pmP['spWHL']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="spWHLBtn" data-bind="checked: pmP['spWHL']['added']" />
@@ -780,7 +849,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop spTYR" data-bind="value: pmP['spTYR']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom spTYR" id="spTYR_COV">
                       </div>
                   </td>
                   <td>
@@ -790,17 +859,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spTYR" data-bind="value: pmP['spTYR']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spTYR" data-bind="value: pmP['spTYR']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop spTYR" data-bind="value: pmP['spTYR']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="spTYRBtn" data-bind="checked: pmP['spTYR']['added']" />
@@ -816,7 +885,7 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputTop ADB" data-bind="value: pmP['spADB']['setCOV']">
+                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom ADB" id="spADB_COV">
                       </div>
                   </td>
                   <td>
@@ -824,17 +893,17 @@ user-select: none;
                   <td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop ADB" data-bind="value: pmP['spADB']['setYRL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop ADB" data-bind="value: pmP['spADB']['setMBD']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
                         <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputTop ADB" data-bind="value: pmP['spADB']['setWKL']">
+                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_WKL">
                       </div>
                   <td>
                     <input class="slider pgShow" type="checkbox" id="spADBBtn" data-bind="checked: pmP['spADB']['added']" />

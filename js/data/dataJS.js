@@ -235,7 +235,7 @@ defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,75000,'SPOUSE RIDER',5
 defArr['ADB']=new productDefaults('ADB','ALP',1000,200000,10000,'ADB',69);		
 defArr['CHR']=new productDefaults('CHR','ALP',1000,10000,10000,'CHILD RIDER',80);
 
-defArr['TYR']=new productDefaults('TYR','ALP',1000,99999999999,0,'10 YRC',60);
+defArr['TYR']=new productDefaults('TYR','ALP',1000,99999999999,1000,'10 YRC',60);
 defArr['TYR'].duration = 1;
 
 defArr['WHL']=new productDefaults('WHL','ALP',1000,99999,7500,'WHOLE LIFE',80);
@@ -266,7 +266,7 @@ defArr['A71'].ctype = '2';
     "dateCreated": "",
     "state": "",
     "group": "",
-    "phType": true,
+    "phType": "MH",
     "phVal": 0,
     "cVal": 0,
     "hasChild":false, 
@@ -317,7 +317,8 @@ defArr['A71'].ctype = '2';
                 "owner": "p",
                 "added": true,
                 "ALHP":  defArr['TYR'].ALHP,
-                "DUR":1
+                "COV": defArr['TYR'].defaultCov,
+                "DUR": defArr['TYR'].duration
                 
             },
             "pADB": {
@@ -354,6 +355,7 @@ defArr['A71'].ctype = '2';
                 "owner": "sp",
                 "added": true,
                 "ALHP":  defArr['TYR'].ALHP,
+                "COV": defArr['TYR'].defaultCov,
                 "DUR": defArr['TYR'].duration
             },
             "spADB": {

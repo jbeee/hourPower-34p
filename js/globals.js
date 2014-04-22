@@ -45,13 +45,14 @@ function formatMoney(number)
   return '$'+ fnums.replace(/(\d)(?=(?:\d{3})+$)/g, '$1' + tsep) + decimals;
 }
 
-function countMe(val,lbl,owner,which)
+function countMe(which,owner,val)
 {
-    $('#'+owner+lbl+'_'+which).val(formatMoney(val));
-    console.log('#'+owner+lbl+'_'+which +'   '+formatMoney(val));
+    if(isNaN(val)){return;}
+    var myId = owner+'_'+which;
+    console.log(myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val)
+    var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,2,0.8);
+    countDiff.start();
 }
-
-
 
 
 function parseBday(newVal,me)
@@ -157,13 +158,13 @@ function minMaxCheck(product,newCOV)
 	{
 		if(newCOV < defArr[product].minFace)
 		{
-			//return [false,'This change cannot be made. The minimum Coverage for ' + product + ' is $' + defArr[product].minFace];
+			return [false,'This change cannot be made. The minimum Coverage for ' + product + ' is $' + defArr[product].minFace];
 		}
 		else if(newCOV > defArr[product].maxFace)
 		{			
-			//return [false,'This change cannot be made. The maximum Coverage for ' + product + ' is $' + defArr[product].maxFace];	
+			return [false,'This change cannot be made. The maximum Coverage for ' + product + ' is $' + defArr[product].maxFace];	
 		}
-		return [true];
+		return validFloat(newCOV,false);
 	}
 
 
