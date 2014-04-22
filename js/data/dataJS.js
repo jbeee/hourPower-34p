@@ -275,19 +275,19 @@ defArr['A71'].ctype = '2';
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
-		        "birthday": "March 25, 1985",
+		        "birthday": "",
 		        "wage": "",
-		        "TU": "TU",
+		        "TU": "NTU",
 		        "liW": "",
 		        "liOW": ""
 		    },
 		   'sp':{
 		        "fname": "",
 		        "lname": "",
-		        "gender": "",
+		        "gender": "M",
 		        "birthday": "",
 		        "wage": "",
-		        "TU": "",
+		        "TU": "NTU",
 		        "liW": "",
 		        "liOW": "",
 		        "rider": ""
