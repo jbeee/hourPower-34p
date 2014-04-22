@@ -115,6 +115,9 @@ function isDefined(what,where)
 }
 
 
+
+
+
 function isChecked(name){return $('[name="'+name+'"]').is(":checked");}	
 function showError(where,msg)
 {
@@ -122,10 +125,6 @@ function showError(where,msg)
 	$('#err'+where).html(msg);
 }
 
-function minmaxCheck(product,val)
-{
-    return true;
-}
 function checkInputVal(ent,req,where)
 {
 	var ans = $(ent).val(); 
@@ -139,7 +138,7 @@ function checkInputVal(ent,req,where)
 }
 
 
-function policyGlobagffgg()
+function policyGlobal()
 {
 	this.hasChild = false;
 	this.hasSpouse = false;
@@ -158,29 +157,29 @@ function minMaxCheck(product,newCOV)
 	{
 		if(newCOV < defArr[product].minFace)
 		{
-			return [false,'This change cannot be made. The minimum Coverage for ' + product + ' is $' + defArr[product].minFace];
+			//return [false,'This change cannot be made. The minimum Coverage for ' + product + ' is $' + defArr[product].minFace];
 		}
 		else if(newCOV > defArr[product].maxFace)
 		{			
-			return [false,'This change cannot be made. The maximum Coverage for ' + product + ' is $' + defArr[product].maxFace];	
+			//return [false,'This change cannot be made. The maximum Coverage for ' + product + ' is $' + defArr[product].maxFace];	
 		}
 		return [true];
 	}
 
 
-function setA71()
+
+function policyAppWarning(msg)
 {
-	this.lbl = 'A71'
-	this.singleOnly=false;
-	this.individualOnly=false;
-	this.policyType = 2;  ///single, double. triple
-	this.familyType = 'F'; /// family, individual, none
-	this.MBD = 0;
-	this.weekly = 0;
-	this.annual = 0;
-	this.policySet = true;
-	this.familySet = true;
-	this.maxAge= 74;
-	this.added = true;
+    return true;
+}
+
+function policyAppMinorError(msg)
+{
+    return true;
+}
+
+function policyAppTerminalError(msg)
+{
+    return true;
 }
 

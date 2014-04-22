@@ -186,26 +186,32 @@ dataArr['SPR']['NTU'][55]=31.61; dataArr['SPR']['TU'][55]=49.7;
 
 
 
-dataArr['A71']['Individual'][1][50]=[2.38,25.5]; 
-dataArr['A71']['Individual'][2][50]=[4.5,51]; 
-dataArr['A71']['Individual'][3][50]=[6.63,76.5]; 
-dataArr['A71']['Family'][1][50]=[4.75,54]; 
-dataArr['A71']['Family'][2][50]=[9.25,108]; 
-dataArr['A71']['Family'][3][50]=[13.75,162]; 
-dataArr['A71']['Individual'][1][60]=[2.63,28.5]; 
-dataArr['A71']['Individual'][2][60]=[5,57]; 
-dataArr['A71']['Individual'][3][60]=[7.38,85.5]; 
-dataArr['A71']['Family'][1][60]=[5.25,60]; 
-dataArr['A71']['Family'][2][60]=[10.25,120]; 
-dataArr['A71']['Family'][3][60]=[15.25,180]; 
-dataArr['A71']['Individual'][1][65]=[3.25,36]; 
-dataArr['A71']['Individual'][2][65]=[6.25,72]; 
-dataArr['A71']['Individual'][3][65]=[9.25,108]; 
-dataArr['A71']['Family'][1][65]=[6.25,72]; 
-dataArr['A71']['Family'][2][65]=[12.25,144]; 
-dataArr['A71']['Family'][3][65]=[18.25,216]; 
-dataArr['A71']['Individual'][1][75]=[72,6.25];
-dataArr['A71']['Family'][1][75]=[144,12.25]; 	
+
+dataArr['A71']['Individual'][1][0]=[2.38,25.5]; 
+dataArr['A71']['Individual'][2][0]=[4.5,51];
+dataArr['A71']['Individual'][3][0]=[6.63,76.5]; 
+dataArr['A71']['Family'][1][0]=[4.75,54]; 
+dataArr['A71']['Family'][2][0]=[9.25,108];
+dataArr['A71']['Family'][3][0]=[13.75,162];
+
+dataArr['A71']['Individual'][1][1]=[2.63,28.5]; 
+dataArr['A71']['Individual'][2][1]=[5,57]; 
+dataArr['A71']['Individual'][3][1]=[7.38,85.5]; 
+dataArr['A71']['Family'][1][1]=[5.25,60]; 
+dataArr['A71']['Family'][2][1]=[10.25,120]; 
+dataArr['A71']['Family'][3][1]=[15.25,180]; 
+
+dataArr['A71']['Individual'][1][2]=[3.25,36]; 
+dataArr['A71']['Individual'][2][2]=[6.25,72]; 
+dataArr['A71']['Individual'][3][2]=[9.25,108]; 
+dataArr['A71']['Family'][1][2]=[6.25,72]; 
+dataArr['A71']['Family'][2][2]=[12.25,144]; 
+dataArr['A71']['Family'][3][2]=[18.25,216];
+
+dataArr['A71']['Individual'][1][3]=[72,6.25];
+dataArr['A71']['Family'][1][3]=[144,12.25]; 	
+
+dataArr['A71']['categories']=[50,60,65,75]
 
 dataArr['CHR'] = 7.5; 
 dataArr['ADB'].age = [49,59,69];
@@ -234,9 +240,9 @@ defArr['TYR'].duration = 1;
 
 defArr['WHL']=new productDefaults('WHL','ALP',1000,99999,7500,'WHOLE LIFE',80);
 defArr['WHL'].categories = [
-							{'lbl':'Regular','max':30999},
-							{'lbl':'Plus','max':49999},
-							{'lbl':'Executive','max':99999}
+							{'lbl':'Regular','max':30099,'min':1000},
+							{'lbl':'Plus','max':49999,'min':30100},
+							{'lbl':'Executive','max':99999,'min':50000}
 						   ];			
 
 
@@ -244,7 +250,7 @@ defArr['WHL'].categories = [
 
 defArr['A71']= new productDefaults('A71','ALH',-1,-1,200,'A7100',75);
 defArr['A71'].ftype = 'Family';
-defArr['A71'].ctype = 'Double';
+defArr['A71'].ctype = '2';
 
 
 /////////// TEMPLATE FOR CREATING A NEW HOUR POWER 
@@ -262,16 +268,16 @@ defArr['A71'].ctype = 'Double';
     "group": "",
     "phType": true,
     "phVal": 0,
-    "cVal": "30.00",
+    "cVal": 0,
     "hasChild":false, 
     "members": {  
 			'p':{
 		        "fname": "",
 		        "lname": "",
-		        "gender": "",
-		        "birthday": "",
+		        "gender": "M",
+		        "birthday": "March 25, 1985",
 		        "wage": "",
-		        "TU": "",
+		        "TU": "TU",
 		        "liW": "",
 		        "liOW": ""
 		    },
@@ -302,7 +308,8 @@ defArr['A71'].ctype = 'Double';
                 "owner": "p",
                 "added": true,
                 "ALHP":  defArr['WHL'].ALHP,
-                "COV": defArr['WHL'].defaultCov
+                "COV": defArr['WHL'].defaultCov,
+                "category":0
 
             },
             "pTYR": {
@@ -310,7 +317,8 @@ defArr['A71'].ctype = 'Double';
                 "owner": "p",
                 "added": true,
                 "ALHP":  defArr['TYR'].ALHP,
-                "DUR": 1
+                "DUR":1
+                
             },
             "pADB": {
                 "lbl": "ADB",
@@ -338,7 +346,8 @@ defArr['A71'].ctype = 'Double';
                 "owner": "sp",
                 "added": true,
                 "ALHP":  defArr['WHL'].ALHP,
-                "COV": defArr['WHL'].defaultCov
+                "COV": defArr['WHL'].defaultCov,
+                "category":0
             },
             "spTYR": {
                 "lbl": "TYR",
