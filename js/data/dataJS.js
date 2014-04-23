@@ -290,7 +290,6 @@ defArr['A71'].ctype = '2';
 		        "TU": "NTU",
 		        "liW": "",
 		        "liOW": "",
-		        "rider": ""
 		    }
 	    },
     "products": {

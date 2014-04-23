@@ -3,391 +3,7 @@
 <html lang="en" class="no-js">
 <head>
  <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
-
-<style>
-body {
-
-  background:
-    radial-gradient( rgba(255, 255, 255, 0.7),rgba(0, 0, 0, 0.12)),
-    url("css/imgs/bg.png");
-    box-shadow:0 0.05em 4em -0.2em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.5em -0.2em rgba(0, 0, 0, 0.3) inset;
-
-
-  font-size: 13px;
-  color:#666;
-  font-family: helvetica;
-}
-
-
-
-.slider-v1 {
-  position: relative;
-  display: block;
-  width: 5em;
-  height: 2em;
-  cursor: pointer;
-  border-radius: 1.5em;
-  transition: 350ms;
-  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #dddddd;
-  box-shadow: 0 0.07em 0.1em -0.1em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
-}
-
-.slider-v1::after {
-  position: absolute;
-  content: '';
-  width: 1.5em;
-  height: 1.5em;
-  top: 0.19em;
-  left: 0.40em;
-  border-radius: 50%;
-  transition: 250ms ease-in-out;
-  box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.9) inset, 0 0.2em 0.2em -0.12em rgba(0, 0, 0, 0.5);
-  background-image: -webkit-linear-gradient(100% 100% 90deg, #515151, #7a7a7a);
-  background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999999 100%);
-}
-
-.slider-v1::before {
-  position: absolute;
-  content: '';
-  width: 4.0em;
-  height: 1.3em;
-  top: 0.35em;
-  left: 0.5em;
-  border-radius: 0.75em;
-  transition: 250ms ease-in-out;
-  background: #fff;
-  box-shadow:  inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
-        inset 0 0em 0 0.8em rgba(81,114,153,1);
- -webkit-box-shadow:
-   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
-        inset 0 0em 0 0.8em rgba(81,114,153,1);
- 
-}
-
-
-input:checked + .slider-v1::before {
-  background-color:#fff;
-  box-shadow:
-   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset -0.5em -0.6em 0.02em 0 rgba(255,124,216,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.8),
-        inset 0 0em 0 0.8em rgba(255,124,216,1);
- 
-  -webkit-box-shadow:
-   inset 0em -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset -0.1em -0.6em 0.02em 0 rgba(255,124,216,0.8), 
-        inset 0em 0.6em 1em 0 rgba(255,255,255,0.8),
-        inset 0 0em 0 0.8em rgba(255,124,216,1);
-
-  border-top: 0.08em solid #F2B3CB;
-  border-bottom: 0.08em solid #F29DBD;
-}
-
-input:checked + .slider-v1::after {
-  left: 3.0em;
-}
-
-.slider-v2 {
-  position: relative;
-  display: block;
-  width: 5em;
-  height: 2em;
-  cursor: pointer;
-  border-radius: 1.5em;
-  transition: 350ms;
-  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #cccccc;
-  box-shadow: 0 0.07em 0.2em -0.4em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
-  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
-    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
-    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
-    
-    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,83%) 53%,
-    hsl(0,0%,80%)100%);
-}
-
-.slider-v2::after {
-  position: absolute;
-  content: '';
-  width: 1.5em;
-  height: 1.5em;
-  top: 0.18em;
-  left: 0.40em;
-  border-radius: 50%;
-  transition: 250ms ease-in-out;
-  box-shadow: 0 0.1em 0.15em -0.05em rgba(255, 255, 255, 0.7) inset, 0 0.2em 0.2em -0.12em rgba(0, 0, 0, 0.5);
-  background-image: -webkit-linear-gradient(100% 100% 90deg, #515151, #7a7a7a);
-  background-image: -webkit-radial-gradient(50% 0%, 8% 50%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(50% 100%, 12% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(0% 50%, 50% 7%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-radial-gradient(100% 50%, 50% 5%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, transparent 0%, transparent 3%, rgba(0, 0, 0, 0.1) 3.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 6%, rgba(255, 255, 255, 0.1) 7.5%), -webkit-repeating-radial-gradient(50% 50%, 100% 100%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 1.2%, rgba(255, 255, 255, 0.2) 2.2%), -webkit-radial-gradient(50% 50%, 200% 50%, #e6e6e6 5%, #d9d9d9 30%, #999999 100%);
-}
-
-.slider-v2::before {
-  position: absolute;
-  content: '';
-  width: 4.0em;
-  height: 1.3em;
-  top: 0.35em;
-  left: 0.5em;
-  border-radius: 0.75em;
-  transition: 250ms ease-in-out;
-  background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.1)), #c0c0c0;
-  box-shadow: 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.5) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
-}
-
-input:checked + .slider-v2::before {
-  box-shadow: 0 0.2em 0.2em -0.1em rgba(0, 0, 0, 1) inset, inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
-        inset 0 0 0 0.8em rgba(81,114,153,1);
- -webkit-box-shadow:
-   inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
-        inset 0 0 0 0.8em rgba(81,114,153,1);
-  border-top: 0.08em solid #97AFC9;
-  border-bottom: 0.08em solid #6B8BAD;
-}
-
-input:checked + .slider-v2::after {
-  left: 3.0em;
-}
-
-
-.ui.labeled.input
-{
-  width:200px;
-  height:1.8em;
-}
-.ui.labeled.input input
-{
-   width:12em;
-    height:2em;
-   padding:0.3em;
-}
-
-.ui.labeled.input.hasError
-{
-  width:200px;
-
-}
-
-.productSelectionTable .ui.input input
-{
-  width:8em;
-  height:1.8em;
-  padding:0.3em;
-}
-
-.ui.input .psInputBottom
-{
-  background-color:#f5f5f5; 
-}
-
-.ui.input .psInputTop
-{
-  top:0px;
-  left:0px;
-}
-
-
-
-.slider{
-  visibility: hidden;
-  position:absolute;
-  right:-500px;
-}
-.ui.labeled.input.hasError input
-{
-  color:#a34d55;
-  border: 1px solid #B35962;
-  opacity: 0.9;
- background: rgb(255,251,249); /* Old browsers */
-background: -moz-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%, rgba(255,226,226,1) 100%); /* FF3.6+ */
-background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(60%,rgba(255,251,249,1)), color-stop(100%,rgba(255,226,226,1))); /* Chrome,Safari4+ */
-background: -webkit-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* Chrome10+,Safari5.1+ */
-background: -o-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* Opera 12+ */
-background: -ms-radial-gradient(center, ellipse cover, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* IE10+ */
-background: radial-gradient(ellipse at center, rgba(255,251,249,1) 60%,rgba(255,226,226,1) 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fffbf9', endColorstr='#ffe2e2',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-.hasError
-{
-  color:#ccc;
-}
-
-.disabledUI.slider-v2 {
-opacity:0.3;
- background: linear-gradient(rgba(#000,0.2),rgba(#fff,0)),#bbb;
-}
-
-.disabledUI.slider-v2::before {
-  box-shadow:
-    0 0.08em 0.15em -0.1em rgba(#000,.5) inset,
-    0 0.05em 0.08em -0.01em rgba(#fff,.7),
-    4em 0 0 0 rgba(#444,.2) inset;
-}
-
-.disabledUI.slider-v2::after {
-
-  background: linear-gradient(#eee 10%,#bbb);
-}
-
-#test_outputs tbody td span
-{
-  display:block;
-  width:35px;
-  overflow: hidden;
-  font-size: 10px;
-}
-
-fieldset
-{
-  border:none;
-}
-
-.input-v4 { 
-    position: relative; 
-    display: inline-block;
-    overflow: hidden;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    border-radius:0.5em;
-    font-weight:bold;
-    color:#888;
-    text-shadow: 0 -0.05em 0 rgba(100,100,100,.1);    
-    background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #cccccc;
-  box-shadow: 0 0.07em 0.2em -0.4em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
-  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 40%),    
-    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,83%) 53%,
-    hsl(0,0%,80%)100%);  
-}
-
-.input-v4 input{display:none;}
-
-
-.input-v4 input:checked + label { 
-    color: #393939; 
-     box-shadow: 0 0.2em 0.2em -0.1em rgba(0, 0, 0, 1) inset, inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
-        inset 0 0 0 0.8em rgba(81,114,153,1);
- -webkit-box-shadow:
-   inset 0 -0.01em 1.4em 0 rgba(255,255,255,0.6),
-          inset 0 -0.8em 0.04em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 2em 0.5em rgba(255,255,255,0.4),
-        inset 0 0 0 2em rgba(81,114,153,1);
-        border:1px solid #aaa;
-    text-shadow: 0 0.05em 0 rgba(255,255,255,0.3),0.05em 0 0 rgba(255,255,255,.4); 
-        -webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-
-}
-
-.input-v4 label { 
-    cursor: pointer; 
-    display: inline-block; 
-    border-top: solid 0.1em transparent;
-    width: 6.5em; 
-    height: 1.6em; 
-    text-align: center; 
-    line-height: 1.5em;
-    transition: 250ms ease-in-out;
-    -webkit-touch-callout: none;
--webkit-user-select: none;
--khtml-user-select: none;
--moz-user-select: none;
--ms-user-select: none;
-user-select: none;
-}
-.input-v4 label:hover {   
-  color:#555;
-      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
-  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
-  border:0.05em solid #bbb;
-}
-
-.input-v4 input:disabled + label { 
-    color: #aaa; 
-      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
-  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
-  border:0.05em solid #bbb; 
-}
-
-
-
-.input-v5 { 
-    position: relative; 
-    display: inline-block;
-    overflow: hidden;
-    font-size: 0.8em;
-    text-transform: uppercase;
-    border-radius:0.3em;
-    font-weight:bold;
-    color:#888;
-    text-shadow: 0 -0.05em 0 rgba(100,100,100,.1);
-    
-    background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0)), #cccccc;
-  box-shadow: 0 0.07em 0.2em -0.4em rgba(0, 0, 0, 0.4) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7);
-  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 40%),    
-    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
-    hsl(0,0%,90%) 47%, 
-    hsl(0,0%,83%) 53%,
-    hsl(0,0%,80%)100%);  
-}
-
-.input-v5 input{display:none;}
-
-.input-v5 input:checked + label { 
-    color: #fff; 
-     box-shadow: 0 0.2em 0.2em -0.1em rgba(0, 0, 0, 1) inset, inset 0 -0.01em 1em 0 rgba(255,255,255,0.8),
-          inset 0 -0.6em 0.02em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 1em 0 rgba(255,255,255,0.6),
-        inset 0 0 0 0.8em rgba(81,114,153,1);
- -webkit-box-shadow:
-   inset 0 -0.05em 1.5em 0 rgba(255,255,255,0.8),
-          inset 0 -0.8em 0.04em 0 rgba(81,114,153,0.8), 
-        inset 0 0.6em 2em 0.5em rgba(255,255,255,0.4),
-        inset 0 0 0 2em rgba(81,114,153,1);
-   
-    text-shadow: 0 -0.05em 0 rgba(0,0,0,.4);    
-}
-
-.input-v5 label { 
-    font-family: helvetica;
-    cursor: pointer; 
-    display: inline-block; 
-    border-top: solid 0.1em transparent;
-    width: 9em; 
-    height: 2.6em; 
-    text-align: center; 
-    line-height: 2.5em;
-    transition: 250ms ease-in-out;
-}
-.input-v5 label:hover {   
-  color:#555;
-      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
-  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
-  border:0.05em solid #bbb;
-}
-
-.input-v5 input:disabled + label { 
-    color: #aaa; 
-      background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
-  box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
-  border:0.05em solid #bbb; 
-}
-</style>
+ <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
 
@@ -411,23 +27,23 @@ user-select: none;
                      <table>
                         <tr>
                             <td>Gender:</td>
-                            <td><input class="slider" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
+                            <td><input class="sliderInput" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
                                 <label class="slider-v1" for="pGenderBtn"></label>
                             </td>
                             <td>Tobacco user:</td>
                             <td>      
-                                <input class="slider" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TUCHK" />
-                                <label class="slider-v2" for="pTBtn"></label>
+                                <input class="sliderInput" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TUCHK" />
+                                <label class="slider sliderV2" for="pTBtn"></label>
                             </td>
                             <td>Child(ren) under 19:</td>
                             <td> 
-                                <input class="slider" type="checkbox" id="pCBtn" data-bind="checked: pm.hasChild" />
-                                <label class="slider-v2" for="pCBtn"></label>
+                                <input class="sliderInput" type="checkbox" id="pCBtn" data-bind="checked: pm.hasChild" />
+                                <label class="slider sliderV2" for="pCBtn"></label>
                             </td>
                             <td> Married: </td>
                             <td> 
-                                <input class="slider" type="checkbox" id="pSBtn" data-bind="checked: pm.hasSpouse" /> 
-                                <label class="slider-v2" for="pSBtn"></label>
+                                <input class="sliderInput" type="checkbox" id="pSBtn" data-bind="checked: pm.hasSpouse" /> 
+                                <label class="slider sliderV2" for="pSBtn"></label>
                             </td>
                         </tr>
                     </table>
@@ -444,13 +60,13 @@ user-select: none;
                     <table>
                         <tr>
                             <td>Gender:</td>
-                            <td><input class="slider" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
+                            <td><input class="sliderInput" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
                                 <label class="slider-v1" for="spGenderBtn"></label>
                             </td>
                             <td>Tobacco user:</td>
                             <td>      
-                                <input class="slider" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TUCHK" />
-                                <label class="slider-v2" for="spTBtn"></label>
+                                <input class="sliderInput" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TUCHK" />
+                                <label class="slider sliderV2" for="spTBtn"></label>
                             </td>
                         </tr>
                     </table>
@@ -589,52 +205,61 @@ user-select: none;
                   <th>Added</th>
 
               </tr>
-
-              <tr class="pSTr pA71 pHolder">
+<tr><td colspan="7">
+<div class="pSTr pA71 pHolder">
+<table>
+    <tr>
                 <td class="psBR" rowspan="2">
                     A71000
                 </td>
                 <td>
                     <div class="ui input">    
-                      <input type="text" placeHolder="$250,000.00" class="psInputBottom pA71" id="pA71_COV">
+                      <input type="text" class="pInputRO" pA71" id="pA71_COV">
                     </div>
                 </td>
                 <td></td>
                 <td>
                     <div class="ui input">    
-                      <input type="text" placeHolder="$250,000.00" class="psInputBottom pA71" id="pA71_YRL">
+                      <input type="text" class="pInputRO" pA71" id="pA71_YRL">
                     </div>
                 </td><td>
                     <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pA71" id="pA71_MBD">
+                        <input type="text" readonly class="pInputRO" pA71" id="pA71_MBD">
                     </div>
                 </td><td>
                       <div class="ui input">   
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pA71" id="pA71_WKL">
+                        <input type="text" readonly class="pInputRO" pA71" id="pA71_WKL">
                       </div>
-                <td rowspan="2">
-                    <input class="slider pgShow" type="checkbox" id="pA71Btn" data-bind="checked: pmP['pA71']['added']" />
-                    <label class="slider-v2" for="pA71Btn"></label>                 
-            </tr>
-            <tr class="pSTr pA71 pHolder">              
-                <td colspan="3" align="center">
-                   <div class="input-v4">
-    <input type="radio" name="ctype" id="A71ctype1" value='1' data-bind="checked: pmP['pA71']['ctype']"/> 
-    <label for="A71ctype1">single</label>
-    <input type="radio" name="ctype" id="A71ctype2" value='2' data-bind="checked: pmP['pA71']['ctype']"/>     
-    <label for="A71ctype2">double</label>
-    <input type="radio" name="ctype" id="A71ctype3" value='3' data-bind="checked: pmP['pA71']['ctype']"/>     
-    <label for="A71ctype3">triple</label>
-</div>
-<td colspan="2">
-<div class="input-v4">
-    <input type="radio" name="ftype" id="A71ftype1" value="Family" data-bind="checked: pmP['pA71']['ftype']"/> 
-    <label for="A71ftype1">Family</label>
-    <input type="radio" name="ftype" id="A71ftype2" value="Individual" data-bind="checked: pmP['pA71']['ftype']" />     
-    <label for="A71ftype2">Individual</label>
-</div>
                 </td>
-            </tr>  
+                <td rowspan="2">
+                    <input class="sliderInput pgShow" type="checkbox" id="pA71Btn" data-bind="checked: pmP['pA71']['added']" />
+                    <label class="slider sliderV2" for="pA71Btn"></label> 
+             </td>                
+          </tr>
+          <tr class="pSTr pA71 pHolder">              
+            <td colspan="3" align="center">
+               <div class="input-v4">
+                  <input type="radio" name="ctype" id="A71ctype1" value='1' data-bind="checked: pmP['pA71']['ctype']"/> 
+                  <label for="A71ctype1">single</label>
+                  <input type="radio" name="ctype" id="A71ctype2" value='2' data-bind="checked: pmP['pA71']['ctype']"/>     
+                  <label for="A71ctype2">double</label>
+                  <input type="radio" name="ctype" id="A71ctype3" value='3' data-bind="checked: pmP['pA71']['ctype']"/>     
+                  <label for="A71ctype3">triple</label>
+                </div>
+            </td>
+            <td colspan="2">
+              <div class="input-v4">
+                  <input type="radio" name="ftype" id="A71ftype1" value="Family" data-bind="checked: pmP['pA71']['ftype']"/> 
+                  <label for="A71ftype1">Family</label>
+                  <input type="radio" name="ftype" id="A71ftype2" value="Individual" data-bind="checked: pmP['pA71']['ftype']" />    
+                  <label for="A71ftype2">Individual</label>
+              </div>
+            </td>
+            </tr>
+            </table>
+            </div>
+          </td>
+          </tr>  
 
             <tr class="pSTr pWHL pHolder">
                   <td class="psBR">
@@ -644,30 +269,27 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pWHL" id="pWHL_COV">
+                        <input type="text" placeHolder="$99,999.99" class="pWHL" data-bind="value: pmP['pWHL']['setCOV']">       
+                        <input type="text" readonly class="pInputRO" pWHL" id="pWHL_COV">
                       </div>
                   </td>
-                  <td>
-                  </td>
+                  <td></td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_YRL">
+                        <input type="text" class="pWHL" data-bind="value: pmP['pWHL']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" pWHL" id="pWHL_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_MBD">
+                        <input type="text" class="pWHL" data-bind="value: pmP['pWHL']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" pWHL" id="pWHL_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pWHL" data-bind="value: pmP['pWHL']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pWHL" id="pWHL_WKL">
+                        <input type="text" class="pWHL" data-bind="value: pmP['pWHL']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" pWHL" id="pWHL_WKL">
                       </div>
-                  <td>
-                    <input class="slider pgShow" type="checkbox" id="pWHLBtn" data-bind="checked: pmP['pWHL']['added']" />
-                    <label class="slider-v2" for="pWHLBtn"></label>                 
+                  </td>               
               </tr>
 
 
@@ -678,8 +300,8 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pTYR" id="pTYR_COV">
+                        <input type="text" class="pTYR" data-bind="value: pmP['pTYR']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" pTYR" id="pTYR_COV">
                       </div>
                   </td>
                   <td>
@@ -688,22 +310,24 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_YRL">
+                        <input type="text" class="pTYR" data-bind="value: pmP['pTYR']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" pTYR" id="pTYR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_MBD">
+                        <input type="text" class="pTYR" data-bind="value: pmP['pTYR']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" pTYR" id="pTYR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pTYR" data-bind="value: pmP['pTYR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pTYR" id="pTYR_WKL">
+                        <input type="text" class="pTYR" data-bind="value: pmP['pTYR']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" pTYR" id="pTYR_WKL">
                       </div>
+                  </td>   
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="pTYRBtn" data-bind="checked: pmP['pTYR']['added']" />
-                    <label class="slider-v2" for="pTYRBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="pTYRBtn" data-bind="checked: pmP['pTYR']['added']" />
+                    <label class="slider sliderV2" for="pTYRBtn"></label>  
+                  </td>               
                 </tr>
 
 
@@ -715,30 +339,31 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pADB" id="pADB_COV">
+                        <input type="text" class="pADB" data-bind="value: pmP['pADB']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" pADB" id="pADB_COV">
                       </div>
                   </td>
-                  <td>
-                  </td>
+                  <td></td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_YRL">
+                        <input type="text" class="pADB" data-bind="value: pmP['pADB']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" pADB" id="pADB_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_MBD">
+                        <input type="text" class="pADB" data-bind="value: pmP['pADB']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" pADB" id="pADB_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pADB" data-bind="value: pmP['pADB']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pADB" id="pADB_WKL">
+                        <input type="text" class="pADB" data-bind="value: pmP['pADB']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" pADB" id="pADB_WKL">
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="pADBBtn" data-bind="checked: pmP['pADB']['added']" />
-                    <label class="slider-v2" for="pADBBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="pADBBtn" data-bind="checked: pmP['pADB']['added']" />
+                    <label class="slider sliderV2" for="pADBBtn"></label>  
+                  </td>                 
               </tr>
 
               <tr class="pSTr pCHR pHolder">
@@ -748,66 +373,70 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom pCHR" id="pCHR_COV">
+                        <input type="text" class="pCHR" data-bind="value: pmP['pCHR']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" pCHR" id="pCHR_COV">
                       </div>
                   </td>
-                  <td>
-                  </td>
+                  <td></td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_YRL">
+                        <input type="text" class="pCHR" data-bind="value: pmP['pCHR']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" pCHR" id="pCHR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_MBD">
+                        <input type="text" class="pCHR" data-bind="value: pmP['pCHR']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" pCHR" id="pCHR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="pCHR" data-bind="value: pmP['pCHR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom pCHR" id="pCHR_WKL">
+                        <input type="text" class="pCHR" data-bind="value: pmP['pCHR']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" pCHR" id="pCHR_WKL">
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="pCHRBtn" data-bind="checked: pmP['pCHR']['added']" />
-                    <label class="slider-v2" for="pCHRBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="pCHRBtn" data-bind="checked: pmP['pCHR']['added']" />
+                    <label class="slider sliderV2" for="pCHRBtn"></label> 
+                  </td>                  
               </tr>
-              <tr class="pSTr SPR">
+
+
+              <tr class="pSTr spSPR" data-bind="notAdded: { sliderV2: (!pmP['spSPR'].added())">
                   <td class="psBR">
                       Spouse Rider
                       <span data-bind="text:pmP['spSPR']['categoryName']"></span>
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom spSPR" id="spSPR_COV">
+                        <input type="text" class="spSPR" data-bind="value: pmP['spSPR']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" spSPR" id="spSPR_COV">
                       </div>
                   </td>
-                  <td>
-                  </td>
+                  <td></td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_YRL">
+                        <input type="text" class="spSPR" data-bind="value: pmP['spSPR']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" spSPR" id="spSPR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_MBD">
+                        <input type="text" class="spSPR" data-bind="value: pmP['spSPR']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" spSPR" id="spSPR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spSPR" data-bind="value: pmP['spSPR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spSPR" id="spSPR_WKL">
+                        <input type="text" class="spSPR" data-bind="value: pmP['spSPR']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" spSPR" id="spSPR_WKL">
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="spSPRBtn" data-bind="checked: pmP['spSPR']['added']" />
-                    <label class="slider-v2" for="spSPRBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="spSPRBtn" data-bind="checked: pmP['spSPR']['added']" />
+                    <label class="slider sliderV2" for="spSPRBtn"></label> 
+                  </td>                  
               </tr>
              
 
-            <tr class="pSTr spWHL pSpouse">
+            <tr class="pSTr spWHL pSpouse" data-bind="notAdded: { sliderV2: (!pmP['spSPR'].added())&&(!pmP['spWHL'].added())}">
                   <td class="psBR">
                       Whole Life
                       <br> <span data-bind="text: pmM.sp.fname"></span><br>
@@ -815,41 +444,42 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom WHL" id="spWHL_COV">
+                        <input type="text" class="WHL" data-bind="value: pmP['spWHL']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" WHL" id="spWHL_COV">
                       </div>
                   </td>
-                  <td>
-                  </td>
+                  <td></td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_YRL">
+                        <input type="text" class="WHL" data-bind="value: pmP['spWHL']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" WHL" id="spWHL_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_MBD">
+                        <input type="text" class="WHL" data-bind="value: pmP['spWHL']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" WHL" id="spWHL_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="WHL" data-bind="value: pmP['spWHL']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom WHL" id="spWHL_WKL">
+                        <input type="text" class="WHL" data-bind="value: pmP['spWHL']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" WHL" id="spWHL_WKL">
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="spWHLBtn" data-bind="checked: pmP['spWHL']['added']" />
-                    <label class="slider-v2" for="spWHLBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="spWHLBtn" data-bind="checked: pmP['spWHL']['added']" />
+                    <label class="slider" for="spWHLBtn" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>                 
+                </td>
             </tr>
 
-            <tr class="pSTr spTYR pHolder">
+            <tr class="pSTr spTYR pHolder" data-bind="notAdded: { sliderV2: (!pmP['spSPR'].added())&&(!pmP['spTYR'].added())}">
                   <td class="psBR">
                       10-Year 
                       <br> <span data-bind="text: pmM.p.fname"></span>
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom spTYR" id="spTYR_COV">
+                        <input type="text" class="spTYR" data-bind="value: pmP['spTYR']['setCOV']">       
+                        <input type="text" placeHolder="$999,999.99" readonly class="pInputRO" spTYR" id="spTYR_COV">
                       </div>
                   </td>
                   <td>
@@ -858,56 +488,70 @@ user-select: none;
                   </td>
                   <td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_YRL">
+                        <input type="text" class="spTYR" data-bind="value: pmP['spTYR']['setYRL']">       
+                        <input type="text" readonly class="pInputRO" spTYR" id="spTYR_YRL">
                       </div>
                  </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_MBD">
+                        <input type="text" class="spTYR" data-bind="value: pmP['spTYR']['setMBD']">       
+                        <input type="text" readonly class="pInputRO" spTYR" id="spTYR_MBD">
                       </div>
                   </td><td>
                       <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="spTYR" data-bind="value: pmP['spTYR']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom spTYR" id="spTYR_WKL">
+                        <input type="text" class="spTYR" data-bind="value: pmP['spTYR']['setWKL']">       
+                        <input type="text" readonly class="pInputRO" spTYR" id="spTYR_WKL">
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="spTYRBtn" data-bind="checked: pmP['spTYR']['added']" />
-                    <label class="slider-v2" for="spTYRBtn"></label>                 
+                    <input class="sliderInput pgShow" type="checkbox" id="spTYRBtn" data-bind="checked: pmP['spTYR']['added']" />
+                    <label class="slider" for="spTYRBtn" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>
+                  </td>                   
             </tr>
 
-            <tr class="pSTr spADB pSpouse">
-                  <td class="psBR">
-                      ADB
-                      <br> <span data-bind="text: pmM.sp.fname"></span><br>
-                      <span data-bind="text:pmP['spADB']['categoryName']"></span>
+            <tr class="pSTr"><td colspan="7">
+<div class="phProduct" data-bind="css: { productAdded:(!pmP['spSPR'].added())&&(pmP['spADB'].added()), productAllowed: pmP['spADB'].allowed()}">
+            <table>
+            <tr>
+                  <td>
+                  <div class="productTitle">
+                      <span class="pName">ADB</span>
+                      <span class="pOwner" data-bind="text: pmM.sp.fname"></span>
+                      <span class="pCategory" data-bind="text:pmP['spADB']['categoryName']"></span>
+                  </div>
                   </td>
                   <td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setCOV']">       
-                        <input type="text" placeHolder="$999,999.99" readonly class="psInputBottom ADB" id="spADB_COV">
+                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}">                   
+                        <input type="text" readonly class="pRO" id="spADB_COV">
+                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setCOV']"> 
                       </div>
                   </td>
+                  <td></td>
                   <td>
-                  </td>
-                  <td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setYRL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_YRL">
+                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_YRL'].hasError()}">                               
+                        <input type="text" readonly class="pRO" id="spADB_YRL">
+                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setYRL']">
                       </div>
                  </td><td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setMBD']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_MBD">
+                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_MBD'].hasError()}">                  
+                        <input type="text" readonly class="pRO" id="spADB_MBD">
+                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setMBD']">  
                       </div>
                   </td><td>
-                      <div class="ui input">
-                        <input type="text" placeHolder="$250,000.00" class="ADB" data-bind="value: pmP['spADB']['setWKL']">       
-                        <input type="text" placeHolder="$250,000.00" readonly class="psInputBottom ADB" id="spADB_WKL">
+                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_WKL'].hasError()}">
+                        <input type="text" readonly class="pRO" id="spADB_WKL">
+                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setWKL']">  
                       </div>
+                  </td>    
                   <td>
-                    <input class="slider pgShow" type="checkbox" id="spADBBtn" data-bind="checked: pmP['spADB']['added']" />
-                    <label class="slider-v2" for="spADBBtn"></label>                 
+                  <div class="productAdd">
+                    <input class="sliderInput" type="checkbox" id="add_spADB" data-bind="checked: pmP['spADB']['added']" />
+                    <label class="slider" for="add_spADB" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label> 
+                  </div> 
+                  </td>                 
+              </tr>
+              </table>
+              </div>
+              </td>
               </tr>
           </tbody>
       </table>
@@ -935,6 +579,15 @@ user-select: none;
     <td><span data-bind="text: pmP['pA71']['ctype']"></span></td>
     <td><span data-bind="text: pmP['pA71']['COV']"></span></td>
     <td><span data-bind="text: pmP['pA71']['YRL']"></span></td>
+    <td><span data-bind="text: pmP['pA71']['MBD']"></span></td>
+    <td><span data-bind="text: pmP['pA71']['WKL']"></span></td>
+    <td><span data-bind="text: pmP['pA71']['allowed']"></span></td>
+    <td><span data-bind="text: pmP['pA71']['added']"></span></td></tr>
+
+    <tr><td>Double and Triple Allowed</td>
+    <td><span data-bind="text: pmP['pA71']['allowDouble']"></span></td>
+    <td>Family Allowed:</td>
+    <td><span data-bind="text: pmP['pA71']['allowFamily']"></span></td>
     <td><span data-bind="text: pmP['pA71']['MBD']"></span></td>
     <td><span data-bind="text: pmP['pA71']['WKL']"></span></td>
     <td><span data-bind="text: pmP['pA71']['allowed']"></span></td>
