@@ -15,11 +15,14 @@ Hour Power Presentation Concept
 										- product defaults
 									- group files
 									- group colorscheme/templates
+				-> pick an old policy/referral/new presentation
+				-> get group information
+				-> show data
 
 ####Backend:
 	- Framework: Durandal.js
 	- Serverside: node.js
-	- Mobile/Touch: PhoneGap-Durndal.js
+	- Mobile/Touch: PhoneGap-Durandal.js
 	- Desktop: Node-Webkit-Durandal.js
 	- Online Database: MongoDB
 	- Offline Database: HTML5 local storage
@@ -32,52 +35,53 @@ Hour Power Presentation Concept
 
 TODO
 ====
--~adjust WHL rate to optimal~
--adjust WHL COV?
--add WHL module - or small message for optimal rate choices?
+- ~~adjust WHL rate to optimal~~
+- adjust WHL COV?
+- add WHL module 
+- or small message for optimal rate choices?
 
--~~check A71 reqs~~
--~~check SPR reqs~~
--~~check CHR reqs~~
--check TYR reqs
--check ADB reqs
+- ~~check A71 reqs~~
+- ~~check SPR reqs~~
+- ~~check CHR reqs~~
+- check TYR reqs
+- check ADB reqs
 
--~~SPR or spWHL: Allow only One~~
+- ~~SPR or spWHL: Allow only One~~
 
--~allowed css~
--~allowed transitions~
+- ~~allowed css~~
+- ~~allowed transitions~~
 
--~added css~
--~added transitions~
+- ~~added css~~
+- ~~added transitions~~
 
--add error css
--add terminal error module
+- add error css
+- add terminal error module
 
--add ADB section
--add ALH section
--add total amount section
--add total diffs section
+- add ADB section
+- add ALH section
+- add total amount section
+- add total diffs section
 
--add power hower sheet calcs
--add power hower sheet formatting
+- add power hower sheet calcs
+- add power hower sheet formatting
 
--input css
--input:checked css (go with flat UI);
--input:radio css
--input:select css
--page transitions
--page transition buttons
--page transition range bar
+- input css
+- input:checked css (go with flatter UI);
+- input:radio css
+- input:select css
+- page transitions
+- page transition buttons
+- page transition range bar
 
--add autotemplating
--add canvas zooms
--add text 2 canvas
--add canvas signatures
--add canvas2pdf and save local or email.  
+- add autotemplating
+- add canvas zooms
+- add text 2 canvas
+- add canvas signatures
+- add canvas2pdf and save local or email.  
 
--add customized background options
--add customized color options
--add new questions
+- add customized background options
+- add customized color options
+- add new questions
 
 
 
