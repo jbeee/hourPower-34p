@@ -228,29 +228,23 @@ function productDefaults(lbl,als,min,max,def,fullname,ma)
 	this.defaultCov = def;
 	this.productName = fullname;
 	this.maxAge = ma;	
-	this.added = true;
 }
 
 defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,75000,'SPOUSE RIDER',55);
 defArr['ADB']=new productDefaults('ADB','ALP',1000,200000,10000,'ADB',69);		
 defArr['CHR']=new productDefaults('CHR','ALP',1000,10000,10000,'CHILD RIDER',80);
-
 defArr['TYR']=new productDefaults('TYR','ALP',1000,99999999999,1000,'10 YRC',60);
 defArr['TYR'].duration = 1;
-
 defArr['WHL']=new productDefaults('WHL','ALP',1000,99999,7500,'WHOLE LIFE',80);
 defArr['WHL'].categories = [
 							{'lbl':'Regular','max':30099,'min':1000},
 							{'lbl':'Plus','max':49999,'min':30100},
 							{'lbl':'Executive','max':99999,'min':50000}
-						   ];			
-
-
-
-
+						   ];	
 defArr['A71']= new productDefaults('A71','ALH',-1,-1,200,'A7100',75);
 defArr['A71'].ftype = 'Family';
 defArr['A71'].ctype = '2';
+defArr['A71'].maxDoubleAge = 65;
 
 
 /////////// TEMPLATE FOR CREATING A NEW HOUR POWER 
@@ -275,7 +269,7 @@ defArr['A71'].ctype = '2';
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
-		        "birthday": "",
+		        "birthday": "22",
 		        "wage": "",
 		        "TU": "NTU",
 		        "liW": "",
@@ -285,7 +279,7 @@ defArr['A71'].ctype = '2';
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
-		        "birthday": "",
+		        "birthday": "45",
 		        "wage": "",
 		        "TU": "NTU",
 		        "liW": "",
@@ -297,7 +291,6 @@ defArr['A71'].ctype = '2';
                 "lbl": "A71",
                 "owner": "p",
                 "added": true,
-                "ALHP": defArr['A71'].ALHP,
                 "ctype": defArr['A71'].ctype,
                 "ftype": defArr['A71'].ftype,
                 "COV": defArr['A71'].defaultCov
@@ -306,8 +299,7 @@ defArr['A71'].ctype = '2';
                 "lbl": "WHL",
                 "owner": "p",
                 "added": true,
-                "ALHP":  defArr['WHL'].ALHP,
-                "COV": defArr['WHL'].defaultCov,
+                "COV": 3000, //defArr['WHL'].defaultCov,
                 "category":0
 
             },
@@ -315,7 +307,6 @@ defArr['A71'].ctype = '2';
                 "lbl": "TYR",
                 "owner": "p",
                 "added": true,
-                "ALHP":  defArr['TYR'].ALHP,
                 "COV": defArr['TYR'].defaultCov,
                 "DUR": defArr['TYR'].duration
                 
@@ -324,28 +315,24 @@ defArr['A71'].ctype = '2';
                 "lbl": "ADB",
                 "owner": "p",
                 "added": true,
-                "ALHP":  defArr['ADB'].ALHP,
                 "COV": defArr['ADB'].defaultCov
             },
             "pCHR": {
                 "lbl": "CHR",
                 "owner": "p",
                 "added": true,
-                "ALHP":  defArr['ADB'].ALHP,
                 "COV": defArr['ADB'].defaultCov
             },
             "spSPR": {
                 "lbl": "SPR",
                 "owner": "sp",
                 "added": false,
-                "ALHP":  defArr['SPR'].ALHP,
                 "COV": defArr['SPR'].defaultCov
             },
             "spWHL": {
                 "lbl": "WHL",
                 "owner": "sp",
                 "added": true,
-                "ALHP":  defArr['WHL'].ALHP,
                 "COV": defArr['WHL'].defaultCov,
                 "category":0
             },
@@ -353,7 +340,6 @@ defArr['A71'].ctype = '2';
                 "lbl": "TYR",
                 "owner": "sp",
                 "added": true,
-                "ALHP":  defArr['TYR'].ALHP,
                 "COV": defArr['TYR'].defaultCov,
                 "DUR": defArr['TYR'].duration
             },
@@ -361,7 +347,6 @@ defArr['A71'].ctype = '2';
                 "lbl": "ADB",
                 "owner": "sp",
                 "added": true,
-                "ALHP":  defArr['ADB'].ALHP,
                 "COV": defArr['ADB'].defaultCov
             }
         }    

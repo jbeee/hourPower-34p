@@ -32,7 +32,7 @@ ko.unapplyBindings = function ($node, remove) {
             if(!cc.Arr[who].hasOwnProperty(what)){cc.Arr[who][what] = 0;}
             cc.t++;
             cc.Arr[who][what]++;
-            console.log('computing '+what+' CALLED by '+who+' ---------------------------------------------------------------------------- total:'+cc.t+'------------------------------------------------------&---'+ cc.Arr[who][what]) 
+            console.log('computing '+what+' CALLED by '+who+'--------- total:'+cc.t+'-------&---'+ cc.Arr[who][what]) 
           }
         }
 
@@ -348,7 +348,7 @@ getPowerHour.policyProductModelKO = function(pId)
                if(newCOV[0])
                {
                 console.log('write COV' + newCOV[1]);
-                if(ppKO.lbl=='WHL'){ppKO.bestCategory('COV',newCOV[1])};
+                if(ppKO.lbl=='WHL'){if(!ppKO.bestCategory('COV',newCOV[1])){return;}};
                 calculateVals('COV',newCOV[1],'writeCOV');
                }
                else
@@ -435,20 +435,24 @@ getPowerHour.policyProductModelKO = function(pId)
         pmE.initError('DUR',pId);
 
 
+        ppKO.setTYRVals = ko.computed(function(){
+          if(((pmM[ppKO.owner].checkMinimumReqs()&14)!=14)||(pmM[ppKO.owner].age() > defArr['TYR'].maxAge))
+           {
+            ppKO.allowed(false);
+            return;
+           } ///1110, has age, gender, tu & checks if within valid age range
+            ppKO.allowed(true);
 
-        ppKO.calcRatio = ko.computed(function(){
-          if((pmM[ppKO.owner].checkMinimumReqs()&14)==14) ///1110, has age,gender,tu 
-            {            
-               ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]);
-            }
-        }, ppKO);
+            pmM[ppKO.owner].TUCHK();
+            pmM[ppKO.owner].genderCHK();
+            pmM[ppKO.owner].birthday();        
+            ppKO.ratio(dataArr['TYR'][pmM[ppKO.owner].gender()][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]);       
+           }, ppKO);
 
         ppKO.watchWages = ko.computed(function(){
-              if((pmM[ppKO.owner].checkMinimumReqs()&1)==1) ////has wage
-              {
-                var newCOV = ppKO.ogDUR*pmM[ppKO.owner].wage()*1920;
-                calculateVals('COV',newCOV,'watchwages');                
-              }                          
+              if((pmM[ppKO.owner].checkMinimumReqs()&1)!=1){return;} ///0001 checks if wage is set                
+              var newCOV = ppKO.ogDUR*pmM[ppKO.owner].wage()*1920;
+                calculateVals('COV',newCOV,'watchwages');                       
             }, ppKO);         
 
         ppKO.setDur = ko.computed(function(){ 
@@ -516,12 +520,12 @@ getPowerHour.policyProductModelKO = function(pId)
         ppKO.allowDouble = ko.computed({
             read:function(){  
               if(!ppKO.allowed()){return;};          
-              if(pmM.p.age()>65)
+              if(pmM.p.age()>defArr['A71'].maxDoubleAge)
                 {              
                   ppKO.ctype('1');
                   return false;
                 }
-              ppKO.ctype('2');
+              defArr['A71'].ctype;
               return true;
              },owner:ppKO});
 
@@ -573,8 +577,8 @@ getPowerHour.policyProductModelKO = function(pId)
       ///// generate Whole life values for each category based on age/tabacco-use/gender
       ppKO.calcRateVals = ko.computed(function(){    
        
-        if((pmM[ppKO.owner].checkMinimumReqs()&14)!=14){return;} ///1110,has age,gender,tabacco-use
-         
+        if((pmM[ppKO.owner].checkMinimumReqs()&14)!=14){ppKO.allowed(false); return;} ///1110,has age,gender,tabacco-use
+        ppKO.allowed(false);          
         pmM[ppKO.owner].TUCHK();
         pmM[ppKO.owner].genderCHK();
         pmM[ppKO.owner].birthday();
@@ -598,25 +602,47 @@ getPowerHour.policyProductModelKO = function(pId)
       ppKO.bestCategory = function(which,val)
       {
         var catsTotal = ppKO.WHLvals.length -1;
-        // if(which=='COV'){which = 'YRL'; val=(val*1000)/ppKO.WHLvals[ppKO.category()].ratio}
+        var isCOV = false;
+        var newCat;
+        var originalVal = val;
+
+        if(which == 'COV')
+         {
+            isCOV = true;
+            which = 'YRL'; 
+            val=(val*ppKO.WHLvals[ppKO.category()].ratio)/1000
+         }
+
          for(var i=0;i<=catsTotal;i++)
           {
             if((val >= ppKO.WHLvals[i][which]))   
             { 
               if(((i<catsTotal)&&(val<=ppKO.WHLvals[i+1][which]))||(i==catsTotal))
-              {
-                
+              {                
                 ppKO.categoryName(defArr['WHL']['categories'][i].lbl);
-                ppKO.category(i);                                             
+                newCat = i;                                            
               }
               else if(i==catsTotal)
               {
                 ppKO.categoryName(defArr['WHL']['categories'][i].lbl);
-                ppKO.category(i);
-
+                newCat = i;
               }                         
             }
-           }                     
+           }
+       
+         
+         if((isCOV)&&(newCat!=ppKO.category()))  /// if category changes, update
+          { 
+            console.log('newCatagory: '+newCat); /// add message here!
+            ppKO.category(newCat); 
+            ppKO.setYRL(val);
+            return false;
+          } 
+        else
+        {
+          ppKO.category(newCat);
+          return true;
+        }                      
        }            
 
     }
@@ -640,23 +666,16 @@ getPowerHour.policyProductModelKO = function(pId)
     
     ppKO.SPRFXNS = function()
     {
-       ppKO.watchSpouseVals = ko.computed(function(){
-         if((pmM[ppKO.owner].checkMinimumReqs()&12)!=12){ppKO.allowed(false); return;} ///spouse has age & TU vals 1100 
-         if(pmP['spWHL'].added()||pmP['spTYR'].added()||pmP['spADB'].added())
-         {
-            ppKO.added(false);
+        ppKO.setRate = ko.computed(function(){
+            if(((pmM['sp'].checkMinimumReqs()&12)!=12)||(pmM['sp'].age()>defArr['SPR'].maxAge)) ///spouse has age & TU and under max
+              {
+                ppKO.allowed(false);
+                return;
+              } 
+            ppKO.ratio(dataArr['SPR'][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]); 
+            ppKO.allowed(true);
 
-         }
-         else if(!pmP['spWHL'].added()&&!pmP['spTYR'].added()&&!pmP['spADB'].added())
-         {
-            ppKO.added(true);
-         }
-       }, ppKO);
-
-       ppKO.setRate = ko.computed(function(){           
-            ppKO.ratio(dataArr['SPR'][pmM[ppKO.owner].TU()][pmM[ppKO.owner].age()]);             
          }, ppKO); 
-
     }
 
     ppKO.CHRFXNS = function()
@@ -691,11 +710,6 @@ getPowerHour.policyProductModelKO = function(pId)
             } 
 
   }
-
-
-
-
-
 
 getPowerHour.policyModelKO = function() 
   {
@@ -807,7 +821,34 @@ getPowerHour.policyModelKO = function()
                     pmP['pCHR'].allowed(true);
                   }
             }, pmKO); 
-          }
+
+       var lastSP = [true,true,true];
+
+       pmKO.watchSpouseVals = ko.computed(function(){
+             if(pmP['spWHL'].added()||pmP['spTYR'].added()||pmP['spADB'].added())
+             {
+                pmP['spSPR'].added(false);
+             }
+             else if(!pmP['spWHL'].added()&&!pmP['spTYR'].added()&&!pmP['spADB'].added())
+             {
+                pmP['spSPR'].added(true);
+             }
+           }, pmKO);
+
+       pmKO.watchSpouseSPR = ko.computed(function(){
+            if(pmP['spSPR'].added())
+             {
+                lastSP = [pmP['spWHL'].added(),pmP['spTYR'].added(),pmP['spADB'].added()]
+             }
+             else
+             {
+               pmP['spWHL'].added(lastSP[0]);
+               pmP['spTYR'].added(lastSP[1]);
+               pmP['spADB'].added(lastSP[2]);
+             }
+         },pmKO);
+
+      }
 
 
       //If new polciy, update/format data appropriately

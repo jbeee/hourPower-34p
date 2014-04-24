@@ -7,10 +7,6 @@
 </head>
 <body>
 
-
-
-<div id="edit2">
-    <fieldset>
         <table>
             <tr>
                 <td>
@@ -190,10 +186,8 @@
         </table>
     
 
-<table><tr><td valign="top">
 
-
-      <table summary="Altig Hour Power Benefit Selection" class="productSelectionTable" border="1">
+<table summary="Altig Hour Power Benefit Selection" class="productSelectionTable" border="1">
         <tbody>
               <tr>
                   <th width="100px">Benefit</th>
@@ -507,61 +501,58 @@
                     <label class="slider" for="spTYRBtn" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>
                   </td>                   
             </tr>
-
-            <tr class="pSTr"><td colspan="7">
-<div class="phProduct" data-bind="css: { productAdded:(!pmP['spSPR'].added())&&(pmP['spADB'].added()), productAllowed: pmP['spADB'].allowed()}">
-            <table>
-            <tr>
-                  <td>
-                  <div class="productTitle">
-                      <span class="pName">ADB</span>
-                      <span class="pOwner" data-bind="text: pmM.sp.fname"></span>
-                      <span class="pCategory" data-bind="text:pmP['spADB']['categoryName']"></span>
-                  </div>
-                  </td>
-                  <td>
-                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}">                   
-                        <input type="text" readonly class="pRO" id="spADB_COV">
-                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setCOV']"> 
-                      </div>
-                  </td>
-                  <td></td>
-                  <td>
-                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_YRL'].hasError()}">                               
-                        <input type="text" readonly class="pRO" id="spADB_YRL">
-                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setYRL']">
-                      </div>
-                 </td><td>
-                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_MBD'].hasError()}">                  
-                        <input type="text" readonly class="pRO" id="spADB_MBD">
-                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setMBD']">  
-                      </div>
-                  </td><td>
-                      <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_WKL'].hasError()}">
-                        <input type="text" readonly class="pRO" id="spADB_WKL">
-                        <input type="text" class="pKO" data-bind="value: pmP['spADB']['setWKL']">  
-                      </div>
-                  </td>    
-                  <td>
-                  <div class="productAdd">
-                    <input class="sliderInput" type="checkbox" id="add_spADB" data-bind="checked: pmP['spADB']['added']" />
-                    <label class="slider" for="add_spADB" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label> 
-                  </div> 
-                  </td>                 
-              </tr>
-              </table>
-              </div>
-              </td>
-              </tr>
           </tbody>
       </table>
 
+<div class="phProduct" data-bind="css: { productAdded:(!pmP['spSPR'].added())&&(pmP['spADB'].added()), productAllowed: pmP['spADB'].allowed()}">
+
+                <div class="productTitle">
+                    <span class="pName">ADB</span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span>
+                    <span class="pCategory" data-bind="text:pmP['spADB']['categoryName']"></span>
+                </div>
+
+
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}">             
+                  <input type="text" readonly class="pRO" id="spADB_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput isTYR"></div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spADB_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spADB_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spADB_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setWKL']">  
+                </div>
+
+
+                <div class="productAdd">
+                  <input class="sliderInput" type="checkbox" id="add_spADB" data-bind="checked: pmP['spADB']['added']" />
+                  <label class="slider" for="add_spADB" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label> 
+                </div> 
+
+            </div>
 
 
 
 
-</td>
-<td>
+
+
+
 
 <table cellpadding="10px" id="test_outputs">
                 <tr>
@@ -675,10 +666,10 @@
 
 </table>
 
-</td></tr></table>
-</fieldset>
 
-</div>
+
+
+
   <script src="js/libs/deps_ko.js"> </script> 
   <script src="css/sui/javascript/semantic.js"> </script>
   <script src="js/data/dataJS.js"> </script>

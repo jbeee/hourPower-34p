@@ -12,9 +12,9 @@ function validFloat(num,emptyOk)
         s = s.replace(/[^\d.]/g, '');       
 	    if((s == '')||(!isDefined(num,-1))){ 
             if(emptyOk){ return [true,0,0]}
-                else{
-            return [false,' is required to continue. This field cannot be left blank'];
-            }  
+            else{
+                 return [false,' is required to continue. This field cannot be left blank'];
+                }  
         }
 
 		var newNum = parseFloat(s);	
@@ -31,7 +31,7 @@ function validFloat(num,emptyOk)
     }
     catch(e)
     {
-    	console.log('Error parsing num: '+ e['message'])
+    	//console.log('Error parsing num: '+ e['message'])
     	return [false, ' could not be evaluated. Invalid value:<em> '+num+' </em> entered. '];    	
     }   	
 }
@@ -120,8 +120,7 @@ function isDefined(val,source)
                      if(source != -1)
                         {
                             console.log(source + ': undefined value');
-                        }
-                        console.log(val);
+                        }                       
                      return false; 
                 } 
             else
@@ -187,7 +186,7 @@ function countMe(which,owner,val)
 {
     if(isNaN(val)){return;}
     var myId = owner+'_'+which;
-    console.log(myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val)
+    //console.log(myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val)
     var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,2,0.8);
     countDiff.start();
     pmE.removeError(which,owner,val);

@@ -1,14 +1,22 @@
+html
+{
+  width:100%;
+  height:100%;
+}
+
 body {
 
   background:
     radial-gradient( rgba(255, 255, 255, 0.7),rgba(0, 0, 0, 0.12)),
-    url("css/imgs/bg.png");
+    url("imgs/bg.png");
     box-shadow:0 0.05em 4em -0.2em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.5em -0.2em rgba(0, 0, 0, 0.3) inset;
 
 
   font-size: 13px;
   color:#666;
   font-family: helvetica;
+  width:100%;
+  height:100%;
 }
 
 
@@ -375,37 +383,57 @@ user-select: none;
 
 .phProduct
 {
-  height:0;
+  height:2em;
   transition: 250ms ease-in-out;
   overflow:hidden;
   position:relative;
   width:100%;
+  overflow: hidden;
+}
+.phProduct div
+{
+  float:left;
 }
 
+.productTitle
+{
+  width:11%;
+}
 .productInput
 {
   opacity:0.5;
   position:relative;
   overflow:hidden;
+  width:14%;
+  margin-right:0.4%;
+  height:2.5em;
+}
+
+.productInput.isTYR
+{
+  width:8%;
+  min-width: 80px;
 }
 
 .productInput input
 {
-   width:12em;
+   width:90%;   
    height:2em;
-   padding:0.3em;
-   border:1px solid #ccc;
+   padding-left:1em;
+   border:0.05em solid #aaa;
    color:#444;
    background-color:#fff;
    font-size:1em;
-   top:0px;   
-}
+   top:0px; 
+   left:0px; 
+   border-radius: 0.7em;
+ }
 
 .productInput .pKO
 {
   position:absolute;
   opacity:0;
-  top:-200px;
+  top:-2000px;
   left:0px;
 }
 
@@ -413,24 +441,36 @@ user-select: none;
 {
   opacity:1;
   top:0px;
+  left:0px;
+  outline: none;
 }
 
+.productAdd
+{
+  width:7%;
+  padding-left:1em;
+}
 .productInput.hasError .pKO
 {
   position:absolute;
   display:block;
   opacity:1;
-  border:1px solid red; 
-  top:0px; 
+  border:0.05em solid red; 
+  top:0px;
+  left:0px; 
 }
 
+.clearFixProducts
+{
+
+}
 .productInput .pRO
 {
-  background-color:#f7f7f7;
+  background-color:#f2f2f2;
   color:#777;
   position:relative;
-}
 
+}
 
 .phProduct.productAdded .productInput
 {
@@ -441,10 +481,27 @@ user-select: none;
 {
   position:absolute;
   top:0px;
+  left:0px;
 }
 
 .phProduct.productAllowed
 {
-  height:50px;
+  height:3.3em;
 }
 
+@media screen and (orientation:portrait){
+    .productTitle{
+      width:80%; 
+    }
+    .productTitle:after {
+  content: "";
+  display: table;
+  clear: both;
+  width:100%;
+}
+
+    .productAdded{
+      position:absolute;
+      right:7%;
+    }
+}
