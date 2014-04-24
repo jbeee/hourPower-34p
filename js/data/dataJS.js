@@ -230,7 +230,7 @@ function productDefaults(lbl,als,min,max,def,fullname,ma)
 	this.maxAge = ma;	
 }
 
-defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,75000,'SPOUSE RIDER',55);
+defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,7500,'SPOUSE RIDER',55);
 defArr['ADB']=new productDefaults('ADB','ALP',1000,200000,10000,'ADB',69);		
 defArr['CHR']=new productDefaults('CHR','ALP',1000,10000,10000,'CHILD RIDER',80);
 defArr['TYR']=new productDefaults('TYR','ALP',1000,99999999999,1000,'10 YRC',60);
@@ -241,7 +241,7 @@ defArr['WHL'].categories = [
 							{'lbl':'Plus','max':49999,'min':30100},
 							{'lbl':'Executive','max':99999,'min':50000}
 						   ];	
-defArr['A71']= new productDefaults('A71','ALH',-1,-1,200,'A7100',75);
+defArr['A71']= new productDefaults('A71','ALH',-1,-1,100,'A7100',75);
 defArr['A71'].ftype = 'Family';
 defArr['A71'].ctype = '2';
 defArr['A71'].maxDoubleAge = 65;
@@ -279,7 +279,7 @@ defArr['A71'].maxDoubleAge = 65;
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
-		        "birthday": "45",
+		        "birthday": "",
 		        "wage": "",
 		        "TU": "NTU",
 		        "liW": "",

@@ -383,12 +383,17 @@ user-select: none;
 
 .phProduct
 {
-  height:2em;
+  height:0;
   transition: 250ms ease-in-out;
   overflow:hidden;
   position:relative;
   width:100%;
   overflow: hidden;
+}
+
+.phProduct.allowed
+{
+  height:2em;
 }
 .phProduct div
 {
@@ -450,6 +455,7 @@ user-select: none;
   width:7%;
   padding-left:1em;
 }
+
 .productInput.hasError .pKO
 {
   position:absolute;
@@ -462,7 +468,10 @@ user-select: none;
 
 .clearFixProducts
 {
-
+    content: "";
+    display: table;
+    clear: both;
+    width:100%;
 }
 .productInput .pRO
 {
@@ -494,10 +503,10 @@ user-select: none;
       width:80%; 
     }
     .productTitle:after {
-  content: "";
-  display: table;
-  clear: both;
-  width:100%;
+    content: "";
+    display: table;
+    clear: both;
+    width:100%;
 }
 
     .productAdded{

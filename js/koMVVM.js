@@ -822,29 +822,34 @@ getPowerHour.policyModelKO = function()
                   }
             }, pmKO); 
 
-       var lastSP = [true,true,true];
-
-       pmKO.watchSpouseVals = ko.computed(function(){
-             if(pmP['spWHL'].added()||pmP['spTYR'].added()||pmP['spADB'].added())
-             {
-                pmP['spSPR'].added(false);
-             }
-             else if(!pmP['spWHL'].added()&&!pmP['spTYR'].added()&&!pmP['spADB'].added())
-             {
-                pmP['spSPR'].added(true);
-             }
-           }, pmKO);
+       var lastSP = [true,true];
 
        pmKO.watchSpouseSPR = ko.computed(function(){
             if(pmP['spSPR'].added())
              {
-                lastSP = [pmP['spWHL'].added(),pmP['spTYR'].added(),pmP['spADB'].added()]
+                pmP['spWHL'].added(false);
+                lastSP = [pmP['spTYR'].added(),pmP['spADB'].added()]
              }
              else
              {
-               pmP['spWHL'].added(lastSP[0]);
-               pmP['spTYR'].added(lastSP[1]);
-               pmP['spADB'].added(lastSP[2]);
+               pmP['spWHL'].added(true);
+               pmP['spTYR'].added(lastSP[0]);
+               pmP['spADB'].added(lastSP[1]);
+             }
+         },pmKO);
+
+
+        pmKO.watchSpouseWHL = ko.computed(function(){
+            if(pmP['spWHL'].added())
+             {
+               pmP['spSPR'].added(false);
+               pmP['spTYR'].added(lastSP[0]);
+               pmP['spADB'].added(lastSP[1]);                
+             }
+             else
+             {
+               pmP['spSPR'].added(true); 
+               lastSP = [pmP['spTYR'].added(),pmP['spADB'].added()];
              }
          },pmKO);
 
