@@ -185,7 +185,6 @@ getPowerHour.policyHolderModelKO = function(mId)
   { 
     var ph = this;  
     ph.mId = mId;
-    ph.allowPH = ko.observable();  
     ph.age = ko.observable();
 
     ph.addComputed = function()
@@ -262,12 +261,6 @@ getPowerHour.policyHolderModelKO = function(mId)
                  {
                     return;
                  }
-                 if(ph.wage() < 5){
-                     ph.allowPH(false)
-                    }
-                  else{ 
-                     ph.allowPH(true);                  
-                    }
                  return formatMoney(ph.wage());
                },
                write:function(val)
@@ -326,7 +319,6 @@ getPowerHour.policyProductModelKO = function(pId)
         ppKO.setCOV = ko.computed({ 
             read:function(){ 
             var newCOV = minMaxCheck(ppKO.lbl,ppKO.COV());
-            console.log(newCOV+"  "+ppKO.COV());
               if(newCOV[0])
                 {                  
                   countMe('COV',ppKO.pId,newCOV[1]);
@@ -724,21 +716,33 @@ getPowerHour.policyModelKO = function()
 
         pmE.initError('Power_Hour','Custom');
         
+        pmKO.allowMH = ko.observable(false);
+        pmKO.mVal = ko.observable();
+        pmKO.setMVal = ko.computed({
+          read: function(){
 
-        pmKO.sumWagesCVAL = ko.computed(function(){
-              var newSum = 0;
+              var newSum = 0;              
               for(var m in pmM)
               {
-                  newSum += pmM[m].wage();
+                  newSum += pmM[m].wage();                  
               } 
-              if(newSum < 25){return;}
-                pmKO.cVal(newSum);          
-              },pmKO);
+              if(newSum < 5){
 
+                pmKO.allowMH(false);
+                return;
+              }
+                pmKO.allowMH(true);                 
+                pmKO.cVal(newSum);
+                pmKO.mVal(newSum);
+                pmKO.phType('MH'); 
+                return formatMoney(newSum);        
+              }, owner:pmKO});
+        
         pmKO.setCVal = ko.computed({
             read:function(){
               koCalls.count('CVAL','read');   ////trackinging ko calls  
-              if(pmKO.cVal()==0){pmKO.cVal(25)}               
+              if(pmKO.cVal()<25){pmKO.cVal(25)} 
+
               return formatMoney(pmKO.cVal());
                 },
             write: function(val)
@@ -758,15 +762,14 @@ getPowerHour.policyModelKO = function()
           pmKO.phTypeCheck = ko.computed(function(){
                  if(pmKO.phType()=="MH") /// use policy holder wage as HOUR
                   {
-                    if(pmM.p.allowPH()){
-                       pmKO.phVal(pmM.p.wage());                     
+                    if(pmKO.allowMH()){
+                       pmKO.phVal(pmKO.mVal());                     
                     }
                     else
                     {
                       pmKO.phVal(pmKO.cVal());
                       pmKO.phType("CH"); /// use custom value as HOUR
-                    }
-                     
+                    }                     
                   }
                   else
                   {                       
@@ -853,6 +856,53 @@ getPowerHour.policyModelKO = function()
              }
          },pmKO);
 
+
+        pmKO.watchSpouseWHL = ko.computed(function(){
+            if(pmP['spWHL'].added())
+             {
+               pmP['spSPR'].added(false);
+               pmP['spTYR'].added(lastSP[0]);
+               pmP['spADB'].added(lastSP[1]);                
+             }
+             else
+             {
+               pmP['spSPR'].added(true); 
+               lastSP = [pmP['spTYR'].added(),pmP['spADB'].added()];
+             }
+         },pmKO);
+
+
+
+
+        pmKO.AHP = 0;
+        pmKO.ALP = 0;
+        pmKO.total = 0;
+
+        pmKO.totalHour = ko.computed({
+            read:function(){
+
+              for(var p in pmP)
+              {
+
+              }
+              koCalls.count('CVAL','read');   ////trackinging ko calls  
+              if(pmKO.cVal()==0){pmKO.cVal(25)}               
+              return formatMoney(pmKO.cVal());   
+
+              }, owner:pmKO }).extend({logChange:'CVAL'});
+
+        pmKO.setTotalDAY = ko.observable();
+        pmKO.setTotalYRL = ko.observable();
+        pmKO.setTotalMBD = ko.observable();
+        pmKO.setTotalWKL = ko.observable();
+
+
+        pmKO.setYRL = ko.observable();
+        pmKO.setTotalMBD = ko.observable();
+        pmKO.setTotalWKL = ko.observable();
+
+
+
       }
 
 
@@ -882,7 +932,7 @@ getPowerHour.policyApp = function(pVals)
       pApp.init = function(){  
        ///////////////////////////////////// declare all necessary arrays, data, and functions.   
         pmM = {};
-        pmP={};
+        pmP = {};
         //////////////// Add all properties from the hour power policy data model         
           for(var attr in pVals){               
               switch(attr)
@@ -917,7 +967,7 @@ getPowerHour.policyApp = function(pVals)
                                     console.log(m+"  - "+attr+": "+pmM[m][attr]())                                  
                                 }  
                           pmM[m].addComputed();                       
-                     }
+                     } ///// end members initializations 
                 break;
                 case 'products':     /////////////// Declare and populate Products Array Attributes
                   for(var p in pVals.products)
@@ -940,7 +990,8 @@ getPowerHour.policyApp = function(pVals)
                                                     
                         } 
                         
-                      switch(pmP[p].lbl)
+                      //// initialize product specific functions  
+                      switch(pmP[p].lbl) 
                         {
                             case 'A71':
                                pmP[p].A71FXNS();
@@ -965,12 +1016,9 @@ getPowerHour.policyApp = function(pVals)
                               pmP[p].SPRFXNS();
                               pmP[p].initComputed();                           
                             break;                       
-                        }
-
+                        }                         
                          
-                         
-                     }    
-
+                     } ///// end product initializations
 
                    break;
                 default: /////////////// All other Policy Model Declaration                    
@@ -992,25 +1040,21 @@ getPowerHour.policyApp = function(pVals)
                           console.log(attr+" : "+pm[attr]()) 
                 break;
               }
-            }      
+            }
+
+            pm.init(); //initialize policy model KO functions      
           }
 
  
-
-    // put underneath to work - pmKO.showError = ko.computed( function(){ console.log(pmE.errArray['sp_Birthday_Age'].isValid());}, pmKO);
-
-
-
     // The Logic Order - init, init-computed - if(new){format new}
     if(getPowerHour.globals.current_policy == -1){getPowerHour.globals.loadingNew = true};
     
-    pApp.init();    
+    pApp.init(); //initialize policy app, populate all values, add all member, policy, and error KO fxns 
     
-    pm.init();
 
     if(getPowerHour.globals.loadingNew){pm.isNew()};
     
-    getPowerHour.policyjQ();
+    getPowerHour.policyjQ(); //add policy app specific jQuery functions
 
    }
 

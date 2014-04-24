@@ -77,8 +77,9 @@ TODO
 
 
 
-
--user set defaults
+- add new products: SGWHL
+- add new products: B200
+- user set defaults
 
 
 

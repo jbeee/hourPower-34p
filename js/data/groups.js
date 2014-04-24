@@ -22,7 +22,8 @@
 [
     {
         "_id": 0,
-        "group": "Accuprint39",
+        "group": "VFW",
+        "dollar a day": 1.25 - 1.50 - 2.00 - 2.50 - 3.00
         "subgroups": [
             1,
             2

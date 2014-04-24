@@ -70,12 +70,12 @@
                              
 <table><tr><td>
     <div class="input-v5">
-    <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pmM.p.allowPH"/> 
-    <label for="phTypeBTN1" data-bind="css: { disabledUI: pmM.p.allowPH()==false}">Member Hour</label>
+    <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pm.allowMH"/> 
+    <label for="phTypeBTN1" data-bind="css: { disabledUI: pm.allowMH()==false}">Combined Hour</label>
     </div>
     </td><td>
     <div class="ui labeled input">
-     <input type="text" placeholder="Member Hour" data-bind="value: pmM.p.setWage"> 
+     <input type="text" placeholder="Combined Hour" data-bind="value: pm.setMVal" readonly> 
      </div>                                
                                 </td></tr><tr><td>
 <div class="input-v5">
@@ -85,7 +85,7 @@
 </td>
 <td>
   <div class="ui labeled input">
-    <input type="text" placeholder="Custom Policy Hour" data-bind="value: pm.setCVal" >
+    <input type="text" placeholder="Custom Hour" data-bind="value: pm.setCVal" >
    </div>
   
                                 </td>
@@ -171,6 +171,11 @@
                             <td></td>
                         </tr>
                         <tr>
+                            <td>combined hour:</td>
+                            <td><span data-bind="text: pm.allowMH"></span></td>
+                            <td><span data-bind="text: pm.mVal"></span></td>
+                        </tr>
+                                                <tr>
                             <td>custom hour:</td>
                             <td><span data-bind="text: pm.phType"></span></td>
                             <td><span data-bind="text: pm.cVal"></span></td>
@@ -505,7 +510,6 @@
       </table>
 
 <div class="phProduct" data-bind="css: { productAdded:(!pmP['spSPR'].added())&&(pmP['spADB'].added()), productAllowed: pmP['spADB'].allowed()}">
-
                 <div class="productTitle">
                     <span class="pName">ADB</span>
                     <span class="pOwner" data-bind="text: pmM.sp.fname"></span>
@@ -513,7 +517,8 @@
                 </div>
 
 
-                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}">             
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}"> 
+                              
                   <input type="text" readonly class="pRO" id="spADB_COV">
                   <input type="text" class="pKO" data-bind="value: pmP['spADB']['setCOV']"> 
                 </div>

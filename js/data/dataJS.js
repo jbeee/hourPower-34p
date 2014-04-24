@@ -241,7 +241,7 @@ defArr['WHL'].categories = [
 							{'lbl':'Plus','max':49999,'min':30100},
 							{'lbl':'Executive','max':99999,'min':50000}
 						   ];	
-defArr['A71']= new productDefaults('A71','ALH',-1,-1,100,'A7100',75);
+defArr['A71']= new productDefaults('A71','AHP',-1,-1,100,'A7100',75);
 defArr['A71'].ftype = 'Family';
 defArr['A71'].ctype = '2';
 defArr['A71'].maxDoubleAge = 65;
@@ -290,7 +290,7 @@ defArr['A71'].maxDoubleAge = 65;
             "pA71": {
                 "lbl": "A71",
                 "owner": "p",
-                "added": true,
+                "added": false,
                 "ctype": defArr['A71'].ctype,
                 "ftype": defArr['A71'].ftype,
                 "COV": defArr['A71'].defaultCov
@@ -306,7 +306,7 @@ defArr['A71'].maxDoubleAge = 65;
             "pTYR": {
                 "lbl": "TYR",
                 "owner": "p",
-                "added": true,
+                "added": false,
                 "COV": defArr['TYR'].defaultCov,
                 "DUR": defArr['TYR'].duration
                 
@@ -314,7 +314,7 @@ defArr['A71'].maxDoubleAge = 65;
             "pADB": {
                 "lbl": "ADB",
                 "owner": "p",
-                "added": true,
+                "added": false,
                 "COV": defArr['ADB'].defaultCov
             },
             "pCHR": {
@@ -339,14 +339,14 @@ defArr['A71'].maxDoubleAge = 65;
             "spTYR": {
                 "lbl": "TYR",
                 "owner": "sp",
-                "added": true,
+                "added": false,
                 "COV": defArr['TYR'].defaultCov,
                 "DUR": defArr['TYR'].duration
             },
             "spADB": {
                 "lbl": "ADB",
                 "owner": "sp",
-                "added": true,
+                "added": false,
                 "COV": defArr['ADB'].defaultCov
             }
         }    

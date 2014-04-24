@@ -378,6 +378,7 @@ user-select: none;
       background: linear-gradient(rgba(0, 0, 0, 0.07), rgba(255, 255, 255, 0.5)), #c0c0c0;
   box-shadow: 0 -0.05em 0.15em 0 rgba(0, 0, 0, 0.1) inset, 0 0.1em 0.15em -0.1em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.08em -0.01em rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(59, 137, 255, 0.7) inset;
   border:0.05em solid #bbb; 
+  cursor:default;
 }
 
 
