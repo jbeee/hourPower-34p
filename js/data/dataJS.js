@@ -1,34 +1,17 @@
 var dataArr = {};
-dataArr['WHL']={};
-dataArr['WHL']['M'] = {};
-dataArr['WHL']['M']['TU'] = {}
-dataArr['WHL']['M']['NTU']={};
-dataArr['WHL']['F'] = {};
-dataArr['WHL']['F']['TU'] = {}
-dataArr['WHL']['F']['NTU']={};
 
-dataArr['TYR']={};
-dataArr['TYR']['M'] = {};
-dataArr['TYR']['M']['TU'] = {}
-dataArr['TYR']['M']['NTU']={};
-dataArr['TYR']['F'] = {};
-dataArr['TYR']['F']['TU'] = {}
-dataArr['TYR']['F']['NTU']={};
-
-
-dataArr['SPR']={};
-dataArr['SPR']['TU'] = {};
-dataArr['SPR']['NTU'] = {};
-
-dataArr['A71'] = {};
-dataArr['A71']['Individual']={};
-dataArr['A71']['Individual'][1]={};
-dataArr['A71']['Individual'][2]={};
-dataArr['A71']['Individual'][3]={};
-dataArr['A71']['Family']={};
-dataArr['A71']['Family'][1]={};
-dataArr['A71']['Family'][2]={};
-dataArr['A71']['Family'][3]={};
+dataArr['WHL'] ={'F':{'TU':{},'NTU':{}},'M':{'TU':{},'NTU':{}}};
+dataArr['TYRC'] ={'F':{'TU':{},'NTU':{}},'M':{'TU':{},'NTU':{}}};
+dataArr['SPR'] ={'TU':{},'NTU':{}};
+dataArr['A71000']={};
+dataArr['A71000']['Individual']={};
+dataArr['A71000']['Individual'][1]={};
+dataArr['A71000']['Individual'][2]={};
+dataArr['A71000']['Individual'][3]={};
+dataArr['A71000']['Family']={};
+dataArr['A71000']['Family'][1]={};
+dataArr['A71000']['Family'][2]={};
+dataArr['A71000']['Family'][3]={};
 
 dataArr['ADB'] = {};
 
@@ -98,49 +81,49 @@ dataArr['WHL']['M']['NTU'][79]=[231.44,195.86,170.65]; dataArr['WHL']['M']['TU']
 dataArr['WHL']['M']['NTU'][80]=[245.77,207.98,180.58]; dataArr['WHL']['M']['TU'][80]=[266.63,236.91,205.72]; dataArr['WHL']['F']['NTU'][80]=[224.14,189.68,164.69]; dataArr['WHL']['F']['TU'][80]=[239.53,202.7,176]; 
 
 
-dataArr['TYR']['M']['NTU'][18]=3.52; dataArr['TYR']['M']['TU'][18]=4.49; dataArr['TYR']['F']['NTU'][18]=3.03; dataArr['TYR']['F']['TU'][18]=4.16; 
-dataArr['TYR']['M']['NTU'][19]=3.53; dataArr['TYR']['M']['TU'][19]=4.56; dataArr['TYR']['F']['NTU'][19]=3.05; dataArr['TYR']['F']['TU'][19]=4.21; 
-dataArr['TYR']['M']['NTU'][20]=3.54; dataArr['TYR']['M']['TU'][20]=4.62; dataArr['TYR']['F']['NTU'][20]=3.06; dataArr['TYR']['F']['TU'][20]=4.26; 
-dataArr['TYR']['M']['NTU'][21]=3.56; dataArr['TYR']['M']['TU'][21]=4.68; dataArr['TYR']['F']['NTU'][21]=3.07; dataArr['TYR']['F']['TU'][21]=4.33; 
-dataArr['TYR']['M']['NTU'][22]=3.58; dataArr['TYR']['M']['TU'][22]=4.76; dataArr['TYR']['F']['NTU'][22]=3.09; dataArr['TYR']['F']['TU'][22]=4.4; 
-dataArr['TYR']['M']['NTU'][23]=3.6; dataArr['TYR']['M']['TU'][23]=4.83; dataArr['TYR']['F']['NTU'][23]=3.1; dataArr['TYR']['F']['TU'][23]=4.48; 
-dataArr['TYR']['M']['NTU'][24]=3.62; dataArr['TYR']['M']['TU'][24]=4.9; dataArr['TYR']['F']['NTU'][24]=3.11; dataArr['TYR']['F']['TU'][24]=4.57; 
-dataArr['TYR']['M']['NTU'][25]=3.65; dataArr['TYR']['M']['TU'][25]=5; dataArr['TYR']['F']['NTU'][25]=3.13; dataArr['TYR']['F']['TU'][25]=4.65; 
-dataArr['TYR']['M']['NTU'][26]=3.7; dataArr['TYR']['M']['TU'][26]=5.09; dataArr['TYR']['F']['NTU'][26]=3.16; dataArr['TYR']['F']['TU'][26]=4.76; 
-dataArr['TYR']['M']['NTU'][27]=3.74; dataArr['TYR']['M']['TU'][27]=5.21; dataArr['TYR']['F']['NTU'][27]=3.2; dataArr['TYR']['F']['TU'][27]=4.86; 
-dataArr['TYR']['M']['NTU'][28]=3.78; dataArr['TYR']['M']['TU'][28]=5.31; dataArr['TYR']['F']['NTU'][28]=3.23; dataArr['TYR']['F']['TU'][28]=4.98; 
-dataArr['TYR']['M']['NTU'][29]=3.82; dataArr['TYR']['M']['TU'][29]=5.45; dataArr['TYR']['F']['NTU'][29]=3.28; dataArr['TYR']['F']['TU'][29]=5.09; 
-dataArr['TYR']['M']['NTU'][30]=3.86; dataArr['TYR']['M']['TU'][30]=5.58; dataArr['TYR']['F']['NTU'][30]=3.31; dataArr['TYR']['F']['TU'][30]=5.2; 
-dataArr['TYR']['M']['NTU'][31]=3.91; dataArr['TYR']['M']['TU'][31]=5.72; dataArr['TYR']['F']['NTU'][31]=3.36; dataArr['TYR']['F']['TU'][31]=5.31; 
-dataArr['TYR']['M']['NTU'][32]=3.99; dataArr['TYR']['M']['TU'][32]=5.88; dataArr['TYR']['F']['NTU'][32]=3.41; dataArr['TYR']['F']['TU'][32]=5.43; 
-dataArr['TYR']['M']['NTU'][33]=4.07; dataArr['TYR']['M']['TU'][33]=6.06; dataArr['TYR']['F']['NTU'][33]=3.51; dataArr['TYR']['F']['TU'][33]=5.59; 
-dataArr['TYR']['M']['NTU'][34]=4.19; dataArr['TYR']['M']['TU'][34]=6.3; dataArr['TYR']['F']['NTU'][34]=3.6; dataArr['TYR']['F']['TU'][34]=5.76; 
-dataArr['TYR']['M']['NTU'][35]=4.37; dataArr['TYR']['M']['TU'][35]=6.59; dataArr['TYR']['F']['NTU'][35]=3.74; dataArr['TYR']['F']['TU'][35]=6.01; 
-dataArr['TYR']['M']['NTU'][36]=4.58; dataArr['TYR']['M']['TU'][36]=6.94; dataArr['TYR']['F']['NTU'][36]=3.93; dataArr['TYR']['F']['TU'][36]=6.27; 
-dataArr['TYR']['M']['NTU'][37]=4.83; dataArr['TYR']['M']['TU'][37]=7.33; dataArr['TYR']['F']['NTU'][37]=4.15; dataArr['TYR']['F']['TU'][37]=6.59; 
-dataArr['TYR']['M']['NTU'][38]=5.12; dataArr['TYR']['M']['TU'][38]=7.8; dataArr['TYR']['F']['NTU'][38]=4.4; dataArr['TYR']['F']['TU'][38]=6.97; 
-dataArr['TYR']['M']['NTU'][39]=5.46; dataArr['TYR']['M']['TU'][39]=8.33; dataArr['TYR']['F']['NTU'][39]=4.68; dataArr['TYR']['F']['TU'][39]=7.41; 
-dataArr['TYR']['M']['NTU'][40]=5.83; dataArr['TYR']['M']['TU'][40]=8.93; dataArr['TYR']['F']['NTU'][40]=4.99; dataArr['TYR']['F']['TU'][40]=7.89; 
-dataArr['TYR']['M']['NTU'][41]=6.24; dataArr['TYR']['M']['TU'][41]=9.6; dataArr['TYR']['F']['NTU'][41]=5.33; dataArr['TYR']['F']['TU'][41]=8.43; 
-dataArr['TYR']['M']['NTU'][42]=6.69; dataArr['TYR']['M']['TU'][42]=10.33; dataArr['TYR']['F']['NTU'][42]=5.7; dataArr['TYR']['F']['TU'][42]=9.04; 
-dataArr['TYR']['M']['NTU'][43]=7.19; dataArr['TYR']['M']['TU'][43]=11.16; dataArr['TYR']['F']['NTU'][43]=6.11; dataArr['TYR']['F']['TU'][43]=9.69; 
-dataArr['TYR']['M']['NTU'][44]=7.75; dataArr['TYR']['M']['TU'][44]=12.06; dataArr['TYR']['F']['NTU'][44]=6.58; dataArr['TYR']['F']['TU'][44]=10.41; 
-dataArr['TYR']['M']['NTU'][45]=8.38; dataArr['TYR']['M']['TU'][45]=13.07; dataArr['TYR']['F']['NTU'][45]=7.11; dataArr['TYR']['F']['TU'][45]=11.2; 
-dataArr['TYR']['M']['NTU'][46]=9.06; dataArr['TYR']['M']['TU'][46]=14.19; dataArr['TYR']['F']['NTU'][46]=7.7; dataArr['TYR']['F']['TU'][46]=12.05; 
-dataArr['TYR']['M']['NTU'][47]=9.82; dataArr['TYR']['M']['TU'][47]=15.4; dataArr['TYR']['F']['NTU'][47]=8.35; dataArr['TYR']['F']['TU'][47]=12.96; 
-dataArr['TYR']['M']['NTU'][48]=10.65; dataArr['TYR']['M']['TU'][48]=16.7; dataArr['TYR']['F']['NTU'][48]=9.07; dataArr['TYR']['F']['TU'][48]=13.94; 
-dataArr['TYR']['M']['NTU'][49]=11.56; dataArr['TYR']['M']['TU'][49]=18.07; dataArr['TYR']['F']['NTU'][49]=9.84; dataArr['TYR']['F']['TU'][49]=15; 
-dataArr['TYR']['M']['NTU'][50]=12.56; dataArr['TYR']['M']['TU'][50]=19.5; dataArr['TYR']['F']['NTU'][50]=10.63; dataArr['TYR']['F']['TU'][50]=16.11; 
-dataArr['TYR']['M']['NTU'][51]=13.65; dataArr['TYR']['M']['TU'][51]=20.96; dataArr['TYR']['F']['NTU'][51]=11.46; dataArr['TYR']['F']['TU'][51]=17.25; 
-dataArr['TYR']['M']['NTU'][52]=14.85; dataArr['TYR']['M']['TU'][52]=22.55; dataArr['TYR']['F']['NTU'][52]=12.38; dataArr['TYR']['F']['TU'][52]=18.51; 
-dataArr['TYR']['M']['NTU'][53]=16.18; dataArr['TYR']['M']['TU'][53]=24.33; dataArr['TYR']['F']['NTU'][53]=13.44; dataArr['TYR']['F']['TU'][53]=19.91; 
-dataArr['TYR']['M']['NTU'][54]=17.72; dataArr['TYR']['M']['TU'][54]=26.33; dataArr['TYR']['F']['NTU'][54]=14.66; dataArr['TYR']['F']['TU'][54]=21.49; 
-dataArr['TYR']['M']['NTU'][55]=19.48; dataArr['TYR']['M']['TU'][55]=28.64; dataArr['TYR']['F']['NTU'][55]=16.07; dataArr['TYR']['F']['TU'][55]=23.34; 
-dataArr['TYR']['M']['NTU'][56]=21.46; dataArr['TYR']['M']['TU'][56]=31.26; dataArr['TYR']['F']['NTU'][56]=17.7; dataArr['TYR']['F']['TU'][56]=25.44; 
-dataArr['TYR']['M']['NTU'][57]=23.66; dataArr['TYR']['M']['TU'][57]=34.16; dataArr['TYR']['F']['NTU'][57]=19.53; dataArr['TYR']['F']['TU'][57]=27.78; 
-dataArr['TYR']['M']['NTU'][58]=26.06; dataArr['TYR']['M']['TU'][58]=37.33; dataArr['TYR']['F']['NTU'][58]=21.53; dataArr['TYR']['F']['TU'][58]=30.32; 
-dataArr['TYR']['M']['NTU'][59]=28.63; dataArr['TYR']['M']['TU'][59]=40.74; dataArr['TYR']['F']['NTU'][59]=23.7; dataArr['TYR']['F']['TU'][59]=33.11; 
-dataArr['TYR']['M']['NTU'][60]=31.42; dataArr['TYR']['M']['TU'][60]=44.4; dataArr['TYR']['F']['NTU'][60]=26.06; dataArr['TYR']['F']['TU'][60]=36.07;
+dataArr['TYRC']['M']['NTU'][18]=3.52; dataArr['TYRC']['M']['TU'][18]=4.49; dataArr['TYRC']['F']['NTU'][18]=3.03; dataArr['TYRC']['F']['TU'][18]=4.16; 
+dataArr['TYRC']['M']['NTU'][19]=3.53; dataArr['TYRC']['M']['TU'][19]=4.56; dataArr['TYRC']['F']['NTU'][19]=3.05; dataArr['TYRC']['F']['TU'][19]=4.21; 
+dataArr['TYRC']['M']['NTU'][20]=3.54; dataArr['TYRC']['M']['TU'][20]=4.62; dataArr['TYRC']['F']['NTU'][20]=3.06; dataArr['TYRC']['F']['TU'][20]=4.26; 
+dataArr['TYRC']['M']['NTU'][21]=3.56; dataArr['TYRC']['M']['TU'][21]=4.68; dataArr['TYRC']['F']['NTU'][21]=3.07; dataArr['TYRC']['F']['TU'][21]=4.33; 
+dataArr['TYRC']['M']['NTU'][22]=3.58; dataArr['TYRC']['M']['TU'][22]=4.76; dataArr['TYRC']['F']['NTU'][22]=3.09; dataArr['TYRC']['F']['TU'][22]=4.4; 
+dataArr['TYRC']['M']['NTU'][23]=3.6; dataArr['TYRC']['M']['TU'][23]=4.83; dataArr['TYRC']['F']['NTU'][23]=3.1; dataArr['TYRC']['F']['TU'][23]=4.48; 
+dataArr['TYRC']['M']['NTU'][24]=3.62; dataArr['TYRC']['M']['TU'][24]=4.9; dataArr['TYRC']['F']['NTU'][24]=3.11; dataArr['TYRC']['F']['TU'][24]=4.57; 
+dataArr['TYRC']['M']['NTU'][25]=3.65; dataArr['TYRC']['M']['TU'][25]=5; dataArr['TYRC']['F']['NTU'][25]=3.13; dataArr['TYRC']['F']['TU'][25]=4.65; 
+dataArr['TYRC']['M']['NTU'][26]=3.7; dataArr['TYRC']['M']['TU'][26]=5.09; dataArr['TYRC']['F']['NTU'][26]=3.16; dataArr['TYRC']['F']['TU'][26]=4.76; 
+dataArr['TYRC']['M']['NTU'][27]=3.74; dataArr['TYRC']['M']['TU'][27]=5.21; dataArr['TYRC']['F']['NTU'][27]=3.2; dataArr['TYRC']['F']['TU'][27]=4.86; 
+dataArr['TYRC']['M']['NTU'][28]=3.78; dataArr['TYRC']['M']['TU'][28]=5.31; dataArr['TYRC']['F']['NTU'][28]=3.23; dataArr['TYRC']['F']['TU'][28]=4.98; 
+dataArr['TYRC']['M']['NTU'][29]=3.82; dataArr['TYRC']['M']['TU'][29]=5.45; dataArr['TYRC']['F']['NTU'][29]=3.28; dataArr['TYRC']['F']['TU'][29]=5.09; 
+dataArr['TYRC']['M']['NTU'][30]=3.86; dataArr['TYRC']['M']['TU'][30]=5.58; dataArr['TYRC']['F']['NTU'][30]=3.31; dataArr['TYRC']['F']['TU'][30]=5.2; 
+dataArr['TYRC']['M']['NTU'][31]=3.91; dataArr['TYRC']['M']['TU'][31]=5.72; dataArr['TYRC']['F']['NTU'][31]=3.36; dataArr['TYRC']['F']['TU'][31]=5.31; 
+dataArr['TYRC']['M']['NTU'][32]=3.99; dataArr['TYRC']['M']['TU'][32]=5.88; dataArr['TYRC']['F']['NTU'][32]=3.41; dataArr['TYRC']['F']['TU'][32]=5.43; 
+dataArr['TYRC']['M']['NTU'][33]=4.07; dataArr['TYRC']['M']['TU'][33]=6.06; dataArr['TYRC']['F']['NTU'][33]=3.51; dataArr['TYRC']['F']['TU'][33]=5.59; 
+dataArr['TYRC']['M']['NTU'][34]=4.19; dataArr['TYRC']['M']['TU'][34]=6.3; dataArr['TYRC']['F']['NTU'][34]=3.6; dataArr['TYRC']['F']['TU'][34]=5.76; 
+dataArr['TYRC']['M']['NTU'][35]=4.37; dataArr['TYRC']['M']['TU'][35]=6.59; dataArr['TYRC']['F']['NTU'][35]=3.74; dataArr['TYRC']['F']['TU'][35]=6.01; 
+dataArr['TYRC']['M']['NTU'][36]=4.58; dataArr['TYRC']['M']['TU'][36]=6.94; dataArr['TYRC']['F']['NTU'][36]=3.93; dataArr['TYRC']['F']['TU'][36]=6.27; 
+dataArr['TYRC']['M']['NTU'][37]=4.83; dataArr['TYRC']['M']['TU'][37]=7.33; dataArr['TYRC']['F']['NTU'][37]=4.15; dataArr['TYRC']['F']['TU'][37]=6.59; 
+dataArr['TYRC']['M']['NTU'][38]=5.12; dataArr['TYRC']['M']['TU'][38]=7.8; dataArr['TYRC']['F']['NTU'][38]=4.4; dataArr['TYRC']['F']['TU'][38]=6.97; 
+dataArr['TYRC']['M']['NTU'][39]=5.46; dataArr['TYRC']['M']['TU'][39]=8.33; dataArr['TYRC']['F']['NTU'][39]=4.68; dataArr['TYRC']['F']['TU'][39]=7.41; 
+dataArr['TYRC']['M']['NTU'][40]=5.83; dataArr['TYRC']['M']['TU'][40]=8.93; dataArr['TYRC']['F']['NTU'][40]=4.99; dataArr['TYRC']['F']['TU'][40]=7.89; 
+dataArr['TYRC']['M']['NTU'][41]=6.24; dataArr['TYRC']['M']['TU'][41]=9.6; dataArr['TYRC']['F']['NTU'][41]=5.33; dataArr['TYRC']['F']['TU'][41]=8.43; 
+dataArr['TYRC']['M']['NTU'][42]=6.69; dataArr['TYRC']['M']['TU'][42]=10.33; dataArr['TYRC']['F']['NTU'][42]=5.7; dataArr['TYRC']['F']['TU'][42]=9.04; 
+dataArr['TYRC']['M']['NTU'][43]=7.19; dataArr['TYRC']['M']['TU'][43]=11.16; dataArr['TYRC']['F']['NTU'][43]=6.11; dataArr['TYRC']['F']['TU'][43]=9.69; 
+dataArr['TYRC']['M']['NTU'][44]=7.75; dataArr['TYRC']['M']['TU'][44]=12.06; dataArr['TYRC']['F']['NTU'][44]=6.58; dataArr['TYRC']['F']['TU'][44]=10.41; 
+dataArr['TYRC']['M']['NTU'][45]=8.38; dataArr['TYRC']['M']['TU'][45]=13.07; dataArr['TYRC']['F']['NTU'][45]=7.11; dataArr['TYRC']['F']['TU'][45]=11.2; 
+dataArr['TYRC']['M']['NTU'][46]=9.06; dataArr['TYRC']['M']['TU'][46]=14.19; dataArr['TYRC']['F']['NTU'][46]=7.7; dataArr['TYRC']['F']['TU'][46]=12.05; 
+dataArr['TYRC']['M']['NTU'][47]=9.82; dataArr['TYRC']['M']['TU'][47]=15.4; dataArr['TYRC']['F']['NTU'][47]=8.35; dataArr['TYRC']['F']['TU'][47]=12.96; 
+dataArr['TYRC']['M']['NTU'][48]=10.65; dataArr['TYRC']['M']['TU'][48]=16.7; dataArr['TYRC']['F']['NTU'][48]=9.07; dataArr['TYRC']['F']['TU'][48]=13.94; 
+dataArr['TYRC']['M']['NTU'][49]=11.56; dataArr['TYRC']['M']['TU'][49]=18.07; dataArr['TYRC']['F']['NTU'][49]=9.84; dataArr['TYRC']['F']['TU'][49]=15; 
+dataArr['TYRC']['M']['NTU'][50]=12.56; dataArr['TYRC']['M']['TU'][50]=19.5; dataArr['TYRC']['F']['NTU'][50]=10.63; dataArr['TYRC']['F']['TU'][50]=16.11; 
+dataArr['TYRC']['M']['NTU'][51]=13.65; dataArr['TYRC']['M']['TU'][51]=20.96; dataArr['TYRC']['F']['NTU'][51]=11.46; dataArr['TYRC']['F']['TU'][51]=17.25; 
+dataArr['TYRC']['M']['NTU'][52]=14.85; dataArr['TYRC']['M']['TU'][52]=22.55; dataArr['TYRC']['F']['NTU'][52]=12.38; dataArr['TYRC']['F']['TU'][52]=18.51; 
+dataArr['TYRC']['M']['NTU'][53]=16.18; dataArr['TYRC']['M']['TU'][53]=24.33; dataArr['TYRC']['F']['NTU'][53]=13.44; dataArr['TYRC']['F']['TU'][53]=19.91; 
+dataArr['TYRC']['M']['NTU'][54]=17.72; dataArr['TYRC']['M']['TU'][54]=26.33; dataArr['TYRC']['F']['NTU'][54]=14.66; dataArr['TYRC']['F']['TU'][54]=21.49; 
+dataArr['TYRC']['M']['NTU'][55]=19.48; dataArr['TYRC']['M']['TU'][55]=28.64; dataArr['TYRC']['F']['NTU'][55]=16.07; dataArr['TYRC']['F']['TU'][55]=23.34; 
+dataArr['TYRC']['M']['NTU'][56]=21.46; dataArr['TYRC']['M']['TU'][56]=31.26; dataArr['TYRC']['F']['NTU'][56]=17.7; dataArr['TYRC']['F']['TU'][56]=25.44; 
+dataArr['TYRC']['M']['NTU'][57]=23.66; dataArr['TYRC']['M']['TU'][57]=34.16; dataArr['TYRC']['F']['NTU'][57]=19.53; dataArr['TYRC']['F']['TU'][57]=27.78; 
+dataArr['TYRC']['M']['NTU'][58]=26.06; dataArr['TYRC']['M']['TU'][58]=37.33; dataArr['TYRC']['F']['NTU'][58]=21.53; dataArr['TYRC']['F']['TU'][58]=30.32; 
+dataArr['TYRC']['M']['NTU'][59]=28.63; dataArr['TYRC']['M']['TU'][59]=40.74; dataArr['TYRC']['F']['NTU'][59]=23.7; dataArr['TYRC']['F']['TU'][59]=33.11; 
+dataArr['TYRC']['M']['NTU'][60]=31.42; dataArr['TYRC']['M']['TU'][60]=44.4; dataArr['TYRC']['F']['NTU'][60]=26.06; dataArr['TYRC']['F']['TU'][60]=36.07;
 
 
 
@@ -183,68 +166,155 @@ dataArr['SPR']['NTU'][53]=28.79; dataArr['SPR']['TU'][53]=45.26;
 dataArr['SPR']['NTU'][54]=30.17; dataArr['SPR']['TU'][54]=47.44;
 dataArr['SPR']['NTU'][55]=31.61; dataArr['SPR']['TU'][55]=49.7;
 
+dataArr['SGWHL'] ={'F':{'TU':{},'NTU':{}},'M':{'TU':{},'NTU':{}}};
+dataArr['SGWHL']['F']['TU'][60]= 83.75 ;
+dataArr['SGWHL']['F']['TU'][61]= 88.01 ;
+dataArr['SGWHL']['F']['TU'][62]= 92.50 ;
+dataArr['SGWHL']['F']['TU'][63]= 97.25 ;
+dataArr['SGWHL']['F']['TU'][64]= 102.27 ;
+dataArr['SGWHL']['F']['TU'][65]= 107.91 ;
+dataArr['SGWHL']['F']['TU'][66]= 114.30 ;
+dataArr['SGWHL']['F']['TU'][67]= 121.17 ;
+dataArr['SGWHL']['F']['TU'][68]= 128.46 ;
+dataArr['SGWHL']['F']['TU'][69]= 136.29 ;
+dataArr['SGWHL']['F']['TU'][70]= 144.71 ;
+dataArr['SGWHL']['F']['TU'][71]= 153.76 ;
+dataArr['SGWHL']['F']['TU'][72]= 163.42 ;
+dataArr['SGWHL']['F']['TU'][73]= 173.67 ;
+dataArr['SGWHL']['F']['TU'][74]= 184.50 ;
+dataArr['SGWHL']['F']['TU'][75]= 195.91 ;
+dataArr['SGWHL']['M']['TU'][60]= 106.82 ;
+dataArr['SGWHL']['M']['TU'][61]= 112.37 ;
+dataArr['SGWHL']['M']['TU'][62]= 118.25 ;
+dataArr['SGWHL']['M']['TU'][63]= 124.47 ;
+dataArr['SGWHL']['M']['TU'][64]= 131.02 ;
+dataArr['SGWHL']['M']['TU'][65]= 137.97 ;
+dataArr['SGWHL']['M']['TU'][66]= 146.70 ;
+dataArr['SGWHL']['M']['TU'][67]= 156.00 ;
+dataArr['SGWHL']['M']['TU'][68]= 165.94 ;
+dataArr['SGWHL']['M']['TU'][69]= 176.63 ;
+dataArr['SGWHL']['M']['TU'][70]= 188.12 ;
+dataArr['SGWHL']['M']['TU'][71]= 200.44 ;
+dataArr['SGWHL']['M']['TU'][72]= 213.60 ;
+dataArr['SGWHL']['M']['TU'][73]= 227.57 ;
+dataArr['SGWHL']['M']['TU'][74]= 242.33 ;
+dataArr['SGWHL']['M']['TU'][75]= 257.89 ;
+dataArr['SGWHL']['F']['NTU'][60]= 67.01 ;
+dataArr['SGWHL']['F']['NTU'][61]= 70.29 ;
+dataArr['SGWHL']['F']['NTU'][62]= 73.78 ;
+dataArr['SGWHL']['F']['NTU'][63]= 77.62 ;
+dataArr['SGWHL']['F']['NTU'][64]= 81.92 ;
+dataArr['SGWHL']['F']['NTU'][65]= 86.79 ;
+dataArr['SGWHL']['F']['NTU'][66]= 92.64 ;
+dataArr['SGWHL']['F']['NTU'][67]= 99.14 ;
+dataArr['SGWHL']['F']['NTU'][68]= 106.27 ;
+dataArr['SGWHL']['F']['NTU'][69]= 114.06 ;
+dataArr['SGWHL']['F']['NTU'][70]= 122.49 ;
+dataArr['SGWHL']['F']['NTU'][71]= 131.46 ;
+dataArr['SGWHL']['F']['NTU'][72]= 141.12 ;
+dataArr['SGWHL']['F']['NTU'][73]= 151.49 ;
+dataArr['SGWHL']['F']['NTU'][74]= 162.59 ;
+dataArr['SGWHL']['F']['NTU'][75]= 174.47 ;
+dataArr['SGWHL']['F']['NTU'][76]= 187.29 ;
+dataArr['SGWHL']['F']['NTU'][77]= 200.89 ;
+dataArr['SGWHL']['F']['NTU'][78]= 215.31 ;
+dataArr['SGWHL']['F']['NTU'][79]= 230.52 ;
+dataArr['SGWHL']['F']['NTU'][80]= 246.55 ;
+dataArr['SGWHL']['M']['NTU'][60]= 81.67 ;
+dataArr['SGWHL']['M']['NTU'][61]= 86.55 ;
+dataArr['SGWHL']['M']['NTU'][62]= 91.41 ;
+dataArr['SGWHL']['M']['NTU'][63]= 96.57 ;
+dataArr['SGWHL']['M']['NTU'][64]= 102.04 ;
+dataArr['SGWHL']['M']['NTU'][65]= 108.06 ;
+dataArr['SGWHL']['M']['NTU'][66]= 114.64 ;
+dataArr['SGWHL']['M']['NTU'][67]= 121.69 ;
+dataArr['SGWHL']['M']['NTU'][68]= 129.23 ;
+dataArr['SGWHL']['M']['NTU'][69]= 137.34 ;
+dataArr['SGWHL']['M']['NTU'][70]= 146.06 ;
+dataArr['SGWHL']['M']['NTU'][71]= 156.85 ;
+dataArr['SGWHL']['M']['NTU'][72]= 168.48 ;
+dataArr['SGWHL']['M']['NTU'][73]= 180.92 ;
+dataArr['SGWHL']['M']['NTU'][74]= 194.26 ;
+dataArr['SGWHL']['M']['NTU'][75]= 208.43 ;
+dataArr['SGWHL']['M']['NTU'][76]= 223.46 ;
+dataArr['SGWHL']['M']['NTU'][77]= 239.55 ;
+dataArr['SGWHL']['M']['NTU'][78]= 256.79 ;
+dataArr['SGWHL']['M']['NTU'][79]= 275.41 ;
+dataArr['SGWHL']['M']['NTU'][80]= 294.92 ;
 
 
+dataArr['A71000']['Individual'][1][0]=[2.38,25.5]; 
+dataArr['A71000']['Individual'][2][0]=[4.5,51];
+dataArr['A71000']['Individual'][3][0]=[6.63,76.5]; 
+dataArr['A71000']['Family'][1][0]=[4.75,54]; 
+dataArr['A71000']['Family'][2][0]=[9.25,108];
+dataArr['A71000']['Family'][3][0]=[13.75,162];
 
+dataArr['A71000']['Individual'][1][1]=[2.63,28.5]; 
+dataArr['A71000']['Individual'][2][1]=[5,57]; 
+dataArr['A71000']['Individual'][3][1]=[7.38,85.5]; 
+dataArr['A71000']['Family'][1][1]=[5.25,60]; 
+dataArr['A71000']['Family'][2][1]=[10.25,120]; 
+dataArr['A71000']['Family'][3][1]=[15.25,180]; 
 
-dataArr['A71']['Individual'][1][0]=[2.38,25.5]; 
-dataArr['A71']['Individual'][2][0]=[4.5,51];
-dataArr['A71']['Individual'][3][0]=[6.63,76.5]; 
-dataArr['A71']['Family'][1][0]=[4.75,54]; 
-dataArr['A71']['Family'][2][0]=[9.25,108];
-dataArr['A71']['Family'][3][0]=[13.75,162];
+dataArr['A71000']['Individual'][1][2]=[3.25,36]; 
+dataArr['A71000']['Individual'][2][2]=[6.25,72]; 
+dataArr['A71000']['Individual'][3][2]=[9.25,108]; 
+dataArr['A71000']['Family'][1][2]=[6.25,72]; 
+dataArr['A71000']['Family'][2][2]=[12.25,144]; 
+dataArr['A71000']['Family'][3][2]=[18.25,216];
 
-dataArr['A71']['Individual'][1][1]=[2.63,28.5]; 
-dataArr['A71']['Individual'][2][1]=[5,57]; 
-dataArr['A71']['Individual'][3][1]=[7.38,85.5]; 
-dataArr['A71']['Family'][1][1]=[5.25,60]; 
-dataArr['A71']['Family'][2][1]=[10.25,120]; 
-dataArr['A71']['Family'][3][1]=[15.25,180]; 
+dataArr['A71000']['Individual'][1][3]=[72,6.25];
+dataArr['A71000']['Family'][1][3]=[144,12.25]; 	
 
-dataArr['A71']['Individual'][1][2]=[3.25,36]; 
-dataArr['A71']['Individual'][2][2]=[6.25,72]; 
-dataArr['A71']['Individual'][3][2]=[9.25,108]; 
-dataArr['A71']['Family'][1][2]=[6.25,72]; 
-dataArr['A71']['Family'][2][2]=[12.25,144]; 
-dataArr['A71']['Family'][3][2]=[18.25,216];
-
-dataArr['A71']['Individual'][1][3]=[72,6.25];
-dataArr['A71']['Family'][1][3]=[144,12.25]; 	
-
-dataArr['A71']['categories']=[50,60,65,75]
+dataArr['A71000']['categories']=[50,60,65,75]
 
 dataArr['CHR'] = 7.5; 
-dataArr['ADB'].age = [49,59,69];
-dataArr['ADB'].ratio = [1,1.25,1.5];
 
+dataArr['ADB'] ={
+	'age':[49,59,69],
+	'ratio':[1,1.25,1.5]
+};
+
+dataArr['B2000'] = {
+	'vals':[10000,25000,50000],
+	'ratio':3
+};
 
 var defArr = {};
-function productDefaults(lbl,als,min,max,def,fullname,ma)
+
+function productDefaults(lbl,als,min,max,def,fullname,maxA,minA,minInfo)
 {
 	this.lbl = lbl;
 	this.ALHP = als;
 	this.minFace = min;
 	this.maxFace = max;
 	this.defaultCov = def;
-	this.productName = fullname;
-	this.maxAge = ma;	
+	this.name = fullname;
+	this.maxAge = maxA;
+	this.minAge = minA;
+	this.minInfo = minInfo;	/// minInfo - 8:age, 12:age/TU, 14:age/TU/gender, 15:age/TU/gender/wage;
 }
 
-defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,7500,'SPOUSE RIDER',55);
-defArr['ADB']=new productDefaults('ADB','ALP',1000,200000,10000,'ADB',69);		
-defArr['CHR']=new productDefaults('CHR','ALP',1000,10000,10000,'CHILD RIDER',80);
-defArr['TYR']=new productDefaults('TYR','ALP',1000,99999999999,1000,'10 YRC',60);
-defArr['TYR'].duration = 1;
-defArr['WHL']=new productDefaults('WHL','ALP',1000,99999,7500,'WHOLE LIFE',80);
+defArr['SPR']=new productDefaults('SPR','ALP',1000,100000,7500,'Spouse Rider',55,18,12);
+defArr['ADB']=new productDefaults('ADB','ALP',1000,200000,10000,'ADB',69,18,8);		
+defArr['CHR']=new productDefaults('CHR','ALP',1000,10000,10000,'Child Rider',80,18,-1);
+defArr['TYRC']=new productDefaults('TYRC','ALP',1000,999999999,1000,'10 YRC',60,18,14);
+defArr['TYRC'].duration = 1;
+defArr['WHL']=new productDefaults('WHL','ALP',1000,99999,7500,'Whole Life',80,18,14);
 defArr['WHL'].categories = [
 							{'lbl':'Regular','max':30099,'min':1000},
 							{'lbl':'Plus','max':49999,'min':30100},
 							{'lbl':'Executive','max':99999,'min':50000}
-						   ];	
-defArr['A71']= new productDefaults('A71','AHP',-1,-1,100,'A7100',75);
-defArr['A71'].ftype = 'Family';
-defArr['A71'].ctype = '2';
-defArr['A71'].maxDoubleAge = 65;
+						  ];	
+defArr['A71000']= new productDefaults('A71000','AHP',-1,-1,100,'A71000',75,18,8);
+defArr['A71000'].ftype = 'Family';
+defArr['A71000'].ctype = '2';
+defArr['A71000'].maxDoubleAge = 64;
+
+defArr['SGWHL']=new productDefaults('SGWHL','ALP',1000,100000,7500,'Senior Grade Whole Life',80,60,14);
+defArr['SGWHL'].maxTUAge = 75;
+defArr['B2000']=new productDefaults('B2000','AHP',10000,100000,10000,'B2000',72,5,8);
 
 
 /////////// TEMPLATE FOR CREATING A NEW HOUR POWER 
@@ -257,15 +327,16 @@ defArr['A71'].maxDoubleAge = 65;
 	*/
  var newPolicy = {
     "_id": -1,
-    "dateCreated": "",
-    "state": "",
-    "group": "",
-    "phType": "MH",
+    "dateCreated":"",
+    "state":"",
+    "group":"",
+    "phType":"MH",
     "phVal": 0,
     "cVal": 0,
     "hasChild":false, 
-    "members": {  
-			'p':{
+    "members":[  
+			{
+				"id":"p",
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
@@ -275,81 +346,105 @@ defArr['A71'].maxDoubleAge = 65;
 		        "liW": "",
 		        "liOW": ""
 		    },
-		   'sp':{
+		    {
+		    	"id":"sp",
 		        "fname": "",
 		        "lname": "",
 		        "gender": "M",
-		        "birthday": "",
+		        "birthday": "22",
 		        "wage": "",
 		        "TU": "NTU",
 		        "liW": "",
 		        "liOW": "",
+		        "rider":true
 		    }
-	    },
-    "products": {
-            "pA71": {
-                "lbl": "A71",
+	   ],
+    "products": [
+    		 {
+                "lbl": "A71000",
                 "owner": "p",
                 "added": false,
-                "ctype": defArr['A71'].ctype,
-                "ftype": defArr['A71'].ftype,
-                "COV": defArr['A71'].defaultCov
+                "ctype": defArr['A71000'].ctype,
+                "ftype": defArr['A71000'].ftype
             },
-            "pWHL": {
+            {
                 "lbl": "WHL",
                 "owner": "p",
                 "added": true,
-                "COV": 3000, //defArr['WHL'].defaultCov,
+                "COV": defArr['WHL'].defaultCov,
                 "category":0
-
             },
-            "pTYR": {
-                "lbl": "TYR",
-                "owner": "p",
-                "added": false,
-                "COV": defArr['TYR'].defaultCov,
-                "DUR": defArr['TYR'].duration
-                
-            },
-            "pADB": {
-                "lbl": "ADB",
-                "owner": "p",
-                "added": false,
-                "COV": defArr['ADB'].defaultCov
-            },
-            "pCHR": {
-                "lbl": "CHR",
-                "owner": "p",
-                "added": true,
-                "COV": defArr['ADB'].defaultCov
-            },
-            "spSPR": {
-                "lbl": "SPR",
-                "owner": "sp",
-                "added": false,
-                "COV": defArr['SPR'].defaultCov
-            },
-            "spWHL": {
+            {
                 "lbl": "WHL",
                 "owner": "sp",
                 "added": true,
                 "COV": defArr['WHL'].defaultCov,
                 "category":0
             },
-            "spTYR": {
-                "lbl": "TYR",
+            {
+                "lbl": "TYRC",
+                "owner": "p",
+                "added": false,
+                "COV": defArr['TYRC'].defaultCov,
+                "DUR": defArr['TYRC'].duration    
+            },
+            {
+                "lbl": "TYRC",
                 "owner": "sp",
                 "added": false,
-                "COV": defArr['TYR'].defaultCov,
-                "DUR": defArr['TYR'].duration
+                "COV": defArr['TYRC'].defaultCov,
+                "DUR": defArr['TYRC'].duration
             },
-            "spADB": {
+            {
+                "lbl": "ADB",
+                "owner": "p",
+                "added": false,
+                "COV": defArr['ADB'].defaultCov
+            },
+            {
                 "lbl": "ADB",
                 "owner": "sp",
                 "added": false,
                 "COV": defArr['ADB'].defaultCov
+            },
+            {
+                "lbl": "CHR",
+                "owner": "p",
+                "added": true,
+                "COV": defArr['CHR'].defaultCov
+            },
+            {
+                "lbl": "SPR",
+                "owner": "sp",
+                "added": false,
+                "COV": defArr['SPR'].defaultCov
+            },
+            {
+                "lbl": "SGWHL",
+                "owner": "p",
+                "added": true,
+                "COV": defArr['SGWHL'].defaultCov
+            },
+            {
+                "lbl": "SGWHL",
+                "owner": "sp",
+                "added": true,
+                "COV": defArr['SGWHL'].defaultCov
+            },
+            {
+                "lbl": "B2000",
+                "owner": "sp",
+                "added": false,
+                "ctype":1
+            },
+            {
+                "lbl": "B2000",
+                "owner": "p",
+                "added": false,
+                "ctype":1
             }
-        }    
+
+       ]   
 }
 
 
@@ -368,25 +463,25 @@ var user = {
         0,
         1,
         2
-    ],
+   ],
     "referalls": [
         0,
         1,
         2,
         3,
         4
-    ],
+   ],
     "states": [
         "WA",
         "VA",
         "OR",
         "CA"
-    ],
+   ],
     "groups": [
         0,
         1,
         2
-    ]
+   ]
 }
 
 var groups = [
@@ -403,10 +498,10 @@ var groups = [
                                 "resources/SG9NV_RO1.jpg",
                                 "resources/SG9NV_RO2.jpg",
                                 "resources/SG9NV_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "SG-1": [
                         {
                         	"_id":1,
@@ -414,10 +509,10 @@ var groups = [
                                 "resources/SG1_RO1.jpg",
                                 "resources/SG1_RO2.jpg",
                                 "resources/SG1_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "SG-U": [
                         {
                         	"_id":2,
@@ -425,10 +520,10 @@ var groups = [
                                 "resources/SGU_RO1.jpg",
                                 "resources/SG2_RO2.jpg",
                                 "resources/SGU_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "SG-A": [
                         {
                         	"_id":3,
@@ -436,12 +531,12 @@ var groups = [
                                 "resources/SGA_RO1.jpg",
                                 "resources/SGA_RO2.jpg",
                                 "resources/SGA_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ]
+                   ]
                 }
-            ]
+           ]
         },
         {
             "_id": 1,
@@ -456,10 +551,10 @@ var groups = [
                                 "resources/examples/NG_RO1.jpg",
                                 "resources/examples/NG_RO2.jpg",
                                 "resources/examples/NG_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "Pink Nurses": [
                         {
                         	"_id":1,
@@ -467,10 +562,10 @@ var groups = [
                                 "resources/examples/NP_RO1.jpg",
                                 "resources/examples/NP_RO2.jpg",
                                 "resources/examples/NP_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "White Nurses": [
                         {
                         	"_id":2,
@@ -478,12 +573,12 @@ var groups = [
                                 "resources/examples/NW_RO1.jpg",
                                 "resources/examples/NW_RO2.jpg",
                                 "resources/examples/NW_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ]
+                   ]
                 }
-            ]
+           ]
         },
         {
             "_id": 2,
@@ -498,10 +593,10 @@ var groups = [
                                 "resources/examples/A_RO1.jpg",
                                 "resources/examples/A_RO2.jpg",
                                 "resources/examples/A_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "Cosmonauts": [
                         {
                         	"_id":1,
@@ -509,10 +604,10 @@ var groups = [
                                 "resources/examples/C_RO1.jpg",
                                 "resources/examples/C_RO2.jpg",
                                 "resources/examples/C_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ],
+                   ],
                     "Other": [
                         {
                         	"_id":2,
@@ -520,11 +615,11 @@ var groups = [
                                 "resources/examples/O_RO1.jpg",
                                 "resources/examples/O_RO2.jpg",
                                 "resources/examples/O_RO3.jpg"
-                            ],
+                           ],
                             "states": [0,1,2,3]
                         }
-                    ]
+                   ]
                 }
-            ]
+           ]
         }
-    ]
+   ]

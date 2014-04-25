@@ -10,13 +10,11 @@ body {
     radial-gradient( rgba(255, 255, 255, 0.7),rgba(0, 0, 0, 0.12)),
     url("imgs/bg.png");
     box-shadow:0 0.05em 4em -0.2em rgba(0, 0, 0, 0.2) inset, 0 0.05em 0.5em -0.2em rgba(0, 0, 0, 0.3) inset;
-
-
-  font-size: 13px;
-  color:#666;
-  font-family: helvetica;
-  width:100%;
-  height:100%;
+    font-size: 13px;
+    color:#666;
+    font-family: helvetica;
+    width:99%;
+    height:100%;
 }
 
 
@@ -229,7 +227,7 @@ opacity:0.3;
   background: linear-gradient(#eee 10%,#bbb);
 }
 
-#test_outputs tbody td span
+.test_outputs tbody td span
 {
   display:block;
   width:35px;
@@ -381,6 +379,21 @@ user-select: none;
   cursor:default;
 }
 
+.pWrapper
+{ 
+  width:50%;
+   min-width:580px;
+  float:left;
+  display:block;
+  margin-top:1.5em;
+  position: relative;
+}
+
+.pWrapper.fullWidth
+{ 
+  width:100%;
+  float:none;
+}
 
 .phProduct
 {
@@ -390,6 +403,12 @@ user-select: none;
   position:relative;
   width:100%;
   overflow: hidden;
+  min-width:580px;
+  display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;      /* TWEENER - IE 10 */
+  display: -webkit-flex;     /* NEW - Chrome */
+  display: flex;    
 }
 
 .phProduct.allowed
@@ -404,28 +423,35 @@ user-select: none;
 .productTitle
 {
   width:11%;
+  min-width:7em;
 }
 .productInput
 {
   opacity:0.5;
   position:relative;
   overflow:hidden;
-  width:14%;
-  margin-right:0.4%;
+  width:9%;
+  margin-right:0.5em;
   height:2.5em;
+  min-width:5.5em; 
 }
 
-.productInput.isTYR
+.productInput.hasOpts
 {
   width:8%;
-  min-width: 80px;
+  min-width: 6.5em;
 }
 
+.productInput.isCOV
+{
+  width:15%;
+  min-width: 6.8em;
+}
 .productInput input
 {
    width:90%;   
    height:2em;
-   padding-left:1em;
+   padding-left:0.5em;
    border:0.05em solid #aaa;
    color:#444;
    background-color:#fff;
@@ -454,7 +480,7 @@ user-select: none;
 .productAdd
 {
   width:7%;
-  padding-left:1em;
+  min-width:5em;  
 }
 
 .productInput.hasError .pKO
@@ -467,12 +493,13 @@ user-select: none;
   left:0px; 
 }
 
-.clearFixProducts
+.clearFix
 {
     content: "";
     display: table;
     clear: both;
     width:100%;
+    height:0.5em;
 }
 .productInput .pRO
 {

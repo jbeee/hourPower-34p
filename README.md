@@ -79,7 +79,11 @@ TODO
 
 - add new products: SGWHL
 - add new products: B200
+- add daily/hour switch 
 - user set defaults
+
+- add portrait css
+- add screen max-width 500 css;
 
 
 
