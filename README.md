@@ -75,8 +75,8 @@ TODO
 - add new questions
 - add html version of letters
 
-- ~add new products: SGWHL~
-- ~add new products: B2000~
+- ~~add new products: SGWHL~~
+- ~~add new products: B2000~~
 - add daily/hour switch 
 - user set defaults
 
