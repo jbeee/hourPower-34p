@@ -264,8 +264,8 @@ dataArr['A71000']['Family'][1][2]=[6.25,72];
 dataArr['A71000']['Family'][2][2]=[12.25,144]; 
 dataArr['A71000']['Family'][3][2]=[18.25,216];
 
-dataArr['A71000']['Individual'][1][3]=[72,6.25];
-dataArr['A71000']['Family'][1][3]=[144,12.25]; 	
+dataArr['A71000']['Individual'][1][3]=[6.25,72];
+dataArr['A71000']['Family'][1][3]=[12.25,144]; 	
 
 dataArr['A71000']['categories']=[50,60,65,75]
 

@@ -354,6 +354,7 @@ user-select: none;
     text-shadow: 0 -0.05em 0 rgba(0,0,0,.4);    
 }
 
+
 .input-v5 label { 
     font-family: helvetica;
     cursor: pointer; 
@@ -380,6 +381,10 @@ user-select: none;
   cursor:default;
 }
 
+.input-v4 label.inputHide
+{
+  display:none;
+}
 .pWrapper
 { 
   width:50%;

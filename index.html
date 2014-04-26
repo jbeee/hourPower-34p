@@ -100,6 +100,7 @@
     <div class="phProduct" data-bind="css:{productAdded:pmP['pA71000'].added(), productAllowed: pmP['pA71000'].allowed()}">
             <div class="productTitle">
             <span class="pName" id="pA71000_pName"></span>
+            <span data-bind="text:pmP['pA71000']['allowDouble']"></span>
             <span class="pCategory" data-bind="text:pmP['pA71000']['cType']"></span>
             <span class="pCategory" data-bind="text:pmP['pA71000']['fType']"></span>
             </div>
@@ -108,11 +109,11 @@
                   <input type="text" pattern="\d*" class="pKO" data-bind="value: pmP['pA71000']['setCOV']"> 
                 </div>
 
-
+ 
                 <div class="productInput hasOpts">
                            <div class="input-v4">
                   <input type="radio" name="ftype" id="A71000ftype1" value="Family" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']"/> 
-                  <label for="A71000ftype1">Family</label>
+                  <label data-bind="css: {inputHide: !pmP['pA71000'].allowFamily()}"  for="A71000ftype1">Family</label>
                   <input type="radio" name="ftype" id="A71000ftype2" value="Individual" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']" />    
                   <label for="A71000ftype2">Individual</label>
               </div>
@@ -137,9 +138,9 @@
                   <input type="radio" name="ctype" id="A71000ctype1" value='1' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/> 
                   <label for="A71000ctype1">single</label>
                   <input type="radio" name="ctype" id="A71000ctype2" value='2' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
-                  <label for="A71000ctype2">double</label>
+                  <label data-bind="css: {inputHide: !pmP['pA71000'].allowDouble()}" for="A71000ctype2">double</label>
                   <input type="radio" name="ctype" id="A71000ctype3" value='3' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
-                  <label for="A71000ctype3">triple</label>
+                  <label data-bind="css: {inputHide: !pmP['pA71000'].allowDouble()}" for="A71000ctype3">triple</label>
                 </div>
 
                 <div class="productAdd">
