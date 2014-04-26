@@ -110,6 +110,12 @@
 
 
                 <div class="productInput hasOpts">
+                           <div class="input-v4">
+                  <input type="radio" name="ftype" id="A71000ftype1" value="Family" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']"/> 
+                  <label for="A71000ftype1">Family</label>
+                  <input type="radio" name="ftype" id="A71000ftype2" value="Individual" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']" />    
+                  <label for="A71000ftype2">Individual</label>
+              </div>
                 </div>
 
 
@@ -127,11 +133,20 @@
                   <input type="text" pattern="\d*" readonly class="pRO" id="pA71000_WKL">
                 </div>
 
+                <div class="input-v4">
+                  <input type="radio" name="ctype" id="A71000ctype1" value='1' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/> 
+                  <label for="A71000ctype1">single</label>
+                  <input type="radio" name="ctype" id="A71000ctype2" value='2' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label for="A71000ctype2">double</label>
+                  <input type="radio" name="ctype" id="A71000ctype3" value='3' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label for="A71000ctype3">triple</label>
+                </div>
 
                 <div class="productAdd">
-                  <input class="sliderInput" type="checkbox" id="add_pA71000" data-bind="checked: pmP['pA71000']['added']" /><label class="slider" for="add_pA71000" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>              
+                  <input class="sliderInput" type="checkbox" id="add_pA71000" data-bind="checked: pmP['pA71000']['added']" /><label class="slider sliderV2" for="add_pA71000"></label>              
                 </div> 
-            </div>
+
+           </div>
     </div>   
 
 <div class="pWrapper pwLeft">
@@ -166,7 +181,7 @@
                   <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setWKL']">  
                 </div>
                 <div class="productAdd">
-                             
+                    <input class="sliderInput" type="checkbox" id="add_pWHL" data-bind="checked: pmP['pWHL']['added']" /><label class="slider sliderV2" for="add_pWHL"></label>        
                 </div> 
                 
                 
