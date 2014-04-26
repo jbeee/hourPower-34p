@@ -151,7 +151,7 @@
 
 <div class="pWrapper pwLeft">
 
-<div class="phProduct WHL p productAdded" data-bind="css:{productAllowed: pmP['pWHL'].allowed()}">
+<div class="phProduct WHL p" data-bind="css:{productAllowed: pmP['pWHL'].allowed(), productAdded: pmP['pWHL'].added()}">
             <div class="productTitle"><span class="pName" id="pWHL_pName"></span>
                     <span class="pOwner" data-bind="text: pmM.p.fname"></span><span class="pCategory" data-bind="text:pmP['pWHL']['categoryName']"></span></div>
                 <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pWHL_COV'].hasError()}">                               

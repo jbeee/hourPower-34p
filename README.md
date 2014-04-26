@@ -37,8 +37,6 @@ TODO
 ====
 - ~~adjust WHL rate to optimal~~
 - ~~adjust WHL COV~~
-- add WHL module 
-- or small message for optimal rate choices?
 - ~~check A71 reqs~~
 - ~~check SPR reqs~~
 - ~~check CHR reqs~~
@@ -50,6 +48,8 @@ TODO
 - ~~added css~~
 - ~~added transitions~~
 - add error css
+- add WHL module 
+- or small message for optimal rate choices?
 - add non-terminal error messages
 - add terminal error module
 - add ADB section
@@ -75,14 +75,13 @@ TODO
 - add new questions
 - add html version of letters
 
-
-
-- add new products: SGWHL
-- add new products: B200
+- ~add new products: SGWHL~
+- ~add new products: B2000~
 - add daily/hour switch 
 - user set defaults
 
 - add portrait css
+- flex box orders
 - add screen max-width 500 css;
 
 
