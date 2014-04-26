@@ -162,9 +162,9 @@ getPowerHour.inputErrors = function(){
             {
               ie.errArray[errId].hasError (false);
               ie.errArray[errId].terminal (false);
-              ie.errArray[errId].msg ('');
-              ie.errArray[errId].lastValid (val);
+              ie.errArray[errId].msg ('');              
             }      
+          ie.errArray[errId].lastValid (val);
         };
   ie.addError = function(type,owner,msg,terminal)
         { 
@@ -403,7 +403,7 @@ getPowerHour.policyProductModelKO = function()
                      console.log('write '+ppKO.pId+' WKL' + newWKL[1]);
                      if(newWKL[0])
                      {
-                      if(ppKO.lbl=='WHL'){bestCategory('WKL',newWKL[1])};                 
+                      if(ppKO.lbl=='WHL'){ppKO.bestCategory('WKL',newWKL[1])};                 
                        ppKO.calculateVals('WKL',newWKL[1],'writeWKL');
                      }
                      else

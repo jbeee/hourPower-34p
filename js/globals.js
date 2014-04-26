@@ -186,7 +186,7 @@ function countMe(which,owner,val)
 {
     if(isNaN(val)){return;}
     var myId = owner+'_'+which;
-    console.log(''+myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val)
+    console.log('LST VALID!: '+myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val);
     var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,2,0.8);
     countDiff.start();
     pmE.removeError(which,owner,val);
