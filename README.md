@@ -28,8 +28,9 @@ Hour Power Presentation Concept
 	- Offline Database: HTML5 local storage
 
 ####Frontend:
-	- Knockoutjs
-	- Durandaljs
+	- Knockout.js
+	- jQuery.js
+	- Durandal.js
 	- Semantic UI
 
 
@@ -78,6 +79,8 @@ TODO
 - ~~add new products: SGWHL~~
 - ~~add new products: B2000~~
 - add daily/hour switch 
+- add daily sheet calcs
+- add daily sheet formatting
 - user set defaults
 
 - add portrait css

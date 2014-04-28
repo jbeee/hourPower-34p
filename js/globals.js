@@ -177,6 +177,14 @@ function policyAppTerminalError(msg)
 }
 
 
+function returnValsYRL(YRL)
+{
+    var MBD = YRL/12;
+    var WKL = YRL/52; 
+    var DLY = YRL/365;
+    return {'YRL':YRL,'MBD':MBD,'WKL':WKL,'DLY':DLY};
+};
+
 /*
     params: product element, product id, value
         function to initialize new countUp fxn
@@ -186,8 +194,8 @@ function countMe(which,owner,val)
 {
     if(isNaN(val)){return;}
     var myId = owner+'_'+which;
-    console.log('LST VALID!: '+myId+ "  " +pmE.errArray[myId].lastValid() + "   "+val);
-    var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,2,0.8);
+    var decimals = (which=='DLY')?3:2;
+    var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,decimals,0.8);
     countDiff.start();
     pmE.removeError(which,owner,val);
 }

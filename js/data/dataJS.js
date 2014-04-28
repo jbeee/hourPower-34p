@@ -317,6 +317,13 @@ defArr['SGWHL'].maxTUAge = 75;
 defArr['B2000']=new productDefaults('B2000','AHP',10000,100000,10000,'B2000',72,5,8);
 
 
+defArr['WHL']['seniorMins']={
+	M:{TU:60,NTU:60},
+	F:{TU:60,NTU:64}
+};
+
+
+
 /////////// TEMPLATE FOR CREATING A NEW HOUR POWER 
 	/*
 	 The template generates forms and the policy generates attributes based on the values seen here
@@ -348,15 +355,38 @@ defArr['B2000']=new productDefaults('B2000','AHP',10000,100000,10000,'B2000',72,
 		    },
 		    {
 		    	"id":"sp",
-		        "fname": "",
-		        "lname": "",
+		        "fname": "",		        
 		        "gender": "M",
 		        "birthday": "22",
 		        "wage": "",
 		        "TU": "NTU",
-		        "liW": "",
-		        "liOW": "",
-		        "rider":true
+		        "rider-type":1,
+		        "qualifications":[
+					{
+		        		"id":"q1",
+		        		"Q":"",
+		        		"A":false,
+		        		"T":""
+		        	},
+		        	{
+		        		"id":"q2",
+		        		"Q":"",
+		        		"A":false,
+		        		"T":""
+		        	}
+		        ],
+		        "Survey":[
+		        	{
+		        		"id":"s1",
+		        		"Q":"",
+		        		"A":false
+		        	},
+		        	{
+		        		"id":"s2",
+		        		"Q":"",
+		        		"A":false
+		        	}
+		        ]	        
 		    }
 	   ],
     "products": [

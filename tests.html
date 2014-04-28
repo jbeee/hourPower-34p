@@ -69,30 +69,33 @@
 
  <table><tr><td> 
 <div class="input-v5">
-    <input type="radio" name="showPTyp" id="dhBTN1" value="D" data-bind="checked: pm.showDH"/>     
+    <input type="radio" name="showPTyp" id="dhBTN1" value="H" data-bind="checked: pm.useConcept"/>     
     <label for="dhBTN1">HOUR POWER</label>
 </div>
 <br>
 <div class="input-v5">
-    <input type="radio" name="showPType" id="dhBTN2" value="H" data-bind="checked: pm.showDH"/>     
-    <label for="dhBTN2">DAILY NAME?</label>
+    <input type="radio" name="showPType" id="dhBTN2" value="D" data-bind="checked: pm.useConcept"/>     
+    <label for="dhBTN2">Dollar A Day</label>
 </div>
 
  </td><td>                            
-<table><tr><td>
-    <div class="input-v5">
-    <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pm.allowMH"/> 
-    <label for="phTypeBTN1" data-bind="css: { disabledUI: pm.allowMH()==false}">Combined Hour</label>
-    </div>
-    </td><td>
-    <div class="ui labeled input">
-     <input type="text" placeholder="Combined Hour" data-bind="value: pm.setMVal" readonly> 
-     </div>                                
+<table data-bind="visible:pm.useConcept()=='H'"><tr><td>
+
+        <div class="input-v5">
+        <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pm.allowMH"/> 
+        <label for="phTypeBTN1" data-bind="css: { disabledUI: pm.allowMH()==false}">Combined Hour</label>
+        </div>
+        </td><td>
+        <div class="ui labeled input">
+         <input type="text" placeholder="Combined Hour" data-bind="value: pm.setMVal" readonly> 
+         </div> 
+                                 
                                 </td></tr><tr><td>
-<div class="input-v5">
-    <input type="radio" name="phtype" id="phTypeBTN2" value="CH" data-bind="checked: pm.phType"/>     
-    <label for="phTypeBTN2">Custom Hour</label>
-</div>
+
+  <div class="input-v5">
+      <input type="radio" name="phtype" id="phTypeBTN2" value="CH" data-bind="checked: pm.phType"/>     
+      <label for="phTypeBTN2">Custom Hour</label>
+  </div>
 </td>
 <td>
   <div class="ui labeled input">
@@ -101,16 +104,20 @@
  </td> </tr> </table>
 
  </td><td>
+ <div data-bind="visible:pm.useConcept()=='D'">
     Daily Value:
               <select data-bind="options: pm.opts_dtype,
                         optionsText: 'showVal', optionsValue:'val', value: pm.dtype" class="pSELECT"></select>
+  </div>
               
  </td><td>
- <table><tr><td>show yearly</td><td> <input type="checkbox" id="pShowYRL" data-bind="checked: pm.showYRL" /></td></tr>
- <tr><td>show monthly</td><td>  <input type="checkbox" id="pShowMBD" data-bind="checked: pm.showMBD" /></td></tr>
- <tr><td>show weekly</td><td>  <input type="checkbox" id="pShowWKL" data-bind="checked: pm.showWKL" /></td></tr>
-<tr><td>show daily</td><td>   <input type="checkbox" id="pShowDLY" data-bind="checked: pm.showDLY" /></td></tr>
-</table>
+ <div style="margin-left:300px">
+     <table><tr><td>show yearly</td><td> <input type="checkbox" id="pShowYRL" data-bind="checked: pm.showYRL" /></td></tr>
+     <tr><td>show monthly</td><td>  <input type="checkbox" id="pShowMBD" data-bind="checked: pm.showMBD" /></td></tr>
+     <tr><td>show weekly</td><td>  <input type="checkbox" id="pShowWKL" data-bind="checked: pm.showWKL" /></td></tr>
+    <tr><td>show daily</td><td>   <input type="checkbox" id="pShowDLY" data-bind="checked: pm.showDLY" /></td></tr>
+    </table>
+</div>
 </td>
 </tr>
 </table>
@@ -209,6 +216,13 @@
                   <input type="text" readonly class="pRO" id="pWHL_WKL">
                   <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setWKL']">  
                 </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pWHL_DLY'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pWHL_DLY">
+                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setDLY']">                    
+                </div>
+
                 <div class="productAdd">
                     <input class="sliderInput" type="checkbox" id="add_pWHL" data-bind="checked: pmP['pWHL']['added']" /><label class="slider sliderV2" for="add_pWHL"></label>        
                 </div> 
@@ -247,6 +261,10 @@
                 <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_WKL'].hasError()}">
                   <input type="text" readonly class="pRO" id="pSGWHL_WKL">
                   <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setWKL']">  
+                </div>
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_DLY'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pSGWHL_DLY">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setDLY']">  
                 </div>
                 <div class="productAdd">
                 <input class="sliderInput" type="checkbox" id="add_pSGWHL" data-bind="checked: pmP['pSGWHL']['added']" /><label class="slider sliderV2" for="add_pSGWHL"></label>             
@@ -660,21 +678,21 @@
                    </div>
                
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="ahp_YRL">
+                  <input type="text" readonly class="pRO" id="total_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="ahp_MBD">
+                  <input type="text" readonly class="pRO" id="total_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="ahp_WKL">
+                  <input type="text" readonly class="pRO" id="total_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="ahp_DLY">
+                  <input type="text" readonly class="pRO" id="total_DLY">
                 </div>
     </div>
     <div class="phProduct">
@@ -683,21 +701,21 @@
                    </div>
                
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="ahp_YRL">
+                  <input type="text" readonly class="pRO" id="AHP_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="ahp_MBD">
+                  <input type="text" readonly class="pRO" id="AHP_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="ahp_WKL">
+                  <input type="text" readonly class="pRO" id="AHP_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="ahp_DLY">
+                  <input type="text" readonly class="pRO" id="AHP_DLY">
                 </div>
     </div>
     <div class="phProduct">
@@ -706,21 +724,21 @@
                    </div>
                
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="alp_YRL">
+                  <input type="text" readonly class="pRO" id="ALP_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="alp_MBD">
+                  <input type="text" readonly class="pRO" id="ALP_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="alp_WKL">
+                  <input type="text" readonly class="pRO" id="ALP_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="alp_DLY">
+                  <input type="text" readonly class="pRO" id="ALP_DLY">
                 </div>
     </div>
     <div class="phProduct">
@@ -729,21 +747,21 @@
                    </div>
                
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="tDiff_YRL">
+                  <input type="text" readonly class="pRO" id="diff_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="tDiff_MBD">
+                  <input type="text" readonly class="pRO" id="diff_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="tDiff_WKL">
+                  <input type="text" readonly class="pRO" id="diff_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="tDiff_DLY">
+                  <input type="text" readonly class="pRO" id="diff_DLY">
                 </div>
     </div>
 </div>
