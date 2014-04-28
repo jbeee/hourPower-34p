@@ -125,81 +125,65 @@
 
 <div id="productsWrapper">
 
-  <div class="clearFix"></div>
+    <div class="pWrapper fullWidth">
 
-<div class="pWrapper alwaysShow fullWidth">
-    <div class="phProduct" class="productAdded">
+    <div class="phProduct" data-bind="css:{productAdded:pmP['pA71000'].added(), productAllowed: pmP['pA71000'].allowed()}">
             <div class="productTitle">
-            <span class="pName">TOTAL</span>
-                   </div>
-               
+            <span class="pName" id="pA71000_pName"></span>
+            <span class="pCategory" data-bind="text:pm.opts_A71000()[pmP['pA71000'].ctype()-1]['showVal'], visible:pmP['pA71000'].added()"></span>
+            <span class="pCategory" data-bind="text:pmP['pA71000']['ftype'], visible:pmP['pA71000'].added()"></span>
+            </div>
+                <div class="productInput isCOV">                         
+                 <input type="text" readonly class="pRO" id="pA71000_COV">
+                </div>
+
+
+
+
+ 
+                <div class="productInput hasOpts">
+                           <div class="input-v4">
+                  <input type="radio" name="ftype" id="A71000ftype1" value="Family" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']"/> 
+                  <label data-bind="visible: pmP['pA71000'].allowFamily()"  for="A71000ftype1">Family</label>
+                  <input type="radio" name="ftype" id="A71000ftype2" value="Individual" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']" />    
+                  <label for="A71000ftype2">Individual</label>
+              </div>
+                </div>
+
+
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="total_YRL">
+                  <input type="text" readonly class="pRO" id="pA71000_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="total_MBD">
+                  <input type="text" readonly class="pRO" id="pA71000_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="total_WKL">
+                  <input type="text" readonly class="pRO" id="pA71000_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="total_DLY">
-                </div>
-    </div>
-    <div class="phProduct" class="productAdded">
-            <div class="productTitle">
-            <span class="pName">Used:</span>
-                   </div>
-               
-                <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="used_YRL">
+                  <input type="text" readonly class="pRO" id="pA71000_DLY">
                 </div>
 
-
-                <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="used_MBD">
+                <div class="input-v4">
+                  <input type="radio" name="ctype" id="A71000ctype1" value='1' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/> 
+                  <label for="A71000ctype1">single</label>
+                  <input type="radio" name="ctype" id="A71000ctype2" value='2' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype2">double</label>
+                  <input type="radio" name="ctype" id="A71000ctype3" value='3' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype3">triple</label>
                 </div>
 
+                <div class="productAdd">
+                  <input class="sliderInput" type="checkbox" id="add_pA71000" data-bind="checked: pmP['pA71000']['added']" /><label class="slider sliderV2" for="add_pA71000"></label>              
+                </div> 
 
-                <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="used_WKL">
-                </div>
-
-                <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="used_DLY">
-                </div>
-    </div>
-
-    <div class="phProduct" class="productAdded">
-            <div class="productTitle">
-            <span class="pName">Difference:</span>
-                   </div>
-               
-                <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="diff_YRL">
-                </div>
-
-
-                <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="diff_MBD">
-                </div>
-
-
-                <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="diff_WKL">
-                </div>
-
-                <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="diff_DLY">
-                </div>
-    </div>
-    </div>
-
+           </div>
+    </div>   
 
 <div class="pWrapper pwLeft">
 
@@ -234,12 +218,7 @@
                 </div>
 
 
-                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pWHL_DLY'].hasError()}">
-                  <input type="text" readonly class="pRO" id="pWHL_DLY">
-                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setDLY']">                    
-                </div>
-
-                <div class="productAdd">
+               <div class="productAdd">
                     <input class="sliderInput" type="checkbox" id="add_pWHL" data-bind="checked: pmP['pWHL']['added']" /><label class="slider sliderV2" for="add_pWHL"></label>        
                 </div> 
                 
@@ -685,75 +664,83 @@
 
 </div>
 
-<div class="clearfix"></div>
+<div class="clearFix"></div>
 
-
-     <div class="pWrapper fullWidth">
-
-    <div class="phProduct" data-bind="css:{productAdded:pmP['pA71000'].added(), productAllowed: pmP['pA71000'].allowed()}">
+<div class="pWrapper alwaysShow fullWidth">
+    <div class="phProduct">
             <div class="productTitle">
-            <span class="pName" id="pA71000_pName"></span>
-            <span class="pCategory" data-bind="text:pm.opts_A71000()[pmP['pA71000'].ctype()-1]['showVal'], visible:pmP['pA71000'].added()"></span>
-            <span class="pCategory" data-bind="text:pmP['pA71000']['ftype'], visible:pmP['pA71000'].added()"></span>
-            </div>
-                <div class="productInput isCOV">                         
-                 <input type="text" readonly class="pRO" id="pA71000_COV">
-                </div>
-
-
-
-
- 
-                <div class="productInput hasOpts">
-                           <div class="input-v4">
-                  <input type="radio" name="ftype" id="A71000ftype1" value="Family" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']"/> 
-                  <label data-bind="visible: pmP['pA71000'].allowFamily()"  for="A71000ftype1">Family</label>
-                  <input type="radio" name="ftype" id="A71000ftype2" value="Individual" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']" />    
-                  <label for="A71000ftype2">Individual</label>
-              </div>
-                </div>
-
-
+            <span class="pName">Recommended:</span>
+                   </div>
+               
                 <div class="productInput" data-bind="visible: pm.showYRL()">                   
-                  <input type="text" readonly class="pRO" id="pA71000_YRL">
+                  <input type="text" readonly class="pRO" id="total_YRL">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showMBD()">                  
-                  <input type="text" readonly class="pRO" id="pA71000_MBD">
+                  <input type="text" readonly class="pRO" id="total_MBD">
                 </div>
 
 
                 <div class="productInput" data-bind="visible: pm.showWKL()">
-                  <input type="text" readonly class="pRO" id="pA71000_WKL">
+                  <input type="text" readonly class="pRO" id="total_WKL">
                 </div>
 
                 <div class="productInput" data-bind="visible: pm.showDLY()">
-                  <input type="text" readonly class="pRO" id="pA71000_DLY">
+                  <input type="text" readonly class="pRO" id="total_DLY">
+                </div>
+    </div>
+    <div class="phProduct">
+            <div class="productTitle">
+            <span class="pName">Used:</span>
+                   </div>
+               
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="used_YRL">
                 </div>
 
-                <div class="input-v4">
-                  <input type="radio" name="ctype" id="A71000ctype1" value='1' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/> 
-                  <label for="A71000ctype1">single</label>
-                  <input type="radio" name="ctype" id="A71000ctype2" value='2' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
-                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype2">double</label>
-                  <input type="radio" name="ctype" id="A71000ctype3" value='3' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
-                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype3">triple</label>
+
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="used_MBD">
                 </div>
 
-                <div class="productAdd">
-                  <input class="sliderInput" type="checkbox" id="add_pA71000" data-bind="checked: pmP['pA71000']['added']" /><label class="slider sliderV2" for="add_pA71000"></label>              
-                </div> 
 
-           </div>
-    </div>   
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="used_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="used_DLY">
+                </div>
+    </div>
+
+    <div class="phProduct">
+            <div class="productTitle">
+            <span class="pName">Remaining:</span>
+                   </div>
+               
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="diff_YRL">
+                </div>
 
 
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="diff_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="diff_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="diff_DLY">
+                </div>
+    </div>
 </div>
 
 <div class="clearFix"></div>
 
- 
 
  <script src="js/libs/deps_ko.js"> </script> 
   <script src="css/sui/javascript/semantic.js"> </script>

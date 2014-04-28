@@ -882,3 +882,21 @@ user-select: none;
   margin-top: 0.25em;
    margin-bottom: 0.25em;
 }
+
+.pName
+{
+  text-transform:uppercase;
+  font-weight:bold;
+}
+
+.pCategory
+{
+  display:block;
+  font-size:0.8em;
+
+}
+.pOwner
+{
+  .display:block;
+
+}
