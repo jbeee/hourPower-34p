@@ -6301,7 +6301,6 @@ i.massive.basic.icon {
   top: 50%;
   left: 50%;
   content: 'or';
-  background-color: #FFFFFF;
   margin-top: -0.1em;
   margin-left: -0.9em;
   width: 1.8em;
@@ -6312,6 +6311,7 @@ i.massive.basic.icon {
   font-weight: normal;
   text-align: center;
   border-radius: 500px;
+  background-color:#ccc;
   -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
   -webkit-box-sizing: border-box;
@@ -6332,8 +6332,6 @@ i.massive.basic.icon {
   width: 0.3em;
   height: 1.7em;
   background-color: transparent;
-  border-top: 0.5em solid #FFFFFF;
-  border-bottom: 0.5em solid #FFFFFF;
 }
 
 /* Fluid Or */
@@ -6574,8 +6572,13 @@ i.massive.basic.icon {
 
 .ui.green.buttons .button,
 .ui.green.button {
-  background-color: #5BBD72;
-  color: #FFFFFF;
+  font-size:0.8em;
+  background-color: #2d3538;
+  color: #6a787c;
+}
+
+.ui.green.button i {
+  color: #ccc;
 }
 
 .ui.green.buttons .button:hover,
@@ -6583,13 +6586,18 @@ i.massive.basic.icon {
 .ui.green.buttons .active.button,
 .ui.green.button.active {
   background-color: #58cb73;
-  color: #FFFFFF;
+  color: #444;
 }
+
+.ui.green.button:hover i {
+  color: #222;
+}
+
 
 .ui.green.buttons .button:active,
 .ui.green.button:active {
   background-color: #4CB164;
-  color: #FFFFFF;
+  color: #6a787c;
 }
 
 /*--- Red ---*/
