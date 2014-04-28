@@ -177,13 +177,29 @@ function policyAppTerminalError(msg)
 }
 
 
-function returnValsYRL(YRL)
+returnVals = 
 {
-    var MBD = YRL/12;
-    var WKL = YRL/52; 
-    var DLY = YRL/365;
-    return {'YRL':YRL,'MBD':MBD,'WKL':WKL,'DLY':DLY};
+    YRL:function (val)
+    {
+      var MBD = val/12;
+      var WKL = val/52; 
+      var DLY = val/365;
+      return {'YRL':val,'MBD':MBD,'WKL':WKL,'DLY':DLY};
+    },
+
+    MBD:function (val)
+    {
+      var YRL = val*12;
+      var WKL = YRL/52; 
+      var DLY = YRL/365;
+      return {'YRL':YRL,'MBD':val,'WKL':WKL,'DLY':DLY};
+    }
 };
+
+function countTotals(which,val)
+{
+
+}
 
 /*
     params: product element, product id, value
@@ -196,6 +212,15 @@ function countMe(which,owner,val)
     var myId = owner+'_'+which;
     var decimals = (which=='DLY')?3:2;
     var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,decimals,0.8);
+    countDiff.start();
+    pmE.removeError(which,owner,val);
+}
+
+function countT(which,owner,val)
+{
+    if(isNaN(val)){return;}
+    var myId = owner+'_'+which;
+    var countDiff = new countUp(myId,pmE.errArray[myId].lastValid(),val,2,1.5);
     countDiff.start();
     pmE.removeError(which,owner,val);
 }

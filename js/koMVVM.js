@@ -827,15 +827,10 @@ getPowerHour.policyModelKO = function()
         pmE.initError('WKL','total');
         pmE.initError('DLY','total');
 
-        pmE.initError('MBD','AHP');
-        pmE.initError('YRL','AHP');
-        pmE.initError('WKL','AHP');
-        pmE.initError('DLY','AHP');
-
-        pmE.initError('MBD','ALP');
-        pmE.initError('YRL','ALP');
-        pmE.initError('WKL','ALP');
-        pmE.initError('DLY','ALP');
+        pmE.initError('MBD','used');
+        pmE.initError('YRL','used');
+        pmE.initError('WKL','used');
+        pmE.initError('DLY','used');
 
         pmE.initError('MBD','diff');
         pmE.initError('YRL','diff');
@@ -957,23 +952,20 @@ getPowerHour.policyModelKO = function()
          },pmKO);
    
 
-        pmKO.ALP = ko.observable();
-        pmKO.AHP = ko.observable();
-
+        
         pmKO.showYRL = ko.observable(getPowerHour.globals.showDefaults[0]);
         pmKO.showMBD = ko.observable(getPowerHour.globals.showDefaults[1]);
         pmKO.showWKL = ko.observable(getPowerHour.globals.showDefaults[2]);
         pmKO.showDLY = ko.observable(getPowerHour.globals.showDefaults[3]);
 
+
         pmKO.useConcept =  ko.observable(getPowerHour.globals.startConcept);
 
+        pmKO.totalUsed = ko.observable();
 
         pmKO.sumTotals = ko.computed(function(){
-          console.log('CALLED');
           var totalAHP = 0;
           var totalALP = 0;
-          pmKO.total = 0;
-
           for(var product in pmP)
           {
               if((pmP[product].allowed())&&(pmP[product].added()))
@@ -991,14 +983,13 @@ getPowerHour.policyModelKO = function()
 
                 }
               }
-              pmKO.AHP(returnValsYRL(totalAHP));
-              pmKO.ALP(returnValsYRL(totalALP));
+              pmKO.totalUsed(returnVals.YRL(totalAHP+totalALP));
           }
 
           }, pmKO);
 
         pmKO.showTotals = ko.computed(function(){
-          var newStartVal = 0;
+
           var total = 0;
           if(pmKO.useConcept()=='D')
           { 
@@ -1009,36 +1000,23 @@ getPowerHour.policyModelKO = function()
             total  = 52*pmKO.phVal();
           }
 
+          var totalVals = returnVals.YRL(total);
+          var diffVals = returnVals.YRL(totalVals.YRL - pmKO.totalUsed().YRL)
 
+          countT('YRL','diff',diffVals.YRL);
+          countT('MBD','diff',diffVals.MBD);
+          countT('WKL','diff',diffVals.WKL);
+          countT('DLY','diff',diffVals.DLY);
 
-          var totalVals = returnValsYRL(total);
+          countT('YRL','used',pmKO.totalUsed().YRL);
+          countT('MBD','used',pmKO.totalUsed().MBD);
+          countT('WKL','used',pmKO.totalUsed().WKL);
+          countT('DLY','used',pmKO.totalUsed().DLY);
 
-          var diffVals = returnValsYRL(totalVals.YRL - pmKO.ALP().YRL - pmKO.AHP().YRL)
-          countMe('YRL','diff',diffVals.YRL);
-          countMe('MBD','diff',diffVals.MBD);
-          countMe('WKL','diff',diffVals.WKL);
-          countMe('DLY','diff',diffVals.DLY);
-
-          countMe('YRL','AHP',pmKO.AHP().YRL);
-          countMe('MBD','AHP',pmKO.AHP().MBD);
-          countMe('WKL','AHP',pmKO.AHP().WKL);
-          countMe('DLY','AHP',pmKO.AHP().DLY);
-
-          countMe('YRL','ALP',pmKO.ALP().YRL);
-          countMe('MBD','ALP',pmKO.ALP().MBD);
-          countMe('WKL','ALP',pmKO.ALP().WKL);
-          countMe('DLY','ALP',pmKO.ALP().DLY);
-
-          countMe('YRL','total',totalVals.YRL);
-          countMe('MBD','total',totalVals.MBD);
-          countMe('WKL','total',totalVals.WKL);
-          countMe('DLY','total',totalVals.DLY);
-
-
-
-
-
-          countMe();
+          countT('YRL','total',totalVals.YRL);
+          countT('MBD','total',totalVals.MBD);
+          countT('WKL','total',totalVals.WKL);
+          countT('DLY','total',totalVals.DLY);
 
         });
 
