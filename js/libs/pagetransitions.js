@@ -58,12 +58,12 @@ var PageTransitions = (function() {
 				return false;
 			}
 	
-			nextPage($(this).data("goto"),62);
+			nextPage($(this).data("goto"),62);			
 		} );
 
 	}
 
-	function nextPage( goto, animation ) {
+	function nextPage( goto, animation) {
 		if( isAnimating ) {
 			return false;
 		}
@@ -71,11 +71,13 @@ var PageTransitions = (function() {
 		isAnimating = true;
 		var $currPage = $pages.eq( current );
 		var page = current;
+		console.log(page)
 		if(goto=="next")
 		{
 			page +=1;
 			if(page==(pagesCount-1))
 			{
+				isAnimating = false;
 				return;
 			}
 		}
@@ -85,6 +87,7 @@ var PageTransitions = (function() {
 			 page -= 1;
 				if(page<0)
 				{
+					isAnimating = false;
 				return;
 				}
 
@@ -369,7 +372,7 @@ var PageTransitions = (function() {
 		}
 
 		$currPage.addClass( outClass ).on( animEndEventName, function() {
-			$currPage.off( animEndEventName );
+			$currPage.off( animEndEventName );			
 			endCurrPage = true;
 			if( endNextPage ) {
 				onEndAnimation( $currPage, $nextPage );
@@ -393,7 +396,7 @@ var PageTransitions = (function() {
 		endCurrPage = false;
 		endNextPage = false;
 		resetPage( $outpage, $inpage );
-		isAnimating = false;
+		isAnimating = false;		
 	}
 
 	function resetPage( $outpage, $inpage ) {

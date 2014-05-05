@@ -1,73 +1,260 @@
 <!DOCTYPE html>
-<meta http-equiv="Cache-control" content="no-cache">
 <html lang="en" class="no-js">
-<head>
- <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
- <link rel="stylesheet" type="text/css" href="css/style1.css">
-</head>
-<body>
-<div class="start">
-        <table cell-padding="15px">
-            <tr>
-                <td>
-                    <em>Member:</em>
-                    <div class="ui labeled input">
+	<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+	 <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/animations.css" />
+
+		<script src="js/libs/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="logo">	
+			<img src="http://34production.com/hourpower/resources/AILlogo2.png">
+			<img src="http://34production.com/hourpower/resources/AILlogo4.png" class="over">
+			</div>
+			<div class="title"><h1>American Income Life</h1><h2>Insurance Company</h2></div>
+			<div class="menu"></div>
+		</header>
+		<div class="pApp-BG fullscreen">
+		<img src="http://34production.com/hourpower/resources/backgrounds/vswBG.jpg" class="pApp-BGimg">
+		</div>
+
+
+		<div class="pApp-wrapper fullscreen"><div class="fullscreen perspective" id="pApp-main">
+			
+
+			<div class="pApp-page fullscreen p1">
+				<div class="abs pApp-inner">
+
+	<div class="pageTable">
+				<table>
+				<tr><td colspan="3">Have you ever had a DUI?</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn1"  />
+                                <label class="slider sliderV2" for="pTBtn1"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn2"  />
+                                <label class="slider sliderV2" for="pTBtn2"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3">Do you smoke Tobacco or Marijuana</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn3"  />
+                                <label class="slider sliderV2" for="pTBtn3"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn4"  />
+                                <label class="slider sliderV2" for="pTBtn4"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3"Do you take any perscription medication</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn5"  />
+                                <label class="slider sliderV2" for="pTBtn5"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn6"  />
+                                <label class="slider sliderV2" for="pTBtn6"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3">Have you had any health issues in your lifetime</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn7"  />
+                                <label class="slider sliderV2" for="pTBtn7"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn8"  />
+                                <label class="slider sliderV2" for="pTBtn8"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+</table></div>
+				</div>
+			</div>
+			<div class="pApp-page fullscreen p2">
+				<div class="abs pApp-inner">
+			
+<div class="pageTable">
+
+<table><tr><td colspan="5"><strong>Primary Insured</strong></td></tr><tr>
+<td>First Name</td><td> Date of Birth / Age</td> <td> Tobacco User</td><td>Gender</td><td>Children under 19</td></tr>
+<tr>
+<td>
+
+<div class="ui labeled input">
                         <input type="text" placeholder="Member First Name" data-bind="value: pmM.p.fname" >
                     </div>
-                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Birthday_Age'].hasError()}">
+
+                    </td><td> 
+
+                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Birthday_Age'].hasError()}">
                         <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.p.birthday">
                     </div>
-                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
-                        <input type="text" pattern="\d*" placeholder="Hourly Wage" data-bind="value: pmM.p.setWage" >
-                    </div>
-                     <table>
-                        <tr>
-                            <td>Gender:</td>
-                            <td><input class="sliderInput" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
-                                <label class="slider-v1" for="pGenderBtn"></label>
-                            </td>
-                            <td>Tobacco user:</td>
-                            <td>      
-                                <input class="sliderInput" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TUCHK" />
+
+
+                    </td> <td width="150px">
+
+                     <input class="sliderInput" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TUCHK" />
                                 <label class="slider sliderV2" for="pTBtn"></label>
-                            </td>
-                            <td>Child(ren) under 19:</td>
-                            <td> 
-                                <input class="sliderInput" type="checkbox" id="pCBtn" data-bind="checked: pm.hasChild" />
-                                <label class="slider sliderV2" for="pCBtn"></label>
-                            </td>
-                            <td> Married: </td>
-                            <td> 
-                                <input class="sliderInput" type="checkbox" id="pSBtn" data-bind="checked: pm.hasSpouse" /> 
+
+                                </td><td width="150px">
+                     	
+                     	<input class="sliderInput" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
+                                <label class="slider-v1" for="pGenderBtn"></label>
+                     </td><td>
+<input class="sliderInput" type="checkbox" id="pSBtn" data-bind="checked: pm.hasSpouse" /> 
                                 <label class="slider sliderV2" for="pSBtn"></label>
-                            </td>
-                        </tr>
-                    </table>
-                    <em> Spouse:</em>
-                    <div class="ui labeled input">
-                        <input type="text" placeholder="Spouse's First Name" data-bind="value: pmM.sp.fname" >
+                     </td>
+                     </tr>
+
+<tr><td colspan="5"><strong>Spouse</strong></td></tr><tr>
+<td>First Name</td><td> Date of Birth / Age</td> <td> Tobacco User</td><td>Gender</td><td>Children under 19</td></tr>
+<tr>
+<td>
+
+<div class="ui labeled input">
+                        <input type="text" placeholder="Spouse First Name" data-bind="value: pmM.sp.fname" >
                     </div>
-                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Birthday_Age'].hasError()&& pm.hasSpouse()}">
+
+                    </td><td> 
+
+                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Birthday_Age'].hasError()}">
                         <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.sp.birthday">
                     </div>
-                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Hourly_Wage'].hasError()}">
-                        <input type="text" pattern="\d*" placeholder="Hourly Wage" data-bind="value: pmM.sp.setWage" >
-                    </div>
-                    <table>
-                        <tr>
-                            <td>Gender:</td>
-                            <td><input class="sliderInput" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
-                                <label class="slider-v1" for="spGenderBtn"></label>
-                            </td>
-                            <td>Tobacco user:</td>
-                            <td>      
-                                <input class="sliderInput" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TUCHK" />
-                                <label class="slider sliderV2" for="spTBtn"></label>
-                            </td>
-                        </tr>
-                    </table>
 
- <table><tr><td> 
+
+                    </td> <td width="150px">
+
+                     <input class="sliderInput" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TUCHK" />
+                                <label class="slider sliderV2" for="spTBtn"></label>
+
+                                </td><td width="150px">
+                     	
+                     	<input class="sliderInput" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
+                                <label class="slider-v1" for="spGenderBtn"></label>
+                     </td><td>
+<input class="sliderInput" type="checkbox" id="spSBtn" data-bind="checked: pm.hasSpouse" /> 
+                                <label class="slider sliderV2" for="spSBtn"></label>
+                     </td>
+                     </tr>
+                     </table>
+
+
+               <table><tr><td>You and your Spouses Hourly Wage</td>
+               <td> 
+               <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
+                        <input type="text" pattern="\d*" placeholder="Member Wage" data-bind="value: pmM.p.setWage" >
+                    </div>
+                    </td>
+                    <td>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Hourly_Wage'].hasError()}">
+                        <input type="text" pattern="\d*" placeholder="Spouse's Wage" data-bind="value: pmM.sp.setWage" >
+                    </div>
+                    </td>
+</tr><tr>
+<td>
+Life Insurance outside of work</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn3"/>
+                                <label class="slider sliderV2" for="spGenderBtn3"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn4"/>
+                                <label class="slider sliderV2" for="spGenderBtn4"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you planning on being buried</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn7"/>
+                                <label class="slider sliderV2" for="spGenderBtn7"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn8"/>
+                                <label class="slider sliderV2" for="spGenderBtn8"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you planning on being cremated</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn11"/>
+                                <label class="slider sliderV2" for="spGenderBtn11"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn12"/>
+                                <label class="slider sliderV2" for="spGenderBtn12"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Do you plan on being buried in the VA National Cemetary</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn13"/>
+                                <label class="slider sliderV2" for="spGenderBtn13"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn14"/>
+                                <label class="slider sliderV2" for="spGenderBtn14"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Have you purchused plots<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn15"/>
+                                <label class="slider sliderV2" for="spGenderBtn15"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn16"/>
+                                <label class="slider sliderV2" for="spGenderBtn16"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you currently paying or have you prepaid any burial costs</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn17"/>
+                                <label class="slider sliderV2" for="spGenderBtn17"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn18"/>
+                                <label class="slider sliderV2" for="spGenderBtn18"></label>
+</td>
+</tr>
+</table>
+
+</div>
+
+</div>
+			</div>
+			<div class="pApp-page fullscreen p3">
+				<div class="abs pApp-inner">
+
+<div id="productsWrapper">				
+<table><tr><td> 
 <div class="input-v5">
     <input type="radio" name="showPTyp" id="dhBTN1" value="H" data-bind="checked: pm.useConcept"/>     
     <label for="dhBTN1">HOUR POWER</label>
@@ -111,19 +298,7 @@
   </div>
               
  </td><td>
- <div style="margin-left:300px">
-     <table><tr><td>show yearly</td><td> <input type="checkbox" id="pShowYRL" data-bind="checked: pm.showYRL" /></td></tr>
-     <tr><td>show monthly</td><td>  <input type="checkbox" id="pShowMBD" data-bind="checked: pm.showMBD" /></td></tr>
-     <tr><td>show weekly</td><td>  <input type="checkbox" id="pShowWKL" data-bind="checked: pm.showWKL" /></td></tr>
-    <tr><td>show daily</td><td>   <input type="checkbox" id="pShowDLY" data-bind="checked: pm.showDLY" /></td></tr>
-    </table>
-</div>
-</td>
-</tr>
-</table>
-</td></tr></table></div>
 
-<div id="productsWrapper">
 <div class="pWrapper alwaysShow fullWidth">
     <div class="phProduct">
             <div class="productTitle">
@@ -196,6 +371,10 @@
                 </div>
     </div>
 </div>
+
+</td>
+</tr>
+</table>
     <div class="pWrapper fullWidth">
 
     <div class="phProduct" data-bind="css:{productAdded:pmP['pA71000'].added(), productAllowed: pmP['pA71000'].allowed()}">
@@ -738,15 +917,57 @@
 <div class="clearFix"></div>
 
 
+</div>
 
-<div class="clearFix"></div>
+			</div>
+			<div class="pApp-page fullscreen p4">
+				<div class="abs pApp-inner">
+				<h1>Hour power Calcs</h1>
+				</div>
+
+			</div>
+			<div class="pApp-page fullscreen p5">
+				<div class="abs pApp-inner">
+				</div>
+
+			</div>
+			<div class="pApp-page fullscreen p6">
+								<div class="abs pApp-inner">
+				</div>
+
+			</div>
 
 
+
+
+		</div></div>
+<div data-goto="next" class="navBtn navRight pApp-switchPages">
+<div class="ui right labeled icon button pApp-switchPage">
+  <i class="right arrow icon"></i>
+  Next
+</div>	
+</div>
+<div data-goto="back" class="navBtn navLeft pApp-switchPages">
+<div class="ui left labeled icon button pApp-switchPage">
+  <i class="left arrow icon"></i>
+  Back
+</div>	
+</div>	
+
+<footer>
+<div onclick="launchFullscreen(document.documentElement);" class="sexyButton">Launch Fullscreen</div>
+
+<span>This is a Solicitation for Insurance</span>
+</footer>
  <script src="js/libs/deps_ko.js"> </script> 
   <script src="css/sui/javascript/semantic.js"> </script>
   <script src="js/data/dataJS.js"> </script>
   <script src="js/globals.js"> </script>
   <script src="js/libs/knockout-3.1.0.js" defer="defer"> </script> 
   <script src="js/koMVVM.js?n=1" defer="defer"> </script> 
-</body>
+		<script src="js/libs/pagetransitions.js"></script>
+		<script>
+
+		</script>
+	</body>
 </html>
