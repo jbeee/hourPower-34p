@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" />
+	 <link rel="stylesheet" type="text/css" href="css/sui/css/semantic.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/animations.css" />
+
+		<script src="js/libs/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<header>
+			<div class="logo">	
+			<img src="http://34production.com/hourpower/resources/AILlogo2.png">
+			<img src="http://34production.com/hourpower/resources/AILlogo4.png" class="over">
+			</div>
+			<div class="title"><h1>American Income Life</h1><h2>Insurance Company</h2></div>
+			<div class="menu"></div>
+		</header>
+		<div class="pApp-BG fullscreen">
+		<img src="http://34production.com/hourpower/resources/backgrounds/vswBG.jpg" class="pApp-BGimg">
+		</div>
+
+
+		<div class="pApp-wrapper fullscreen"><div class="fullscreen perspective" id="pApp-main">
+			
+
+			<div class="pApp-page fullscreen p1">
+				<div class="abs pApp-inner">
+
+	<div class="pageTable">
+				<table>
+				<tr><td colspan="3">Have you ever had a DUI?</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn1"  />
+                                <label class="slider sliderV2" for="pTBtn1"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn2"  />
+                                <label class="slider sliderV2" for="pTBtn2"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3">Do you smoke Tobacco or Marijuana</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn3"  />
+                                <label class="slider sliderV2" for="pTBtn3"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn4"  />
+                                <label class="slider sliderV2" for="pTBtn4"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3"Do you take any perscription medication</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn5"  />
+                                <label class="slider sliderV2" for="pTBtn5"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn6"  />
+                                <label class="slider sliderV2" for="pTBtn6"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+
+<tr><td colspan="3">Have you had any health issues in your lifetime</td></tr>
+				<tr><td width="100px">Primary:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn7"  />
+                                <label class="slider sliderV2" for="pTBtn7"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+<tr><td width="100px">Spouse:</td><td width="100px"> 
+				<input class="sliderInput" type="checkbox" id="pTBtn8"  />
+                                <label class="slider sliderV2" for="pTBtn8"></label>
+                                </td><td width=800px><div class="ui fluid input">
+  <input type="text" placeholder="">
+</div></td></tr>
+</table></div>
+				</div>
+			</div>
+			<div class="pApp-page fullscreen p2">
+				<div class="abs pApp-inner">
+			
+<div class="pageTable">
+
+<table><tr><td colspan="5"><strong>Primary Insured</strong></td></tr><tr>
+<td>First Name</td><td> Date of Birth / Age</td> <td> Tobacco User</td><td>Gender</td><td>Children under 19</td></tr>
+<tr>
+<td>
+
+<div class="ui labeled input">
+                        <input type="text" placeholder="Member First Name" data-bind="value: pmM.p.fname" >
+                    </div>
+
+                    </td><td> 
+
+                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Birthday_Age'].hasError()}">
+                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.p.birthday">
+                    </div>
+
+
+                    </td> <td width="150px">
+
+                     <input class="sliderInput" type="checkbox" id="pTBtn" data-bind="checked: pmM.p.TUCHK" />
+                                <label class="slider sliderV2" for="pTBtn"></label>
+
+                                </td><td width="150px">
+                     	
+                     	<input class="sliderInput" type="checkbox" id="pGenderBtn" data-bind="checked: pmM.p.genderCHK"/>
+                                <label class="slider-v1" for="pGenderBtn"></label>
+                     </td><td>
+<input class="sliderInput" type="checkbox" id="pSBtn" data-bind="checked: pm.hasSpouse" /> 
+                                <label class="slider sliderV2" for="pSBtn"></label>
+                     </td>
+                     </tr>
+
+<tr><td colspan="5"><strong>Spouse</strong></td></tr><tr>
+<td>First Name</td><td> Date of Birth / Age</td> <td> Tobacco User</td><td>Gender</td><td>Children under 19</td></tr>
+<tr>
+<td>
+
+<div class="ui labeled input">
+                        <input type="text" placeholder="Spouse First Name" data-bind="value: pmM.sp.fname" >
+                    </div>
+
+                    </td><td> 
+
+                     <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Birthday_Age'].hasError()}">
+                        <input type="text" placeholder="Date of Birth or Age" data-bind="value: pmM.sp.birthday">
+                    </div>
+
+
+                    </td> <td width="150px">
+
+                     <input class="sliderInput" type="checkbox" id="spTBtn" data-bind="checked: pmM.sp.TUCHK" />
+                                <label class="slider sliderV2" for="spTBtn"></label>
+
+                                </td><td width="150px">
+                     	
+                     	<input class="sliderInput" type="checkbox" id="spGenderBtn" data-bind="checked: pmM.sp.genderCHK"/>
+                                <label class="slider-v1" for="spGenderBtn"></label>
+                     </td><td>
+<input class="sliderInput" type="checkbox" id="spSBtn" data-bind="checked: pm.hasSpouse" /> 
+                                <label class="slider sliderV2" for="spSBtn"></label>
+                     </td>
+                     </tr>
+                     </table>
+
+
+               <table><tr><td>You and your Spouses Hourly Wage</td>
+               <td> 
+               <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['p_Hourly_Wage'].hasError()}">
+                        <input type="text" pattern="\d*" placeholder="Member Wage" data-bind="value: pmM.p.setWage" >
+                    </div>
+                    </td>
+                    <td>
+                    <div class="ui labeled input" data-bind="css: { hasError: pmE.errArray['sp_Hourly_Wage'].hasError()}">
+                        <input type="text" pattern="\d*" placeholder="Spouse's Wage" data-bind="value: pmM.sp.setWage" >
+                    </div>
+                    </td>
+</tr><tr>
+<td>
+Life Insurance outside of work</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn3"/>
+                                <label class="slider sliderV2" for="spGenderBtn3"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn4"/>
+                                <label class="slider sliderV2" for="spGenderBtn4"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you planning on being buried</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn7"/>
+                                <label class="slider sliderV2" for="spGenderBtn7"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn8"/>
+                                <label class="slider sliderV2" for="spGenderBtn8"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you planning on being cremated</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn11"/>
+                                <label class="slider sliderV2" for="spGenderBtn11"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn12"/>
+                                <label class="slider sliderV2" for="spGenderBtn12"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Do you plan on being buried in the VA National Cemetary</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn13"/>
+                                <label class="slider sliderV2" for="spGenderBtn13"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn14"/>
+                                <label class="slider sliderV2" for="spGenderBtn14"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Have you purchused plots<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn15"/>
+                                <label class="slider sliderV2" for="spGenderBtn15"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn16"/>
+                                <label class="slider sliderV2" for="spGenderBtn16"></label>
+</td>
+</tr>
+
+<tr>
+<td>
+Are you currently paying or have you prepaid any burial costs</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn17"/>
+                                <label class="slider sliderV2" for="spGenderBtn17"></label>
+</td>
+<td>
+		<input class="sliderInput" type="checkbox" id="spGenderBtn18"/>
+                                <label class="slider sliderV2" for="spGenderBtn18"></label>
+</td>
+</tr>
+</table>
+
+</div>
+
+</div>
+			</div>
+			<div class="pApp-page fullscreen p3">
+				<div class="abs pApp-inner">
+
+<div id="productsWrapper">				
+<table><tr><td> 
+<div class="input-v5">
+    <input type="radio" name="showPTyp" id="dhBTN1" value="H" data-bind="checked: pm.useConcept"/>     
+    <label for="dhBTN1">HOUR POWER</label>
+</div>
+<br>
+<div class="input-v5">
+    <input type="radio" name="showPType" id="dhBTN2" value="D" data-bind="checked: pm.useConcept"/>     
+    <label for="dhBTN2">Dollar A Day</label>
+</div>
+
+ </td><td>                            
+<table data-bind="visible:pm.useConcept()=='H'"><tr><td>
+
+        <div class="input-v5">
+        <input type="radio" name="phtype" id="phTypeBTN1" value="MH" data-bind="checked: pm.phType, enable: pm.allowMH"/> 
+        <label for="phTypeBTN1" data-bind="css: { disabledUI: pm.allowMH()==false}">Combined Hour</label>
+        </div>
+        </td><td>
+        <div class="ui labeled input">
+         <input type="text" placeholder="Combined Hour" data-bind="value: pm.setMVal" readonly> 
+         </div> 
+                                 
+                                </td></tr><tr><td>
+
+  <div class="input-v5">
+      <input type="radio" name="phtype" id="phTypeBTN2" value="CH" data-bind="checked: pm.phType"/>     
+      <label for="phTypeBTN2">Custom Hour</label>
+  </div>
+</td>
+<td>
+  <div class="ui labeled input">
+    <input type="text" pattern="\d*" placeholder="Custom Hour" data-bind="value: pm.setCVal" >
+   </div>
+ </td> </tr> </table>
+
+ </td><td>
+ <div data-bind="visible:pm.useConcept()=='D'">
+    Daily Value:
+              <select data-bind="options: pm.opts_dtype,
+                        optionsText: 'showVal', optionsValue:'val', value: pm.dtype" class="pSELECT"></select>
+  </div>
+              
+ </td><td>
+
+<div class="pWrapper alwaysShow fullWidth">
+    <div class="phProduct">
+            <div class="productTitle">
+            <span class="pName">Recommended:</span>
+                   </div>
+               
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="total_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="total_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="total_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="total_DLY">
+                </div>
+    </div>
+    <div class="phProduct">
+            <div class="productTitle">
+            <span class="pName">Used:</span>
+                   </div>
+               
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="used_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="used_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="used_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="used_DLY">
+                </div>
+    </div>
+
+    <div class="phProduct">
+            <div class="productTitle">
+            <span class="pName">Remaining:</span>
+                   </div>
+               
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="diff_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="diff_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="diff_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="diff_DLY">
+                </div>
+    </div>
+</div>
+
+</td>
+</tr>
+</table>
+    <div class="pWrapper fullWidth">
+
+    <div class="phProduct" data-bind="css:{productAdded:pmP['pA71000'].added(), productAllowed: pmP['pA71000'].allowed()}">
+            <div class="productTitle">
+            <span class="pName" id="pA71000_pName"></span>
+            <span class="pCategory" data-bind="text:pm.opts_A71000()[pmP['pA71000'].ctype()-1]['showVal'], visible:pmP['pA71000'].added()"></span>
+            <span class="pCategory" data-bind="text:pmP['pA71000']['ftype'], visible:pmP['pA71000'].added()"></span>
+            </div>
+                <div class="productInput isCOV">                         
+                 <input type="text" readonly class="pRO" id="pA71000_COV">
+                </div>
+
+
+
+
+ 
+                <div class="productInput hasOpts">
+                           <div class="input-v4">
+                  <input type="radio" name="ftype" id="A71000ftype1" value="Family" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']"/> 
+                  <label data-bind="visible: pmP['pA71000'].allowFamily()"  for="A71000ftype1">Family</label>
+                  <input type="radio" name="ftype" id="A71000ftype2" value="Individual" data-bind="checked: pmP['pA71000']['ftype'], enable:pmP['pA71000']['added']" />    
+                  <label for="A71000ftype2">Individual</label>
+              </div>
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showYRL()">                   
+                  <input type="text" readonly class="pRO" id="pA71000_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showMBD()">                  
+                  <input type="text" readonly class="pRO" id="pA71000_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="visible: pm.showWKL()">
+                  <input type="text" readonly class="pRO" id="pA71000_WKL">
+                </div>
+
+                <div class="productInput" data-bind="visible: pm.showDLY()">
+                  <input type="text" readonly class="pRO" id="pA71000_DLY">
+                </div>
+
+                <div class="input-v4">
+                  <input type="radio" name="ctype" id="A71000ctype1" value='1' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/> 
+                  <label for="A71000ctype1">single</label>
+                  <input type="radio" name="ctype" id="A71000ctype2" value='2' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype2">double</label>
+                  <input type="radio" name="ctype" id="A71000ctype3" value='3' data-bind="checked:pmP['pA71000']['ctype'], enable:pmP['pA71000']['added']"/>     
+                  <label data-bind="visible: pmP['pA71000'].allowDouble()" for="A71000ctype3">triple</label>
+                </div>
+
+                <div class="productAdd">
+                  <input class="sliderInput" type="checkbox" id="add_pA71000" data-bind="checked: pmP['pA71000']['added']" /><label class="slider sliderV2" for="add_pA71000"></label>              
+                </div> 
+
+           </div>
+    </div>   
+
+<div class="pWrapper pwLeft">
+
+<div class="phProduct WHL p" data-bind="css:{productAllowed: pmP['pWHL'].allowed(), productAdded: pmP['pWHL'].added()}">
+            <div class="productTitle"><span class="pName" id="pWHL_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span><span class="pCategory" data-bind="text:pmP['pWHL']['categoryName']"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pWHL_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="pWHL_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pWHL_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pWHL_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pWHL_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pWHL_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pWHL_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pWHL_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pWHL']['setWKL']">  
+                </div>
+
+
+               <div class="productAdd">
+                    <input class="sliderInput" type="checkbox" id="add_pWHL" data-bind="checked: pmP['pWHL']['added']" /><label class="slider sliderV2" for="add_pWHL"></label>        
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct SGWHL p" data-bind="css:{productAdded: pmP['pSGWHL'].added(), productAllowed: pmP['pSGWHL'].allowed()}">
+            <div class="productTitle"><span class="pName" id="pSGWHL_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pSGWHL_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="pSGWHL_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pSGWHL_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pSGWHL_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pSGWHL_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setWKL']">  
+                </div>
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pSGWHL_DLY'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pSGWHL_DLY">
+                  <input type="text" class="pKO" data-bind="value: pmP['pSGWHL']['setDLY']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_pSGWHL" data-bind="checked: pmP['pSGWHL']['added']" /><label class="slider sliderV2" for="add_pSGWHL"></label>             
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct TYRC p" data-bind="css:{productAdded: pmP['pTYRC'].added(), productAllowed: pmP['pTYRC'].allowed()}">
+            <div class="productTitle"><span class="pName" id="pTYRC_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pTYRC_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="pTYRC_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['pTYRC']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts"><select data-bind="options: pm.opts_TYRC,
+                        optionsText: 'showVal', optionsValue:'val', value: pmP['pTYRC']['DUR'], enable: pmP['pTYRC']['added']" class="pSELECT"></select>
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pTYRC_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pTYRC_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pTYRC']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pTYRC_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pTYRC_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['pTYRC']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pTYRC_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pTYRC_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pTYRC']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_pTYRC" data-bind="checked: pmP['pTYRC']['added']" /><label class="slider sliderV2" for="add_pTYRC"></label>             
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct ADB p" data-bind="css:{productAdded: pmP['pADB'].added(), productAllowed: pmP['pADB'].allowed()}">
+            <div class="productTitle"><span class="pName" id="pADB_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pADB_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="pADB_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['pADB']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pADB_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pADB_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pADB']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pADB_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pADB_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['pADB']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pADB_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pADB_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pADB']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_pADB" data-bind="checked: pmP['pADB']['added']" /><label class="slider sliderV2" for="add_pADB"></label>             
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct B2000 p" data-bind="css:{productAdded: pmP['pB2000'].added(), productAllowed: pmP['pB2000'].allowed()}">
+            <div class="productTitle"><span class="pName" id="pB2000_pName"></span>
+                     <span class="pCategory" data-bind="text:pm.opts_B2000()[pmP['pB2000'].ctype()-1]['showVal'], visible:pmP['pB2000'].added()"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pB2000_COV'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pB2000_COV">
+                </div>
+
+
+                <div class="productInput hasOpts"><select data-bind="options: pm.opts_B2000,
+                        optionsText: 'showVal', optionsValue:'val', value: pmP['pB2000']['ctype'], enable: pmP['pB2000']['added']" class="pSELECT"></select>
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pB2000_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pB2000_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pB2000_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pB2000_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pB2000_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pB2000_WKL"> 
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_pB2000" data-bind="checked: pmP['pB2000']['added']" /><label class="slider sliderV2" for="add_pB2000"></label>             
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct CHR p" data-bind="css:{productAdded: pmP['pCHR'].added(), productAllowed: pmP['pCHR'].allowed()}">
+            <div class="productTitle"><span class="pName" id="pCHR_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.p.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['pCHR_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="pCHR_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['pCHR']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pCHR_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="pCHR_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pCHR']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pCHR_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="pCHR_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['pCHR']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['pCHR_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="pCHR_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['pCHR']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_pCHR" data-bind="checked: pmP['pCHR']['added']" /><label class="slider sliderV2" for="add_pCHR"></label>             
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    
+
+</div>
+
+
+<div class="pWrapper pwRight">
+
+<div class="phProduct WHL sp" data-bind="css:{productAdded:(!pmP['spSPR'].added())&&(pmP['spWHL'].added()), productAllowed: pmP['spWHL'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spWHL_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span><span class="pCategory" data-bind="text:pmP['spWHL']['categoryName']"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spWHL_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spWHL_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spWHL']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spWHL_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spWHL_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spWHL']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spWHL_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spWHL_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spWHL']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spWHL_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spWHL_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spWHL']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_spWHL" data-bind="checked: pmP['spWHL']['added']" /><label class="slider" for="add_spWHL" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>              
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct SGWHL sp" data-bind="css:{productAdded:(!pmP['spSPR'].added())&&(pmP['spSGWHL'].added()), productAllowed: pmP['spSGWHL'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spSGWHL_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spSGWHL_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spSGWHL_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSGWHL']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSGWHL_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spSGWHL_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSGWHL']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSGWHL_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spSGWHL_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSGWHL']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSGWHL_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spSGWHL_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSGWHL']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_spSGWHL" data-bind="checked: pmP['spSGWHL']['added']" /><label class="slider" for="add_spSGWHL"></label>              
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct TYRC sp" data-bind="css:{productAdded:(!pmP['spSPR'].added())&&(pmP['spTYRC'].added()), productAllowed: pmP['spTYRC'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spTYRC_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spTYRC_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spTYRC_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spTYRC']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts"><select data-bind="options: pm.opts_TYRC,
+                        optionsText: 'showVal', optionsValue:'val', value: pmP['spTYRC']['DUR'], enable: pmP['spTYRC']['added']" class="pSELECT"></select>
+                </div>
+
+
+                <div class="productInput YRL" data-bind="css: {hasError: pmE.errArray['spTYRC_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spTYRC_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spTYRC']['setYRL']">
+                </div>
+
+
+                <div class="productInput MBD" data-bind="css: {hasError: pmE.errArray['spTYRC_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spTYRC_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spTYRC']['setMBD']">  
+                </div>
+
+
+                <div class="productInput WKL" data-bind="css: {hasError: pmE.errArray['spTYRC_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spTYRC_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spTYRC']['setWKL']">  
+                </div>
+                <div class="productAdd DLY">
+                <input class="sliderInput" type="checkbox" id="add_spTYRC" data-bind="checked: pmP['spTYRC']['added'], , enable: !pmP['spSPR'].added()" /><label class="slider" for="add_spTYRC" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>              
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct ADB sp" data-bind="css:{productAdded:(!pmP['spSPR'].added())&&(pmP['spADB'].added()), productAllowed: pmP['spADB'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spADB_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spADB_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spADB_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spADB_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spADB_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spADB_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spADB_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spADB']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_spADB" data-bind="checked: pmP['spADB']['added'], , enable: !pmP['spSPR'].added()" /><label class="slider" for="add_spADB" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>              
+                </div> 
+                
+                
+                
+            </div>
+            
+            
+            
+    <div class="phProduct B2000 sp" data-bind="css:{productAdded:(!pmP['spSPR'].added())&&(pmP['spB2000'].added()), productAllowed: pmP['spB2000'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spB2000_pName"></span>
+            <span class="pCategory" data-bind="text:pm.opts_B2000()[pmP['spB2000'].ctype()-1]['showVal'], visible:pmP['spB2000'].added()"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spB2000_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spB2000_COV">
+                </div>
+
+
+                <div class="productInput hasOpts"><select data-bind="options: pm.opts_B2000,
+                        optionsText: 'showVal', optionsValue:'val', value: pmP['spB2000']['ctype'], enable: pmP['spB2000']['added']" class="pSELECT"></select>
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spB2000_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spB2000_YRL">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spB2000_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spB2000_MBD">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spB2000_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spB2000_WKL">
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_spB2000" data-bind="checked: pmP['spB2000']['added'], , enable: !pmP['spSPR'].added()" /><label class="slider" for="add_spB2000" data-bind="css: { sliderV2: !pmP['spSPR'].added()}"></label>              
+                </div>             
+
+            </div>
+            
+            
+            
+    <div class="phProduct SPR sp" data-bind="css:{productAdded: pmP['spSPR'].added(), productAllowed: pmP['spSPR'].allowed()}">
+            <div class="productTitle"><span class="pName" id="spSPR_pName"></span>
+                    <span class="pOwner" data-bind="text: pmM.sp.fname"></span></div>
+                <div class="productInput isCOV" data-bind="css: {hasError: pmE.errArray['spSPR_COV'].hasError()}">                               
+                  <input type="text" readonly class="pRO" id="spSPR_COV">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSPR']['setCOV']"> 
+                </div>
+
+
+                <div class="productInput hasOpts">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSPR_YRL'].hasError()}">                   
+                  <input type="text" readonly class="pRO" id="spSPR_YRL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSPR']['setYRL']">
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSPR_MBD'].hasError()}">                  
+                  <input type="text" readonly class="pRO" id="spSPR_MBD">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSPR']['setMBD']">  
+                </div>
+
+
+                <div class="productInput" data-bind="css: {hasError: pmE.errArray['spSPR_WKL'].hasError()}">
+                  <input type="text" readonly class="pRO" id="spSPR_WKL">
+                  <input type="text" class="pKO" data-bind="value: pmP['spSPR']['setWKL']">  
+                </div>
+                <div class="productAdd">
+                <input class="sliderInput" type="checkbox" id="add_spSPR" data-bind="checked: pmP['spSPR']['added']" /><label class="slider sliderV2" for="add_spSPR"></label>             
+                </div>                
+                
+            </div>        
+</div>
+
+
+</div>
+
+<div class="clearFix"></div>
+
+
+</div>
+
+			</div>
+			<div class="pApp-page fullscreen p4">
+				<div class="abs pApp-inner">
+				<h1>Hour power Calcs</h1>
+				</div>
+
+			</div>
+			<div class="pApp-page fullscreen p5">
+				<div class="abs pApp-inner">
+				</div>
+
+			</div>
+			<div class="pApp-page fullscreen p6">
+								<div class="abs pApp-inner">
+				</div>
+
+			</div>
+
+
+
+
+		</div></div>
+<div data-goto="next" class="navBtn navRight pApp-switchPages">
+<div class="ui right labeled icon button pApp-switchPage">
+  <i class="right arrow icon"></i>
+  Next
+</div>	
+</div>
+<div data-goto="back" class="navBtn navLeft pApp-switchPages">
+<div class="ui left labeled icon button pApp-switchPage">
+  <i class="left arrow icon"></i>
+  Back
+</div>	
+</div>	
+
+<footer>
+<div onclick="launchFullscreen(document.documentElement);" class="sexyButton">Launch Fullscreen</div>
+
+<span>This is a Solicitation for Insurance</span>
+</footer>
+ <script src="js/libs/deps_ko.js"> </script> 
+  <script src="css/sui/javascript/semantic.js"> </script>
+  <script src="js/data/dataJS.js"> </script>
+  <script src="js/globals.js"> </script>
+  <script src="js/libs/knockout-3.1.0.js" defer="defer"> </script> 
+  <script src="js/koMVVM.js?n=1" defer="defer"> </script> 
+		<script src="js/libs/pagetransitions.js"></script>
+		<script>
+
+		</script>
+	</body>
+</html>

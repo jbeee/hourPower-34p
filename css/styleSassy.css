@@ -1,0 +1,68 @@
+/* line 1, sass/styleSassy.scss */
+* {
+  box-sizing: border-box;
+}
+
+/* line 5, sass/styleSassy.scss */
+body {
+  margin: 0;
+  padding: 0;
+  font: 150% Futura-Medium, Futura, sans-serif;
+  color: #333;
+}
+
+/* line 12, sass/styleSassy.scss */
+h1 {
+  font-weight: normal;
+}
+
+/* line 16, sass/styleSassy.scss */
+a {
+  color: #F2994B;
+}
+
+/* line 20, sass/styleSassy.scss */
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  text-align: center;
+  transition: transform 0.5s ease;
+  transform: translate3d(100%, 0, 0);
+}
+
+/* line 32, sass/styleSassy.scss */
+.page a {
+  color: white;
+}
+
+/* line 36, sass/styleSassy.scss */
+.page.is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+/* line 40, sass/styleSassy.scss */
+.home {
+  color: white;
+  background: #F2CF66;
+}
+
+/* line 45, sass/styleSassy.scss */
+.activity {
+  color: white;
+  background: #F2994B;
+}
+
+/* line 50, sass/styleSassy.scss */
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: white;
+  z-index: 10;
+}

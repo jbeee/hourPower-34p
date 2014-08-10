@@ -1,0 +1,58 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font: 150% Futura-Medium, Futura, sans-serif;
+  color: #333;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+a {
+  color: #F2994B;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  text-align: center;
+  transition: transform 0.5s ease;
+  transform: translate3d(100%, 0, 0);
+}
+
+.page a {
+  color: white;
+}
+
+.page.is-visible {
+  transform: translate3d(0, 0, 0);
+}
+
+.home {
+  color: white;
+  background: #F2CF66;
+}
+
+.activity {
+  color: white;
+  background: #F2994B;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px;
+  background: white;
+  z-index: 10;
+}
