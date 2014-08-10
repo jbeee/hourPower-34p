@@ -1,4 +1,10 @@
-TODO - August 16
+TODO 
+======
+
+
+
+
+August 16
 ================
 - combinne qualification and survey page
 - change color scheme and toggle buttons
